@@ -1,0 +1,23 @@
+{
+  "name": "Natural Grid LLP — Solar Installation & Service in Kerala",
+  "short_name": "Natural Grid",
+  "icons": [
+    {
+      "src": "web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#236537",
+  "background_color": "#f4f4f4",
+  "display": "standalone",
+  "start_url": "/",
+  "description": "Solar installation, AMC and lifelong service across all 14 districts of Kerala."
+}
