@@ -1,11 +1,12 @@
-const { test } = require("node:test");
-const assert = require("node:assert/strict");
-const fs = require("node:fs");
-const path = require("node:path");
-const vm = require("node:vm");
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import vm from "node:vm";
+import { fileURLToPath } from "node:url";
 
-// phone.js is a browser script that attaches itself to window, so run the real
-// file in a sandbox instead of importing it.
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 function loadPhone() {
   const sandbox = { window: {} };
   const source = fs.readFileSync(path.join(__dirname, "..", "js", "phone.js"), "utf8");
@@ -36,15 +37,15 @@ test("a leading 0 trunk prefix is dropped instead of becoming part of the number
 });
 
 test("spaces, hyphens and brackets are ignored", () => {
-  assert.equal(normalize("(+91) 90726-34443"), "9072634443");
+  assert.equal(normalize("(+91) 9072-634-443"), "9072634443");
 });
 
 test("surrounding whitespace is ignored", () => {
-  assert.equal(normalize("  9072634443  "), "9072634443");
+  assert.equal(normalize("  9072634443 \n"), "9072634443");
 });
 
 test("too few digits is rejected", () => {
-  assert.equal(normalize("90726344"), null);
+  assert.equal(normalize("907263444"), null);
 });
 
 test("too many digits is rejected rather than truncated", () => {
@@ -57,6 +58,8 @@ test("Indian mobile numbers start with 6-9, so 5xxxxxxxxx is rejected", () => {
 
 test("empty input is rejected", () => {
   assert.equal(normalize(""), null);
+  assert.equal(normalize(null), null);
+  assert.equal(normalize(undefined), null);
 });
 
 test("letters make the number invalid", () => {

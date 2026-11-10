@@ -1,0 +1,49 @@
+@import "./legacy.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global sharp-edge enforcement per user global rule */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+/* Custom enhancements for React SPA */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, #236537, #ff6700);
+  z-index: 300;
+  pointer-events: none;
+  transition: transform 0.08s linear;
+}
+
+/* Ensure body scroll lock works properly when mobile nav or modal is open */
+body.nav-open {
+  overflow: hidden;
+}
+
+/* Lightbox dialog styling */
+.lightbox-dialog {
+  border: none;
+  padding: 0;
+  background: transparent;
+  max-width: 100vw;
+  max-height: 100vh;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.lightbox-dialog::backdrop {
+  background: rgba(4, 24, 15, 0.92);
+  backdrop-filter: blur(6px);
+}

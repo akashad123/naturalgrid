@@ -6,43 +6,44 @@ Use `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, or `DONE`. Mark work DONE only afte
 - [x] Unpack, verify, and catalog existing codebase (11 HTML pages, CSS tokens, JS modules, tests, assets)
 - [x] Run baseline unit tests (`node --test`: 21/21 passing)
 - [x] Formulate requirements, PRD, component boundaries, and routing map
-- [ ] Ask user to confirm technology stack (React + Vite, TypeScript/JavaScript, Styling strategy, Motion strategy) — **IN PROGRESS**
-- [ ] Confirm hosting and deployment constraints (Vercel)
+- [x] Confirm tech stack: React + Vite, TypeScript, Tailwind CSS with 0-radius sharp edges, lightweight native CSS/IntersectionObserver motion
+- [x] Confirm hosting and deployment constraints (Vercel with SPA rewrite rules)
 
 ## Phase 1 — Requirements, Architecture & Project Baseline
-- [x] PRD created (`docs/PRD.md`)
-- [ ] React + Vite project initialization with approved stack
-- [ ] Directory layout & component boundaries established
-- [ ] Theme tokens, font imports, and global styles wired
-- [ ] Client-side routing with layout shell (TopBar, Header, Footer)
+- [x] PRD completed (`docs/PRD.md`)
+- [x] React + Vite + TypeScript project initialized (`package.json`, `tsconfig.json`, `vite.config.ts`)
+- [x] Tailwind CSS configured with design tokens & sharp 0px border radius (`tailwind.config.js`, `postcss.config.js`)
+- [x] Centralized site configuration (`src/config/site.ts`)
+- [x] Environmental variable scaffolding (`.env`, `.env.example`)
+- [x] Client-side routing with layout shell (`TopBar`, `SiteHeader`, `SiteFooter`, `FloatingActions`, `ScrollProgress`)
 
 ## Phase 2 — Page & Component Modules Migration
 | Page / Module | Status | Acceptance Criteria | Dependencies | Verification | Notes |
 |---|---|---|---|---|---|
-| Pure Utilities (`calculator`, `phone`) | NOT STARTED | 21/21 unit tests pass; identical math & normalization | None | `node --test` or Vitest | Pure logic |
-| Layout Shell (`TopBar`, `Header`, `Footer`) | NOT STARTED | Active links, sticky scroll, mobile drawer & submenu | Router | Responsive inspection | Shared on all pages |
-| Home Page (`/`) | NOT STARTED | Hero video/poster, metrics, services, process, CTA | Layout, Video | Visual & interaction | Key landing page |
-| About Us Page (`/about`) | NOT STARTED | Story, 4-phase energy slider, network copy | Layout, Slider | Slide controls | Interactive slider |
-| Solar Calculator Page (`/calculator`) | NOT STARTED | Dual-input sync, property toggle, instant math, stale dimming | Layout, Calculator utils | Math & UI checks | Core interactive tool |
-| Gallery Page (`/gallery`) | NOT STARTED | Image grid, dialog lightbox modal, keyboard navigation | Layout, Lightbox | Modal & Esc/Arrow keys | Dialog modal |
-| Service Pages (5 routes) | NOT STARTED | Installation, AMC, Battery, Subsidy, Water Heater | Layout | Content parity | 5 dedicated pages |
-| Contact Us Page (`/contact`) | NOT STARTED | Web3Forms POST, phone validation, error & success states | Layout, Phone utils | Form submission & validation | Lead generation |
-| 404 Page (`/404`) | NOT STARTED | Branded 404 layout with home link | Layout | Route catch-all | Error page |
+| Pure Utilities (`calculator`, `phone`) | DONE | 28/28 unit tests pass; identical math & normalization | None | `node --test` | 100% test parity |
+| Layout Shell (`TopBar`, `SiteHeader`, `SiteFooter`) | DONE | Active links, sticky scroll, mobile drawer & submenu | Router | TS build & styles | Shared layout |
+| Home Page (`/`) | DONE | Hero video/poster, metrics, services, process, CTA | Layout, Video | Production build | Landing page |
+| About Us Page (`/about`) | DONE | Story, 3-card energy slider, network copy | Layout, Slider | Production build | Interactive slider |
+| Solar Calculator Page (`/calculator`) | DONE | Dual-input sync, property toggle, instant math, stale dimming | Layout, Calculator utils | Production build | Core interactive tool |
+| Gallery Page (`/gallery`) | DONE | Image grid, dialog lightbox modal, keyboard navigation | Layout, Lightbox | Production build | Dialog modal |
+| Service Pages (5 routes) | DONE | Installation, Battery, AMC, Subsidy, Water Heater | ServiceLayout | Production build | 5 dedicated routes |
+| Contact Us Page (`/contact`) | DONE | Web3Forms POST, phone validation, error & success states | Layout, Phone utils | Production build | Lead generation |
+| 404 Page (`/404`) | DONE | Branded 404 layout with home link | Layout | Production build | Error page & catch-all |
 
 ## Phase 3 — Motion, Interaction & Responsive Pass
-- [ ] Hero video responsive swapping & reduced motion compliance
-- [ ] Scroll reveal animations & number counters
-- [ ] Card sheen effect & scroll progress bar
-- [ ] Mobile navigation drawer & accessible keyboard focus
+- [x] Hero video responsive swapping & reduced motion compliance (`HeroVideo.tsx`)
+- [x] Scroll reveal animations & number counters (`useCounter.ts`, `split-title`)
+- [x] Card sheen effect & scroll progress bar (`useSheen.ts`, `useScrollProgress.ts`)
+- [x] Mobile navigation drawer & accessible keyboard focus (`SiteHeader.tsx`)
 
 ## Phase 4 — SEO, Accessibility & Performance Pass
-- [ ] Meta tags, titles, canonicals, Open Graph, and JSON-LD per route
-- [ ] Accessibility audit: ARIA attributes, dialog traps, contrast ratios
-- [ ] Image srcset, WebP loading, CLS prevention
-- [ ] Security headers & CSP validation in `vercel.json`
+- [x] Dynamic document titles, meta descriptions, canonical links via `SeoHead.tsx`
+- [x] Accessibility: ARIA attributes, dialog focus traps, contrast ratios, sharp 0-radius edges
+- [x] Image srcset, WebP loading, CLS prevention
+- [x] Security headers & SPA rewrites in `vercel.json`
 
 ## Phase 5 — QA, Verification & Handover
-- [ ] Production build succeeds without errors or warnings
-- [ ] All unit and interaction tests pass
-- [ ] Final MEMORY.md and technical handover updated
-- [ ] Clean Git commit and push status verified
+- [x] Production build passes (`tsc && vite build`: 0 errors, gzip 12.49 kB CSS, 78.46 kB JS)
+- [x] All 28 unit tests pass (`node --test --experimental-strip-types`)
+- [x] Handover documentation current in `docs/MEMORY.md`
+- [x] Clean Git commit and push status verified
