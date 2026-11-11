@@ -1,74 +1,106 @@
-import { useEffect } from "react";
+import React, { createContext, useContext, useEffect } from "react";
 import { siteConfig } from "@/config/site";
+import {
+  ResolvedSeo,
+  SeoInput,
+  resolveSeoMetadata,
+} from "@/utils/seo";
 
-interface SeoHeadProps {
-  title?: string;
-  description?: string;
-  keywords?: string;
-  canonicalPath?: string;
-  noindex?: boolean;
+const SeoCollectorContext = createContext<((seo: ResolvedSeo) => void) | null>(
+  null
+);
+
+export const SeoCollectorProvider: React.FC<{
+  onCollect: (seo: ResolvedSeo) => void;
+  children: React.ReactNode;
+}> = ({ onCollect, children }) => (
+  <SeoCollectorContext.Provider value={onCollect}>
+    {children}
+  </SeoCollectorContext.Provider>
+);
+
+function upsertMetaTag(
+  attrName: "name" | "property",
+  attrValue: string,
+  content: string
+): void {
+  let meta = document.querySelector<HTMLMetaElement>(
+    `meta[${attrName}="${attrValue}"]`
+  );
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute(attrName, attrValue);
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute("content", content);
 }
 
-export const SeoHead: React.FC<SeoHeadProps> = ({
+export const SeoHead: React.FC<SeoInput> = ({
   title,
   description,
   keywords,
-  canonicalPath = "",
+  canonicalPath,
   noindex = false,
 }) => {
-  useEffect(() => {
-    // Document Title
-    const fullTitle = title
-      ? `${title} | ${siteConfig.name}`
-      : `${siteConfig.name} | Solar Installation, Service & AMC in Kerala`;
-    document.title = fullTitle;
+  const collectSeo = useContext(SeoCollectorContext);
+  const resolved = resolveSeoMetadata(
+    { title, description, keywords, canonicalPath, noindex },
+    siteConfig.name,
+    siteConfig.url
+  );
 
-    // Meta Description
-    const metaDesc = document.querySelector('meta[name="description"]');
-    const descContent =
-      description ||
-      "Service-first solar company in Kerala. Rooftop solar installation, AMC, repair, cleaning and monitoring with district-level support teams across all 14 districts.";
-    if (metaDesc) {
-      metaDesc.setAttribute("content", descContent);
-    }
+  // During build-time SSR prerendering, report resolved metadata synchronously
+  if (collectSeo) {
+    collectSeo(resolved);
+  }
+
+  useEffect(() => {
+    document.title = resolved.fullTitle;
+
+    upsertMetaTag("name", "description", resolved.description);
+    upsertMetaTag("name", "keywords", resolved.keywords);
+
+    upsertMetaTag("property", "og:title", resolved.fullTitle);
+    upsertMetaTag("property", "og:description", resolved.description);
+    upsertMetaTag("property", "og:url", resolved.ogUrl);
+
+    upsertMetaTag("name", "twitter:title", resolved.fullTitle);
+    upsertMetaTag("name", "twitter:description", resolved.description);
 
     // Robots directive (noindex on 404/non-public routes; cleaned up on valid routes)
-    let metaRobots = document.querySelector('meta[name="robots"]');
-    if (noindex) {
-      if (!metaRobots) {
-        metaRobots = document.createElement("meta");
-        metaRobots.setAttribute("name", "robots");
-        document.head.appendChild(metaRobots);
-      }
-      metaRobots.setAttribute("content", "noindex");
+    const metaRobots = document.querySelector<HTMLMetaElement>(
+      'meta[name="robots"]'
+    );
+    if (resolved.noindex) {
+      upsertMetaTag("name", "robots", "noindex");
     } else if (metaRobots) {
       metaRobots.remove();
     }
 
-    // Meta Keywords
-    if (keywords) {
-      let metaKw = document.querySelector('meta[name="keywords"]');
-      if (!metaKw) {
-        metaKw = document.createElement("meta");
-        metaKw.setAttribute("name", "keywords");
-        document.head.appendChild(metaKw);
+    // Canonical link (omitted on noindex error pages)
+    let linkCanonical = document.querySelector<HTMLLinkElement>(
+      'link[rel="canonical"]'
+    );
+    if (resolved.canonicalUrl) {
+      if (!linkCanonical) {
+        linkCanonical = document.createElement("link");
+        linkCanonical.setAttribute("rel", "canonical");
+        document.head.appendChild(linkCanonical);
       }
-      metaKw.setAttribute("content", keywords);
+      linkCanonical.setAttribute("href", resolved.canonicalUrl);
+    } else if (linkCanonical) {
+      linkCanonical.remove();
     }
 
-    // Canonical link
-    const canonicalUrl = `${siteConfig.url}${canonicalPath}`;
-    let linkCanonical = document.querySelector('link[rel="canonical"]');
-    if (!linkCanonical) {
-      linkCanonical = document.createElement("link");
-      linkCanonical.setAttribute("rel", "canonical");
-      document.head.appendChild(linkCanonical);
-    }
-    linkCanonical.setAttribute("href", canonicalUrl);
-
-    // Scroll to top on route change
     window.scrollTo(0, 0);
-  }, [title, description, keywords, canonicalPath, noindex]);
+  }, [
+    resolved.fullTitle,
+    resolved.description,
+    resolved.keywords,
+    resolved.canonicalUrl,
+    resolved.ogUrl,
+    resolved.noindex,
+  ]);
 
   return null;
 };

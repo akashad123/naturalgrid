@@ -37,15 +37,16 @@ Use `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, or `DONE`. Mark work DONE only afte
 - [x] Mobile navigation drawer & accessible keyboard focus (`SiteHeader.tsx`), plus headless Chrome checks at desktop (`1440×900`) and mobile (`390×844`) with `0px` horizontal overflow
 
 ## Phase 4 — SEO, Accessibility & Performance Pass
-- [x] Dynamic document titles, meta descriptions, canonical links, and `noindex` handling on 404 via `SeoHead.tsx`
+- [x] Dynamic document titles, meta descriptions, keywords, Open Graph / Twitter metadata, canonical links, and `noindex` handling on 404 via `src/utils/seo.ts` & `SeoHead.tsx`
+- [x] Build-time SSR prerendering (`src/entry-server.tsx` + `scripts/prerender.mjs`) generating static HTML with per-route metadata across all 10 public routes + `dist/404.html`
 - [x] Extensionless SPA URLs updated in `public/sitemap.xml` matching route canonicals
 - [x] Accessibility: ARIA attributes, `<dialog>` modal close/overflow restoration (`GalleryModal.tsx`), contrast ratios, sharp 0-radius edges
 - [x] Image `srcset`, WebP loading, CLS prevention, and CSS cascade order fix (`tailwind-base.css` before `legacy.css`)
-- [x] Security headers & SPA rewrites in `vercel.json`
+- [x] Security headers, `cleanUrls: true`, and `trailingSlash: false` in `vercel.json`; legacy static duplicates removed and `README.md` updated
 
 ## Phase 5 — QA, Verification & Handover
-- [x] Production build passes (`tsc && vite build`: 0 errors, `dist/index.html` 4.27 kB, CSS 59.69 kB / gzip 12.46 kB, JS 271.66 kB / gzip 79.67 kB)
-- [x] All 28 unit tests pass (`node --test --experimental-strip-types`: 28/28 passed)
-- [x] Headless Chrome verification across all 11 routes at `1440×900` and `390×844` plus interactive checks (calculator, gallery lightbox, about slider, mobile nav, contact validation) with zero console/page/network errors
+- [x] Production build & SSR prerendering pass (`npm run build`: `tsc`, Vite client build `dist/index.html` 4.27 kB / CSS 59.72 kB / JS 272.64 kB, Vite SSR build, and 11 prerendered HTML outputs with 0 warnings/errors)
+- [x] All 25 unit tests pass (`npm test` -> `node --test --experimental-strip-types`, covering `src/utils/*.ts`)
+- [x] Headless Chrome verification across all 11 routes at `1440×900` and `390×844`, raw prerendered HTML metadata checks, clean React hydration, and interactive flows with 0 console errors, 0 warnings, and 0 network errors
 - [x] Handover documentation current in `docs/MEMORY.md`
-- [ ] Push to remote repository (BLOCKED locally: no Git remote configured)
+- [ ] Live Web3Forms test submission and push to remote repository (BLOCKED locally: no Git remote configured)

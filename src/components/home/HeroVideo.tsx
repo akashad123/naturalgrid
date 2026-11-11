@@ -72,7 +72,7 @@ export const HeroVideo: React.FC = () => {
           alt=""
           width="1536"
           height="1024"
-          fetchPriority="high"
+          {...({ fetchpriority: "high" } as Record<string, string>)}
           decoding="async"
         />
       </picture>

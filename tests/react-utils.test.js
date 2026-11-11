@@ -1,36 +1,44 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { calculateSolar, BILLING_DAYS } from "../src/utils/calculator.ts";
-import { normalizePhone } from "../src/utils/phone.ts";
+import { formatINR, formatKw } from "../src/utils/formatters.ts";
+import { resolveSeoMetadata, DEFAULT_SEO_DESCRIPTION } from "../src/utils/seo.ts";
 
-test("TS calculator: residential bills are read as 60 days of consumption", () => {
-  assert.equal(BILLING_DAYS.residential, 60);
-  assert.equal(calculateSolar(300, "residential").billingDays, 60);
+test("formatINR formats Indian rupee amounts without decimals", () => {
+  assert.equal(formatINR(14400), "₹14,400");
+  assert.equal(formatINR(28800.4), "₹28,800");
 });
 
-test("TS calculator: commercial bills are read as 30 days of consumption", () => {
-  assert.equal(BILLING_DAYS.commercial, 30);
-  assert.equal(calculateSolar(300, "commercial").billingDays, 30);
+test("formatKw rounds kW values to one decimal place", () => {
+  assert.equal(formatKw(1.4285), "1.4");
+  assert.equal(formatKw(2.8571), "2.9");
 });
 
-test("TS calculator: 300 residential units need 1.43 kW (5 units/day / 3.5)", () => {
-  assert.equal(calculateSolar(300, "residential").solarSizeKw.toFixed(2), "1.43");
+test("resolveSeoMetadata keeps homepage brand title format and trailing slash canonical", () => {
+  const seo = resolveSeoMetadata(
+    { title: "Solar Installation, Service & AMC in Kerala", canonicalPath: "/" },
+    "Natural Grid LLP",
+    "https://naturalgrid.in/"
+  );
+  assert.equal(seo.fullTitle, "Natural Grid LLP | Solar Installation, Service & AMC in Kerala");
+  assert.equal(seo.canonicalUrl, "https://naturalgrid.in/");
+  assert.equal(seo.noindex, false);
 });
 
-test("TS calculator: 300 residential units save Rs 14,400 a year", () => {
-  assert.equal(Math.round(calculateSolar(300, "residential").annualSavings), 14400);
-});
+test("resolveSeoMetadata builds inner route metadata and omits canonical when noindex is set", () => {
+  const about = resolveSeoMetadata(
+    { title: "About Us", canonicalPath: "/about" },
+    "Natural Grid LLP",
+    "https://naturalgrid.in"
+  );
+  assert.equal(about.fullTitle, "About Us | Natural Grid LLP");
+  assert.equal(about.canonicalUrl, "https://naturalgrid.in/about");
+  assert.equal(about.description, DEFAULT_SEO_DESCRIPTION);
 
-test("TS calculator: 300 commercial units need 2.86 kW and save Rs 28,800 a year", () => {
-  const r = calculateSolar(300, "commercial");
-  assert.equal(r.solarSizeKw.toFixed(2), "2.86");
-  assert.equal(Math.round(r.annualSavings), 28800);
-});
-
-test("TS phone: accepts +91 formatted numbers", () => {
-  assert.equal(normalizePhone("+91 90726 34443"), "9072634443");
-});
-
-test("TS phone: rejects invalid letters", () => {
-  assert.equal(normalizePhone("90726abc43"), null);
+  const notFound = resolveSeoMetadata(
+    { title: "Page Not Found", noindex: true },
+    "Natural Grid LLP",
+    "https://naturalgrid.in"
+  );
+  assert.equal(notFound.noindex, true);
+  assert.equal(notFound.canonicalUrl, "");
 });

@@ -3,8 +3,8 @@
 Last updated: React + TypeScript Migration Complete
 
 ## Current Status
-- **Current Phase:** Phase 5 — QA, Verification & Handover (Verified & Complete)
-- **Overall Status:** Migration and post-migration parity audit from static multi-page site to React + Vite + TypeScript are complete and verified. Fixed Tailwind Preflight CSS cascade order (`tailwind-base.css` -> `legacy.css` -> `index.css`), restored legacy hero/about/FAQ/service copy parity, added `useScrollReveal` + `noindex` on 404, updated `public/sitemap.xml` to extensionless routes, and verified all 11 routes and 5 interactive flows in headless Chrome at desktop (`1440×900`) and mobile (`390×844`).
+- **Current Phase:** Phase 5 — QA, Verification & Handover (Pre-rendered, Cleaned, Verified)
+- **Overall Status:** Migration, UI/copy parity, repository cleanup, dynamic OG/Twitter SEO, build-time SSR prerendering (`src/entry-server.tsx` + `scripts/prerender.mjs`), and Vercel clean-URL configuration are complete. Removed redundant root static files (`*.html`, `css/`, `js/`, `images/`, `favicon/`, `robots.txt`, `sitemap.xml`, `legacy/`) and updated `tests/` to test `src/utils/*.ts` directly.
 
 ## Pages / Modules Completed
 - `src/pages/HomePage.tsx`: Exact legacy `.hero-eyebrow`/`.hero-headline`/`.hero-headline-accent`/`.hero-text`/`.hero-btn--solid` hero, 4-feature bar, metrics, short-titled services list, 4-step process, project cards, features accordion, and 4-set brand marquee (`TrustMarquee.tsx`).
@@ -34,9 +34,10 @@ Last updated: React + TypeScript Migration Complete
   - `*` (404 Not Found with `noindex`)
   - Backward compatibility redirects from all `*.html` paths to clean extensionless paths (`public/sitemap.xml` uses extensionless URLs).
 - **Shared Components & Styles:**
-  - `src/main.tsx`: Imports `src/styles/tailwind-base.css` -> `src/styles/legacy.css` -> `src/styles/index.css` so Tailwind Preflight never overrides `legacy.css`.
+  - `src/main.tsx`: Imports `src/styles/tailwind-base.css` -> `src/styles/legacy.css` -> `src/styles/index.css` so Tailwind Preflight never overrides `legacy.css`; uses `hydrateRoot` when `data-ssr-route` matches `window.location.pathname` and `createRoot` otherwise.
+  - `src/entry-server.tsx` & `scripts/prerender.mjs`: Build-time SSR renderer (`StaticRouter` + `SeoCollectorProvider`) outputting prerendered `dist/*.html` for all 10 public routes and `dist/404.html` (`noindex`).
   - `Layout`: Stitches `ScrollProgress`, `TopBar`, `SiteHeader`, `<Outlet />`, `FloatingActions`, `SiteFooter`, and runs `useScrollReveal(location.pathname)`.
-  - `SeoHead`: Dynamic document title, meta description, canonical URL, and per-route `noindex` meta lifecycle management.
+  - `SeoHead` & `src/utils/seo.ts`: Shared resolver and DOM/SSR updater for `<title>`, `description`, `keywords`, `og:*`, `twitter:*`, `canonical`, and `noindex`.
   - `PageHero`: Standard inner page hero banner with word-by-word rising title animation (`split-title` / `title-word`).
   - `SolarCalculator`: Pure logic calculation with dual-input synchronization.
   - `ContactForm`: Inline validated form with 10-digit phone normalization and Web3Forms submission.
@@ -55,23 +56,23 @@ Last updated: React + TypeScript Migration Complete
 - **Styling:** Tailwind CSS mapped to existing tokens, strict `tailwind-base.css` -> `legacy.css` -> `index.css` cascade, and sharp edges (`border-radius: 0 !important`) per user global rule.
 - **Animations:** Native CSS transitions, keyframes, and IntersectionObserver hooks (`useScrollReveal`, `useStickyHeader`, `useScrollProgress`, `useSheen`, `useCounter`, `useReducedMotion`).
 - **Form Submissions:** Direct client-side POST to Web3Forms API.
-- **Hosting:** Vercel deployment with strict Content-Security-Policy headers and SPA rewrite rules in `vercel.json`.
+- **Hosting:** Vercel static deployment with `cleanUrls: true`, `trailingSlash: false`, strict Content-Security-Policy headers, and immutable asset cache headers in `vercel.json` (plus updated `.vercelignore` and `README.md`).
 
 ## Verification Performed
 1. `npm test` (`node --test --experimental-strip-types`):
-   - 28 / 28 tests passing (pure calculation math and Indian phone number normalization across JS + TS).
-2. `npm run build` (`tsc && vite build`):
-   - Zero TypeScript or Vite errors.
-   - Output bundle: `dist/index.html` 4.27 kB (gzip 1.52 kB), `dist/assets/index-zbdzGyQJ.css` 59.69 kB (gzip 12.46 kB), `dist/assets/index-CJVdVXpW.js` 271.66 kB (gzip 79.67 kB).
-   - Verified CSS cascade order in built CSS (`preflight` at offset 0 before `.topbar` at 5876 and `.float-contact` at 49003).
-3. Headless Chrome (`vite preview --port 4173`) audit:
-   - Tested all 11 routes at `1440×900` (desktop) and `390×844` (mobile): 0 console errors, 0 page exceptions, 0 failed asset requests, `0px` horizontal overflow, sharp `0px` radius, single `<h1>` per route, `noindex` restricted to 404.
-   - Verified calculator (`300` units -> `1.4` kW / `₹14,400` Residential; `2.9` kW / `₹28,800` Commercial), gallery lightbox open/next/close + overflow reset, about slider slide switch, contact invalid phone validation message + map embed, and mobile drawer/submenu open & route-change close.
+   - 25 / 25 tests passing (`tests/calculator.test.js`, `tests/phone.test.js`, `tests/react-utils.test.js` importing `src/utils/calculator.ts`, `src/utils/phone.ts`, `src/utils/formatters.ts`, and `src/utils/seo.ts`).
+2. `npm run build` (`tsc && vite build && vite build --ssr ... && node scripts/prerender.mjs`):
+   - Zero TypeScript, Vite, or React SSR warnings/errors.
+   - Client bundle: `dist/index.html` 4.27 kB (gzip 1.52 kB), `dist/assets/index-CBradGYi.css` 59.72 kB (gzip 12.47 kB), `dist/assets/index-BDWxqz2J.js` 272.64 kB (gzip 80.08 kB); SSR bundle `.prerender-ssr/entry-server.js` 175.93 kB (cleaned after prerendering 11 HTML files into `dist/`).
+3. Headless Chrome (`vite preview --port 4174`) audit:
+   - Tested all 11 routes at `1440×900` (desktop) and `390×844` (mobile): 0 console errors, 0 console warnings (clean hydration), 0 page exceptions, 0 failed asset requests, `0px` horizontal overflow, sharp `0px` radius, single `<h1>` per route, `noindex` restricted to 404.
+   - Verified raw prerendered HTTP responses (`/`, `/about.html`, `/calculator.html`, `/404.html`) contain expected SSR metadata/content before JS runs.
+   - Verified calculator (`300` units -> `1.4` / `₹14,400` Residential; `2.9` / `₹28,800` Commercial), gallery lightbox open/next/close + overflow reset, about slider slide switch, contact invalid phone validation message + map embed, and mobile drawer/submenu open & route-change close.
 
 ## Git State
 - **Branch:** `master`
-- **Previous Commit:** `7b65f40`
+- **Previous Commit:** `330638f`
 - **Remote Status:** Local Git repository only (no remote upstream configured yet).
 
 ## Next Exact Step
-1. Configure a Git remote (`git remote add origin <url>`) and push `master` when ready to deploy to Vercel.
+1. Configure a Git remote (`git remote add origin <url>`), push `master`, configure `VITE_SITE_URL` and `VITE_WEB3FORMS_ACCESS_KEY` in Vercel, and run one live Contact form submission smoke test on the deployed URL.

@@ -1,4 +1,7 @@
-# Repository files that are not part of the website
+# Repository files not needed in Vercel deployment context
+docs/
 tests/
 tasks/
+scripts/
+START_HERE_PROMPT.md
 README.md
