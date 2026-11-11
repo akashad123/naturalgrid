@@ -153,7 +153,7 @@ export const HomePage: React.FC = () => {
               water heaters.
             </p>
           </div>
-          <Link to="/gallery" className="btn-dark">
+          <Link to="/gallery" className="btn-dark view-work-btn">
             <span>View Our Work</span>
             <span className="btn-arrow">
               <svg

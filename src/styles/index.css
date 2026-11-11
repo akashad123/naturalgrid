@@ -903,6 +903,76 @@ html.lenis.lenis-smooth {
   }
 }
 
+/* Compact "View Our Work" button with full-width expanding arrow box on hover (keeps 0px radius and existing green palette) */
+.btn-dark.view-work-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  height: 2.8em;
+  padding: 0.3em 3em 0.3em 1em;
+  background: var(--accent-dark);
+  color: #ffffff;
+  border: none;
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  overflow: hidden;
+  cursor: pointer;
+  transform: none;
+}
+
+.btn-dark.view-work-btn:hover,
+.btn-dark.view-work-btn:focus-visible,
+.btn-dark.view-work-btn:active {
+  background: var(--accent-dark);
+  transform: none;
+}
+
+.btn-dark.view-work-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.btn-dark.view-work-btn .btn-arrow {
+  position: absolute;
+  right: 0.3em;
+  margin-left: 0.8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  background: var(--accent);
+  color: #ffffff;
+  transition:
+    width 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.25s ease;
+}
+
+.btn-dark.view-work-btn:hover .btn-arrow,
+.btn-dark.view-work-btn:focus-visible .btn-arrow {
+  width: calc(100% - 0.6em);
+}
+
+.btn-dark.view-work-btn:active .btn-arrow {
+  transform: scale(0.95);
+}
+
+.btn-dark.view-work-btn .btn-arrow svg {
+  width: 1.15em;
+  height: 1.15em;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-dark.view-work-btn:hover .btn-arrow svg,
+.btn-dark.view-work-btn:focus-visible .btn-arrow svg {
+  transform: translateX(0.1em);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .stagger-roll-char,
   .projects-panel-wrap,
@@ -910,7 +980,9 @@ html.lenis.lenis-smooth {
   .projects-item-main,
   .projects-item-arrow,
   .projects-item-title,
-  .projects-card-cta {
+  .projects-card-cta,
+  .btn-dark.view-work-btn .btn-arrow,
+  .btn-dark.view-work-btn .btn-arrow svg {
     transition: none;
   }
 }
