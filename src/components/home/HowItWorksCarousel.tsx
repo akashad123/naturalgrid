@@ -100,24 +100,23 @@ const HOW_IT_WORKS_STEPS: ProcessStep[] = [
 ];
 
 /**
- * Full-bleed "How It Works" section with a 4-card overlapping deck:
- * Step 01 starts full width, and each subsequent step glides cleanly over
- * previous cards from the right, leaving only the preceding logo rails exposed
- * on the left (3 logo rails + 3/4 Service & AMC panel at Step 04).
+ * Full-bleed "How It Works" section with a looping 4-card overlapping deck:
+ * Step 01 spans 3/4 of the deck on the left while Step 02 peeks 1/4 on the right;
+ * subsequent steps glide cleanly over previous cards keeping only left logo rails
+ * visible (1/4 logo rails + 3/4 Service & AMC at Step 04), and Next loops back to Step 01.
  */
 export const HowItWorksCarousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
 
   const totalSteps = HOW_IT_WORKS_STEPS.length;
-  const maxIndex = totalSteps - 1;
 
   const goPrev = () => {
-    setActiveIndex((prev) => Math.max(prev - 1, 0));
+    setActiveIndex((prev) => (prev - 1 + totalSteps) % totalSteps);
   };
 
   const goNext = () => {
-    setActiveIndex((prev) => Math.min(prev + 1, maxIndex));
+    setActiveIndex((prev) => (prev + 1) % totalSteps);
   };
 
   const handleSectionKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -197,7 +196,6 @@ export const HowItWorksCarousel: React.FC = () => {
                 type="button"
                 className="how-arrow-btn how-arrow-btn--prev"
                 aria-label="Previous step"
-                disabled={activeIndex === 0}
                 onClick={goPrev}
               >
                 <svg
@@ -219,7 +217,6 @@ export const HowItWorksCarousel: React.FC = () => {
                 type="button"
                 className="how-arrow-btn how-arrow-btn--next"
                 aria-label="Next step"
-                disabled={activeIndex === maxIndex}
                 onClick={goNext}
               >
                 <svg
@@ -250,13 +247,18 @@ export const HowItWorksCarousel: React.FC = () => {
             {HOW_IT_WORKS_STEPS.map((step, idx) => {
               const isActive = idx === activeIndex;
               const isCovered = idx < activeIndex;
-              const isUpcoming = idx > activeIndex;
+              const isPeek = activeIndex === 0 && idx === 1;
+              const isUpcoming = idx > activeIndex && !isPeek;
+              const isInteractive = isCovered || isPeek;
+              const isSplitInitial = isActive && activeIndex === 0;
 
               const stateClass = isActive
-                ? "is-active"
+                ? `is-active${isSplitInitial ? " is-split" : ""}`
                 : isCovered
                   ? "is-covered"
-                  : "is-upcoming";
+                  : isPeek
+                    ? "is-peek"
+                    : "is-upcoming";
 
               return (
                 <article
@@ -269,14 +271,14 @@ export const HowItWorksCarousel: React.FC = () => {
                       zIndex: idx + 1,
                     } as React.CSSProperties
                   }
-                  onClick={isCovered ? () => setActiveIndex(idx) : undefined}
+                  onClick={isInteractive ? () => setActiveIndex(idx) : undefined}
                 >
                   <div className="how-card-rail">
-                    {isCovered ? (
+                    {isInteractive ? (
                       <button
                         type="button"
                         className="how-card-rail-trigger"
-                        aria-label={`Return to Step ${step.number}: ${step.title}`}
+                        aria-label={`${isPeek ? "Go to" : "Return to"} Step ${step.number}: ${step.title}`}
                         onClick={(e) => {
                           e.stopPropagation();
                           setActiveIndex(idx);

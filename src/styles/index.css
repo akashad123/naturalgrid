@@ -270,14 +270,15 @@ html.lenis.lenis-smooth {
   outline-offset: 2px;
 }
 
-/* Layered 4-card overlapping deck: each spine uses 1/12 (8.3333%) so 3 covered logos = 1/4 and Step 04 = 3/4 */
+/* Layered 4-card overlapping deck: Step 01 spans 3/4 + Step 02 peeks 1/4 initially; spines use 1/12 (8.3333cqi) so Step 04 leaves 1/4 rails + 3/4 Service & AMC */
 .how-carousel {
-  --how-spine: 8.3333%;
   overflow: hidden;
   margin-top: clamp(24px, 3vw, 38px);
 }
 
 .how-track {
+  container-type: inline-size;
+  --how-spine: 8.3333cqi;
   display: grid;
   grid-template-columns: 1fr;
   align-items: stretch;
@@ -301,7 +302,8 @@ html.lenis.lenis-smooth {
 }
 
 .how-card.is-active:not(:first-child),
-.how-card.is-covered:not(:first-child) {
+.how-card.is-covered:not(:first-child),
+.how-card.is-peek {
   box-shadow: -18px 0 36px rgba(4, 24, 15, 0.45);
 }
 
@@ -309,6 +311,23 @@ html.lenis.lenis-smooth {
   transform: translate3d(calc(100% + 72px), 0, 0);
   box-shadow: none;
   pointer-events: none;
+}
+
+.how-card.is-peek {
+  transform: translate3d(calc(75cqi - var(--how-spine)), 0, 0);
+  background: #104226;
+  border-color: rgba(244, 245, 242, 0.22);
+  border-top-color: rgba(242, 221, 184, 0.36);
+  cursor: pointer;
+}
+
+.how-card.is-peek:hover {
+  background: #134b2c;
+  border-top-color: var(--orange);
+}
+
+.how-card.is-split .how-card-body {
+  max-width: calc(75cqi - var(--how-spine));
 }
 
 .how-card.is-active {
@@ -381,7 +400,8 @@ html.lenis.lenis-smooth {
   color: var(--accent);
 }
 
-.how-card.is-covered:hover .how-card-icon {
+.how-card.is-covered:hover .how-card-icon,
+.how-card.is-peek:hover .how-card-icon {
   background: rgba(255, 255, 255, 0.18);
   border-color: rgba(242, 221, 184, 0.65);
 }
@@ -433,7 +453,7 @@ html.lenis.lenis-smooth {
 }
 
 @media (max-width: 900px) {
-  .how-carousel {
+  .how-track {
     --how-spine: clamp(58px, 10vw, 76px);
   }
 
@@ -455,8 +475,11 @@ html.lenis.lenis-smooth {
   }
 
   .how-carousel {
-    --how-spine: 42px;
     margin-top: 20px;
+  }
+
+  .how-track {
+    --how-spine: 42px;
   }
 
   .how-card {
