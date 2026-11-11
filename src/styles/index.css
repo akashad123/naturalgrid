@@ -238,19 +238,24 @@ html.lenis.lenis-smooth {
 .how-arrows {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .how-arrow-btn {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border: 1px solid rgba(244, 245, 242, 0.36);
   background: rgba(255, 255, 255, 0.06);
   color: #f4f5f2;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
     opacity 0.2s ease;
+}
+
+.how-arrow-btn svg {
+  width: 13px;
+  height: 13px;
 }
 
 .how-arrow-btn:hover:not(:disabled) {
@@ -540,8 +545,13 @@ html.lenis.lenis-smooth {
   }
 
   .how-arrow-btn {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .how-arrow-btn svg {
+    width: 12px;
+    height: 12px;
   }
 }
 
@@ -791,33 +801,8 @@ html.lenis.lenis-smooth {
 }
 
 .projects-card-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  align-self: flex-end;
   flex-shrink: 0;
-  padding: 12px 20px;
-  background: var(--accent-dark);
-  border: 1px solid var(--accent-dark);
-  color: #ffffff;
-  text-decoration: none;
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  transition:
-    background-color 0.22s ease,
-    border-color 0.22s ease;
-}
-
-.projects-card-cta:hover,
-.projects-card-cta:focus-visible {
-  background: var(--deep);
-  border-color: var(--deep);
-}
-
-.projects-card-cta:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
 }
 
 @media (max-width: 1024px) {
@@ -898,30 +883,39 @@ html.lenis.lenis-smooth {
   }
 
   .projects-card-cta {
-    width: 100%;
-    justify-content: space-between;
+    align-self: flex-start;
   }
 }
 
-/* Compact "View Our Work" button with full-width expanding arrow box on hover (keeps 0px radius and existing green palette) */
-.btn-dark.view-work-btn {
+/* Shared compact expanding-arrow button system for Our Projects CTAs (0px radius, zero button shift) */
+.btn-dark.view-work-btn,
+.projects-card-cta {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0;
+  flex-shrink: 0;
   height: 2.8em;
   padding: 0.3em 3em 0.3em 1em;
-  background: var(--accent-dark);
-  color: #ffffff;
-  border: none;
-  font-family: inherit;
+  text-decoration: none;
+  font-family: var(--font-body);
   font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   line-height: 1;
+  white-space: nowrap;
   overflow: hidden;
   cursor: pointer;
   transform: none;
+  transition:
+    background-color 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.btn-dark.view-work-btn {
+  background: var(--accent-dark);
+  border: none;
+  color: #ffffff;
 }
 
 .btn-dark.view-work-btn:hover,
@@ -931,19 +925,37 @@ html.lenis.lenis-smooth {
   transform: none;
 }
 
-.btn-dark.view-work-btn:focus-visible {
+/* Inverted white variant for View Projects inside cards to avoid visual repetition */
+.projects-card-cta {
+  background: var(--surface);
+  border: 1px solid rgba(6, 48, 36, 0.24);
+  color: var(--ink);
+}
+
+.projects-card-cta:hover,
+.projects-card-cta:focus-visible,
+.projects-card-cta:active {
+  background: var(--surface);
+  border-color: rgba(6, 48, 36, 0.36);
+  transform: none;
+}
+
+.btn-dark.view-work-btn:focus-visible,
+.projects-card-cta:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
-.btn-dark.view-work-btn .btn-arrow {
+.btn-dark.view-work-btn .btn-arrow,
+.projects-card-cta .btn-arrow {
   position: absolute;
+  top: 0.3em;
   right: 0.3em;
   margin-left: 0.8em;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2.2em;
+  height: calc(100% - 0.6em);
   width: 2.2em;
   background: var(--accent);
   color: #ffffff;
@@ -954,23 +966,53 @@ html.lenis.lenis-smooth {
 }
 
 .btn-dark.view-work-btn:hover .btn-arrow,
-.btn-dark.view-work-btn:focus-visible .btn-arrow {
+.btn-dark.view-work-btn:focus-visible .btn-arrow,
+.projects-card-cta:hover .btn-arrow,
+.projects-card-cta:focus-visible .btn-arrow {
   width: calc(100% - 0.6em);
 }
 
-.btn-dark.view-work-btn:active .btn-arrow {
+.btn-dark.view-work-btn:active .btn-arrow,
+.projects-card-cta:active .btn-arrow {
   transform: scale(0.95);
 }
 
-.btn-dark.view-work-btn .btn-arrow svg {
+.btn-dark.view-work-btn .btn-arrow svg,
+.projects-card-cta .btn-arrow svg {
   width: 1.15em;
   height: 1.15em;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .btn-dark.view-work-btn:hover .btn-arrow svg,
-.btn-dark.view-work-btn:focus-visible .btn-arrow svg {
+.btn-dark.view-work-btn:focus-visible .btn-arrow svg,
+.projects-card-cta:hover .btn-arrow svg,
+.projects-card-cta:focus-visible .btn-arrow svg {
   transform: translateX(0.1em);
+}
+
+/* Compact button sizing across Why Natural Grid (#features) Get Started & Contact Now CTAs */
+.features .btn-dark,
+.features .contact-btn {
+  height: 35px;
+  padding: 4px 4px 4px 14px;
+  gap: 9px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.features .btn-dark .btn-arrow,
+.features .contact-btn .btn-arrow {
+  width: 27px;
+  height: 27px;
+}
+
+.features .btn-dark .btn-arrow svg,
+.features .contact-btn .btn-arrow svg {
+  width: 13px;
+  height: 13px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -981,8 +1023,11 @@ html.lenis.lenis-smooth {
   .projects-item-arrow,
   .projects-item-title,
   .projects-card-cta,
+  .btn-dark.view-work-btn,
   .btn-dark.view-work-btn .btn-arrow,
-  .btn-dark.view-work-btn .btn-arrow svg {
+  .btn-dark.view-work-btn .btn-arrow svg,
+  .projects-card-cta .btn-arrow,
+  .projects-card-cta .btn-arrow svg {
     transition: none;
   }
 }
