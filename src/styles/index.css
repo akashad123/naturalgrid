@@ -1015,6 +1015,58 @@ html.lenis.lenis-smooth {
   height: 13px;
 }
 
+/* Full-bleed dark green footer extending edge-to-edge without outer white bars */
+.site-footer {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  background: var(--deep);
+}
+
+.footer-inner {
+  width: min(100%, var(--max-width));
+  margin-inline: auto;
+  padding: clamp(14px, 1.6vw, 22px) clamp(14px, 1.5vw, 20px);
+}
+
+.footer-socials {
+  gap: clamp(18px, 2.6vw, 42px);
+}
+
+/* Seamlessly extend dark green through the bottom copyright bar without white padding */
+.footer-bottom {
+  width: 100%;
+  margin-top: 0;
+  padding: 16px clamp(16px, 2.4vw, 34px) 18px;
+  background: transparent;
+  border-top: 1px solid rgba(244, 245, 242, 0.14);
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(244, 245, 242, 0.78);
+}
+
+.footer-bottom a {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.footer-bottom a:hover {
+  color: var(--cream);
+  text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+  .footer-inner {
+    padding: 12px;
+  }
+
+  /* Keep centered mobile copyright clear of the bottom-right floating action buttons */
+  .footer-bottom {
+    padding: 14px 58px 18px;
+    font-size: 0.8rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .stagger-roll-char,
   .projects-panel-wrap,
