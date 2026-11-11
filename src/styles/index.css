@@ -887,9 +887,11 @@ html.lenis.lenis-smooth {
   }
 }
 
-/* Shared compact expanding-arrow button system for Our Projects CTAs (0px radius, zero button shift) */
+/* Shared compact expanding-arrow button system for Projects & Why Natural Grid (#features) CTAs */
 .btn-dark.view-work-btn,
-.projects-card-cta {
+.projects-card-cta,
+.features .btn-dark,
+.features .contact-btn {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -906,6 +908,7 @@ html.lenis.lenis-smooth {
   white-space: nowrap;
   overflow: hidden;
   cursor: pointer;
+  box-shadow: none;
   transform: none;
   transition:
     background-color 0.22s ease,
@@ -922,11 +925,14 @@ html.lenis.lenis-smooth {
 .btn-dark.view-work-btn:focus-visible,
 .btn-dark.view-work-btn:active {
   background: var(--accent-dark);
+  box-shadow: none;
   transform: none;
 }
 
-/* Inverted white variant for View Projects inside cards to avoid visual repetition */
-.projects-card-cta {
+/* White View Projects & Why Natural Grid CTA variant with green expanding arrow box */
+.projects-card-cta,
+.features .btn-dark,
+.features .contact-btn {
   background: var(--surface);
   border: 1px solid rgba(6, 48, 36, 0.24);
   color: var(--ink);
@@ -934,20 +940,31 @@ html.lenis.lenis-smooth {
 
 .projects-card-cta:hover,
 .projects-card-cta:focus-visible,
-.projects-card-cta:active {
+.projects-card-cta:active,
+.features .btn-dark:hover,
+.features .btn-dark:focus-visible,
+.features .btn-dark:active,
+.features .contact-btn:hover,
+.features .contact-btn:focus-visible,
+.features .contact-btn:active {
   background: var(--surface);
   border-color: rgba(6, 48, 36, 0.36);
+  box-shadow: none;
   transform: none;
 }
 
 .btn-dark.view-work-btn:focus-visible,
-.projects-card-cta:focus-visible {
+.projects-card-cta:focus-visible,
+.features .btn-dark:focus-visible,
+.features .contact-btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 .btn-dark.view-work-btn .btn-arrow,
-.projects-card-cta .btn-arrow {
+.projects-card-cta .btn-arrow,
+.features .btn-dark .btn-arrow,
+.features .contact-btn .btn-arrow {
   position: absolute;
   top: 0.3em;
   right: 0.3em;
@@ -968,17 +985,26 @@ html.lenis.lenis-smooth {
 .btn-dark.view-work-btn:hover .btn-arrow,
 .btn-dark.view-work-btn:focus-visible .btn-arrow,
 .projects-card-cta:hover .btn-arrow,
-.projects-card-cta:focus-visible .btn-arrow {
+.projects-card-cta:focus-visible .btn-arrow,
+.features .btn-dark:hover .btn-arrow,
+.features .btn-dark:focus-visible .btn-arrow,
+.features .contact-btn:hover .btn-arrow,
+.features .contact-btn:focus-visible .btn-arrow {
   width: calc(100% - 0.6em);
+  background: var(--accent);
 }
 
 .btn-dark.view-work-btn:active .btn-arrow,
-.projects-card-cta:active .btn-arrow {
+.projects-card-cta:active .btn-arrow,
+.features .btn-dark:active .btn-arrow,
+.features .contact-btn:active .btn-arrow {
   transform: scale(0.95);
 }
 
 .btn-dark.view-work-btn .btn-arrow svg,
-.projects-card-cta .btn-arrow svg {
+.projects-card-cta .btn-arrow svg,
+.features .btn-dark .btn-arrow svg,
+.features .contact-btn .btn-arrow svg {
   width: 1.15em;
   height: 1.15em;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
@@ -987,32 +1013,12 @@ html.lenis.lenis-smooth {
 .btn-dark.view-work-btn:hover .btn-arrow svg,
 .btn-dark.view-work-btn:focus-visible .btn-arrow svg,
 .projects-card-cta:hover .btn-arrow svg,
-.projects-card-cta:focus-visible .btn-arrow svg {
+.projects-card-cta:focus-visible .btn-arrow svg,
+.features .btn-dark:hover .btn-arrow svg,
+.features .btn-dark:focus-visible .btn-arrow svg,
+.features .contact-btn:hover .btn-arrow svg,
+.features .contact-btn:focus-visible .btn-arrow svg {
   transform: translateX(0.1em);
-}
-
-/* Compact button sizing across Why Natural Grid (#features) Get Started & Contact Now CTAs */
-.features .btn-dark,
-.features .contact-btn {
-  height: 35px;
-  padding: 4px 4px 4px 14px;
-  gap: 9px;
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  line-height: 1;
-}
-
-.features .btn-dark .btn-arrow,
-.features .contact-btn .btn-arrow {
-  width: 27px;
-  height: 27px;
-}
-
-.features .btn-dark .btn-arrow svg,
-.features .contact-btn .btn-arrow svg {
-  width: 13px;
-  height: 13px;
 }
 
 /* Full-bleed dark green footer extending edge-to-edge without outer white bars */
@@ -1079,7 +1085,13 @@ html.lenis.lenis-smooth {
   .btn-dark.view-work-btn .btn-arrow,
   .btn-dark.view-work-btn .btn-arrow svg,
   .projects-card-cta .btn-arrow,
-  .projects-card-cta .btn-arrow svg {
+  .projects-card-cta .btn-arrow svg,
+  .features .btn-dark,
+  .features .contact-btn,
+  .features .btn-dark .btn-arrow,
+  .features .contact-btn .btn-arrow,
+  .features .btn-dark .btn-arrow svg,
+  .features .contact-btn .btn-arrow svg {
     transition: none;
   }
 }
