@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { SeoHead } from "@/components/common/SeoHead";
+import { StaggerRollText } from "@/components/common/StaggerRollText";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { HowItWorksCarousel } from "@/components/home/HowItWorksCarousel";
 import { TrustMarquee } from "@/components/home/TrustMarquee";
@@ -37,8 +38,12 @@ export const HomePage: React.FC = () => {
           </p>
 
           <div className="hero-actions">
-            <Link to="/contact" className="hero-btn hero-btn--solid">
-              <span>Get a Free Quote</span>
+            <Link
+              to="/contact"
+              className="hero-btn hero-btn--solid"
+              aria-label="Get a Free Quote"
+            >
+              <StaggerRollText text="Get a Free Quote" />
               <svg
                 width="16"
                 height="16"
