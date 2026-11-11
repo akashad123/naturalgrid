@@ -101,7 +101,7 @@ const HOW_IT_WORKS_STEPS: ProcessStep[] = [
 
 /**
  * Full-bleed "How It Works" section with a looping 4-card overlapping deck:
- * Step 01 spans 3/4 of the deck on the left while Step 02 peeks 1/4 on the right;
+ * Step 01 sits on the left with a clean spacing gap before Step 02's 1/4 right peek;
  * subsequent steps glide cleanly over previous cards keeping only left logo rails
  * visible (1/4 logo rails + 3/4 Service & AMC at Step 04), and Next loops back to Step 01.
  */

@@ -270,7 +270,7 @@ html.lenis.lenis-smooth {
   outline-offset: 2px;
 }
 
-/* Layered 4-card overlapping deck: Step 01 spans 3/4 + Step 02 peeks 1/4 initially; spines use 1/12 (8.3333cqi) so Step 04 leaves 1/4 rails + 3/4 Service & AMC */
+/* Layered 4-card overlapping deck: Step 01 sits on the left with a clean gap before Step 02's 1/4 peek; spines use 1/12 (8.3333cqi) so Step 04 leaves 1/4 rails + 3/4 Service & AMC */
 .how-carousel {
   overflow: hidden;
   margin-top: clamp(24px, 3vw, 38px);
@@ -279,6 +279,7 @@ html.lenis.lenis-smooth {
 .how-track {
   container-type: inline-size;
   --how-spine: 8.3333cqi;
+  --how-gap: clamp(14px, 1.8cqi, 24px);
   display: grid;
   grid-template-columns: 1fr;
   align-items: stretch;
@@ -301,10 +302,18 @@ html.lenis.lenis-smooth {
     background-color 0.25s ease, border-color 0.25s ease;
 }
 
+.how-card:first-child {
+  justify-self: start;
+  width: calc(75cqi - var(--how-gap));
+}
+
 .how-card.is-active:not(:first-child),
-.how-card.is-covered:not(:first-child),
-.how-card.is-peek {
+.how-card.is-covered:not(:first-child) {
   box-shadow: -18px 0 36px rgba(4, 24, 15, 0.45);
+}
+
+.how-card.is-peek {
+  box-shadow: -6px 0 14px rgba(4, 24, 15, 0.26);
 }
 
 .how-card.is-upcoming {
@@ -480,6 +489,7 @@ html.lenis.lenis-smooth {
 
   .how-track {
     --how-spine: 42px;
+    --how-gap: 12px;
   }
 
   .how-card {
