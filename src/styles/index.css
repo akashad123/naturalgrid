@@ -8,6 +8,11 @@
   border-radius: 0 !important;
 }
 
+/* Disable native smooth-scroll easing when Lenis drives rAF scrolling */
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
 /* Custom enhancements for React SPA */
 .scroll-progress {
   position: fixed;

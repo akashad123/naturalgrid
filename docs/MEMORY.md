@@ -1,10 +1,10 @@
 # Project Memory and Developer Handover
 
-Last updated: Landing Hero Cleanup Complete
+Last updated: Landing Header Cleanup & Lenis Smooth Scroll Added
 
 ## Current Status
-- **Current Phase:** Phase 5 — QA, Verification & Handover (Hero Simplified, Pre-rendered, Verified)
-- **Overall Status:** Migration, UI/copy parity, landing hero cleanup, repository cleanup, dynamic OG/Twitter SEO, build-time SSR prerendering (`src/entry-server.tsx` + `scripts/prerender.mjs`), and Vercel clean-URL configuration are complete. On `/` only, `<TopBar />`, `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar` have been removed per user request while keeping inner-page `<TopBar />` and `/` footer contacts intact.
+- **Current Phase:** Phase 5 — QA, Verification & Handover (Hero Simplified, Lenis Active, Verified)
+- **Overall Status:** Migration, UI/copy parity, landing hero cleanup, Lenis smooth scroll integration, repository cleanup, dynamic OG/Twitter SEO, build-time SSR prerendering (`src/entry-server.tsx` + `scripts/prerender.mjs`), and Vercel clean-URL configuration are complete. On `/` only, `<TopBar />`, the header/drawer `Contact Now` button (`SiteHeader.tsx`), `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar` are omitted per user request while keeping inner-page `<TopBar />` + `Contact Now` and `/` lower-section/footer CTAs intact. Global Lenis smooth scrolling (`lenis@^1.3.27`) is enabled via `useSmoothScroll.ts`.
 
 ## Pages / Modules Completed
 - `src/pages/HomePage.tsx`: Hero with background photo/video, `.hero-headline`, `.hero-headline-accent`, `.hero-text`, and `.hero-actions` (`Get a Free Quote`, `Our Services`), plus metrics, short-titled services list, 4-step process, project cards, features accordion, and 4-set brand marquee (`TrustMarquee.tsx`). Removed `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar`.
@@ -34,9 +34,10 @@ Last updated: Landing Hero Cleanup Complete
   - `*` (404 Not Found with `noindex`)
   - Backward compatibility redirects from all `*.html` paths to clean extensionless paths (`public/sitemap.xml` uses extensionless URLs).
 - **Shared Components & Styles:**
-  - `src/main.tsx`: Imports `src/styles/tailwind-base.css` -> `src/styles/legacy.css` -> `src/styles/index.css` so Tailwind Preflight never overrides `legacy.css`; uses `hydrateRoot` when `data-ssr-route` matches `window.location.pathname` and `createRoot` otherwise.
+  - `src/main.tsx`: Imports `src/styles/tailwind-base.css` -> `src/styles/legacy.css` -> `lenis/dist/lenis.css` -> `src/styles/index.css` so Tailwind Preflight never overrides `legacy.css` and `html.lenis.lenis-smooth` disables native `scroll-behavior: smooth` easing conflicts; uses `hydrateRoot` when `data-ssr-route` matches `window.location.pathname` and `createRoot` otherwise.
   - `src/entry-server.tsx` & `scripts/prerender.mjs`: Build-time SSR renderer (`StaticRouter` + `SeoCollectorProvider`) outputting prerendered `dist/*.html` for all 10 public routes and `dist/404.html` (`noindex`).
-  - `Layout`: Stitches `ScrollProgress`, `TopBar` (rendered on inner routes, omitted on `/` / `/index.html`), `SiteHeader` (flush at `top: 0` on `/` via `body:not(:has(.topbar))`), `<Outlet />`, `FloatingActions`, `SiteFooter`, and runs `useScrollReveal(location.pathname)`.
+  - `Layout`: Stitches `ScrollProgress`, `TopBar` (rendered on inner routes, omitted on `/` / `/index.html`), `SiteHeader` (flush at `top: 0` on `/` via `body:not(:has(.topbar))`, and omits `.contact-btn` / `.nav-contact` `Contact Now` CTA on `/`), `<Outlet />`, `FloatingActions`, `SiteFooter`, and runs `useScrollReveal(location.pathname)` + `useSmoothScroll(location.pathname)`.
+  - `useSmoothScroll` (`src/hooks/useSmoothScroll.ts`): SSR-safe `Lenis` (`^1.3.27`) hook with `autoRaf: true`, `anchors: true`, `stopInertiaOnNavigate: true`, `respectReducedMotion: true`, `<dialog[open]>`/`overflow: hidden` scroll guard, and immediate scroll reset on route changes.
   - `SeoHead` & `src/utils/seo.ts`: Shared resolver and DOM/SSR updater for `<title>`, `description`, `keywords`, `og:*`, `twitter:*`, `canonical`, and `noindex`.
   - `PageHero`: Standard inner page hero banner with word-by-word rising title animation (`split-title` / `title-word`).
   - `SolarCalculator`: Pure logic calculation with dual-input synchronization.
@@ -54,7 +55,7 @@ Last updated: Landing Hero Cleanup Complete
 ## Confirmed Technical Decisions
 - **Stack:** React 18 + Vite + TypeScript.
 - **Styling:** Tailwind CSS mapped to existing tokens, strict `tailwind-base.css` -> `legacy.css` -> `index.css` cascade, and sharp edges (`border-radius: 0 !important`) per user global rule.
-- **Animations:** Native CSS transitions, keyframes, and IntersectionObserver hooks (`useScrollReveal`, `useStickyHeader`, `useScrollProgress`, `useSheen`, `useCounter`, `useReducedMotion`).
+- **Animations:** Lenis (`^1.3.27`) smooth wheel & anchor scrolling (`useSmoothScroll`) plus native CSS transitions, keyframes, and IntersectionObserver hooks (`useScrollReveal`, `useStickyHeader`, `useScrollProgress`, `useSheen`, `useCounter`, `useReducedMotion`).
 - **Form Submissions:** Direct client-side POST to Web3Forms API.
 - **Hosting:** Vercel static deployment with `cleanUrls: true`, `trailingSlash: false`, strict Content-Security-Policy headers, and immutable asset cache headers in `vercel.json` (plus updated `.vercelignore` and `README.md`).
 
@@ -63,16 +64,17 @@ Last updated: Landing Hero Cleanup Complete
    - 25 / 25 tests passing (`tests/calculator.test.js`, `tests/phone.test.js`, `tests/react-utils.test.js` importing `src/utils/calculator.ts`, `src/utils/phone.ts`, `src/utils/formatters.ts`, and `src/utils/seo.ts`).
 2. `npm run build` (`tsc && vite build && vite build --ssr ... && node scripts/prerender.mjs`):
    - Zero TypeScript, Vite, or React SSR warnings/errors.
-   - Client bundle: `dist/index.html` 4.27 kB (gzip 1.52 kB), `dist/assets/index-CBradGYi.css` 59.72 kB (gzip 12.47 kB), `dist/assets/index-6Oc5FVGq.js` 269.57 kB (gzip 79.67 kB); SSR bundle `.prerender-ssr/entry-server.js` 170.84 kB (cleaned after prerendering 11 HTML files into `dist/`).
+   - Client bundle: `dist/index.html` 4.27 kB (gzip 1.51 kB), `dist/assets/index-69hRLC70.css` 60.23 kB (gzip 12.62 kB), `dist/assets/index-b4v4TwDv.js` 290.11 kB (gzip 85.30 kB); SSR bundle `.prerender-ssr/entry-server.js` 171.79 kB (cleaned after prerendering 11 HTML files into `dist/`).
 3. Headless Chrome (`vite preview --port 4174`) audit:
    - Tested all 11 routes at `1440×900` (desktop) and `390×844` (mobile): 0 console errors, 0 console warnings (clean hydration), 0 page exceptions, 0 failed asset requests, `0px` horizontal overflow (`-15px` delta with vertical scrollbar on desktop, `0px` on mobile), sharp `0px` radius, single `<h1>` per route, `noindex` restricted to 404.
-   - Verified `/` hero omits `.topbar`, `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar` (both DOM and raw prerendered HTML), `.site-header` aligns at `top: 0px`, footer retains contacts on `/`, and `/about` retains `.topbar`.
+   - Verified `/` hero & header omit `.topbar`, `.site-header .contact-btn`, `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar` (both DOM and raw prerendered HTML), `.site-header` aligns at `top: 0px`, footer retains contacts on `/`, and `/about` retains `.topbar` and `.site-header .contact-btn`.
+   - Verified Lenis (`1.3.27`) runtime initialization (`html.lenis`, wheel scroll -> sticky header activation `is-stuck`, `#about` smooth anchor jump, and immediate reset to `y=0` upon navigating to `/about`).
    - Verified raw prerendered HTTP responses (`/`, `/about.html`, `/calculator.html`, `/404.html`) contain expected SSR metadata/content before JS runs.
    - Verified calculator (`300` units -> `1.4` / `₹14,400` Residential; `2.9` / `₹28,800` Commercial), gallery lightbox open/next/close + overflow reset, about slider slide switch, contact invalid phone validation message + map embed, and mobile drawer/submenu open & route-change close.
 
 ## Git State
 - **Branch:** `master`
-- **Previous Commit:** `929ff96`
+- **Previous Commit:** `1f93863`
 - **Remote Status:** Local Git repository only (no remote upstream configured yet).
 
 ## Next Exact Step

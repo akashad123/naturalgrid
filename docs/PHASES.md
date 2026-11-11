@@ -45,9 +45,9 @@ Use `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, or `DONE`. Mark work DONE only afte
 - [x] Security headers, `cleanUrls: true`, and `trailingSlash: false` in `vercel.json`; legacy static duplicates removed and `README.md` updated
 
 ## Phase 5 — QA, Verification & Handover
-- [x] Landing hero cleanup (`/`) — removed `.topbar` on `/` (`Layout.tsx`), `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar` (`HomePage.tsx`), preserving inner-page `.topbar` and `/` footer contacts/socials
-- [x] Production build & SSR prerendering pass (`npm run build`: `tsc`, Vite client build `dist/index.html` 4.27 kB / CSS 59.72 kB / JS 269.57 kB, Vite SSR build 170.84 kB, and 11 prerendered HTML outputs with 0 warnings/errors)
+- [x] Landing hero cleanup (`/`) & smooth scrolling — removed `.topbar` on `/` (`Layout.tsx`), `Contact Now` header/drawer CTA on `/` (`SiteHeader.tsx`), and `.hero-eyebrow`, `.hero-trust`, `.hero-featurebar` (`HomePage.tsx`), preserving inner-page `.topbar` + `Contact Now` and `/` lower-section/footer CTAs; installed `lenis` (`^1.3.27`) with `useSmoothScroll.ts`, SSR-safe initialization, reduced-motion guard, `<dialog>` modal pause, anchor handling, and instant route scroll reset
+- [x] Production build & SSR prerendering pass (`npm run build`: `tsc`, Vite client build `dist/index.html` 4.27 kB / CSS 60.23 kB / JS 290.11 kB, Vite SSR build 171.79 kB, and 11 prerendered HTML outputs with 0 warnings/errors)
 - [x] All 25 unit tests pass (`npm test` -> `node --test --experimental-strip-types`, covering `src/utils/*.ts`)
-- [x] Headless Chrome verification across all 11 routes at `1440×900` and `390×844`, raw prerendered HTML metadata checks, `/` hero element removal & header alignment checks, inner `/about` `.topbar` retention check, clean React hydration, and interactive flows with 0 console errors, 0 warnings, and 0 network errors
+- [x] Headless Chrome verification across all 11 routes at `1440×900` and `390×844`, raw prerendered HTML metadata checks, `/` hero element & header `Contact Now` removal checks, inner `/about` retention check, Lenis wheel/anchor/sticky/route-reset scroll tests (`lenis@1.3.27`), clean React hydration, and interactive flows with 0 console errors, 0 warnings, and 0 network errors
 - [x] Handover documentation current in `docs/MEMORY.md`
 - [ ] Live Web3Forms test submission and push to remote repository (BLOCKED locally: no Git remote configured)
