@@ -153,34 +153,13 @@ html.lenis.lenis-smooth {
   }
 }
 
-/* Brand Partners marquee items: pointer cursor, static position (no vertical lift), dark green ink, and left-to-right underline */
-.trusted-marquee {
-  padding-block: 8px;
-}
-
+/* Brand Partners marquee items: pointer cursor, zero lift/underline, smooth dark-green color highlight without opacity layer thrashing */
 .trusted-logo {
-  position: relative;
-  line-height: 1.15;
   cursor: pointer;
-  color: var(--ink);
-  opacity: 0.7;
+  color: rgba(6, 48, 36, 0.62);
+  opacity: 1;
   transform: none;
-  transition:
-    color 0.24s ease,
-    opacity 0.24s ease;
-}
-
-.trusted-logo::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -4px;
-  height: 2px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: color 0.18s ease;
 }
 
 .trusted-logo:hover {
@@ -189,8 +168,8 @@ html.lenis.lenis-smooth {
   transform: none;
 }
 
-.trusted-logo:hover::after {
-  transform: scaleX(1);
+.trusted-marquee:hover .trusted-track {
+  animation-play-state: running;
 }
 
 [data-reveal]:not(.is-visible) {
@@ -1072,6 +1051,43 @@ html.lenis.lenis-smooth {
   padding: clamp(14px, 1.6vw, 22px) clamp(14px, 1.5vw, 20px);
 }
 
+/* Blend footer navigation panel seamlessly into dark green footer instead of a separate stark white box */
+.footer-card {
+  background: linear-gradient(
+    145deg,
+    rgba(244, 245, 242, 0.08) 0%,
+    rgba(35, 101, 55, 0.18) 45%,
+    rgba(12, 59, 34, 0) 100%
+  );
+  border-left: 1px solid rgba(244, 245, 242, 0.12);
+}
+
+.footer-card .link-col {
+  gap: 9px;
+}
+
+/* Clear visual hierarchy: larger footer category headings and compact light links/details below */
+.footer-card .link-col h3 {
+  font-size: clamp(1.06rem, 1.25vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.footer-card .link-col a {
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(244, 245, 242, 0.78);
+  transition: color 0.2s ease;
+}
+
+.footer-card .link-col a:hover {
+  color: #ffffff;
+  opacity: 1;
+}
+
 .footer-socials {
   gap: clamp(18px, 2.6vw, 42px);
 }
@@ -1098,6 +1114,13 @@ html.lenis.lenis-smooth {
   text-decoration: underline;
 }
 
+@media (max-width: 1024px) {
+  .footer-card {
+    border-left: none;
+    border-top: 1px solid rgba(244, 245, 242, 0.12);
+  }
+}
+
 @media (max-width: 560px) {
   .footer-inner {
     padding: 12px;
@@ -1113,7 +1136,7 @@ html.lenis.lenis-smooth {
 @media (prefers-reduced-motion: reduce) {
   .stagger-roll-char,
   .trusted-logo,
-  .trusted-logo::after,
+  .footer-card .link-col a,
   .projects-panel-wrap,
   .projects-item-num,
   .projects-item-main,
