@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 interface ProcessStep {
   number: string;
@@ -100,54 +100,17 @@ const HOW_IT_WORKS_STEPS: ProcessStep[] = [
 ];
 
 /**
- * Sticky "How It Works" section with a 4-card button-controlled peek carousel:
- * displays 1 full active card + ~3/4 of the next card on desktop, advances only
- * via controls/touch swipe (never traps page scroll), and stays pinned as
- * "Our Projects" glides upward over it.
+ * Full-bleed "How It Works" section with a 4-card overlapping deck:
+ * Step 01 starts full width, and each subsequent step glides cleanly over
+ * previous cards from the right, leaving only the preceding logo rails exposed
+ * on the left (3 logo rails + 3/4 Service & AMC panel at Step 04).
  */
 export const HowItWorksCarousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [translatePx, setTranslatePx] = useState(0);
-
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number | null>(null);
 
   const totalSteps = HOW_IT_WORKS_STEPS.length;
   const maxIndex = totalSteps - 1;
-
-  // Dynamically measure card + gap width so any responsive CSS ratio aligns cleanly without hardcoded breakpoints
-  const measureAndClampOffset = useCallback((index: number) => {
-    const viewport = viewportRef.current;
-    const track = trackRef.current;
-    if (!viewport || !track) return;
-
-    const firstCard = track.querySelector<HTMLElement>(".how-card");
-    if (!firstCard) return;
-
-    const trackStyles = window.getComputedStyle(track);
-    const gapPx = Number.parseFloat(trackStyles.columnGap || trackStyles.gap || "0") || 0;
-    const stepDistance = firstCard.offsetWidth + gapPx;
-    const maxOffset = Math.max(track.scrollWidth - viewport.clientWidth, 0);
-
-    setTranslatePx(Math.min(index * stepDistance, maxOffset));
-  }, []);
-
-  useEffect(() => {
-    measureAndClampOffset(activeIndex);
-  }, [activeIndex, measureAndClampOffset]);
-
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    if (!viewport || !("ResizeObserver" in window)) return;
-
-    const observer = new ResizeObserver(() => {
-      measureAndClampOffset(activeIndex);
-    });
-    observer.observe(viewport);
-
-    return () => observer.disconnect();
-  }, [activeIndex, measureAndClampOffset]);
 
   const goPrev = () => {
     setActiveIndex((prev) => Math.max(prev - 1, 0));
@@ -157,7 +120,7 @@ export const HowItWorksCarousel: React.FC = () => {
     setActiveIndex((prev) => Math.min(prev + 1, maxIndex));
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+  const handleSectionKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.key === "ArrowRight") {
       e.preventDefault();
       goNext();
@@ -186,125 +149,159 @@ export const HowItWorksCarousel: React.FC = () => {
       className="how"
       id="process"
       aria-label="How Solar Works"
-      onKeyDown={handleKeyDown}
+      onKeyDown={handleSectionKeyDown}
     >
-      <div className="how-topbar">
-        <div className="how-head">
-          <p className="eyebrow section-label">How It Works</p>
-          <h2 className="section-title section-title--sub">
-            Going Solar in Four Simple Steps
-          </h2>
-          <p className="section-text">
-            From your first call to lifelong care, here&apos;s exactly what
-            happens when you go solar with Natural Grid — clear and jargon-free
-            at every step.
-          </p>
-        </div>
+      <div className="how-inner">
+        <div className="how-topbar">
+          <div className="how-head">
+            <p className="eyebrow section-label">How It Works</p>
+            <h2 className="section-title section-title--sub">
+              Going Solar in Four Simple Steps
+            </h2>
+            <p className="section-text">
+              From your first call to lifelong care, here&apos;s exactly what
+              happens when you go solar with Natural Grid — clear and
+              jargon-free at every step.
+            </p>
+          </div>
 
-        <div className="how-controls" aria-label="Process steps navigation">
-          <div className="how-step-dots" role="tablist" aria-label="Select process step">
-            {HOW_IT_WORKS_STEPS.map((step, idx) => (
+          <div className="how-controls" aria-label="Process steps navigation">
+            <div
+              className="how-step-dots"
+              role="tablist"
+              aria-label="Select process step"
+            >
+              {HOW_IT_WORKS_STEPS.map((step, idx) => (
+                <button
+                  key={step.number}
+                  type="button"
+                  role="tab"
+                  aria-selected={idx === activeIndex}
+                  aria-label={`Step ${step.number}: ${step.title}`}
+                  className={`how-step-dot ${
+                    idx === activeIndex ? "is-active" : ""
+                  }`}
+                  onClick={() => setActiveIndex(idx)}
+                >
+                  <span className="how-step-dot-bar" />
+                </button>
+              ))}
+            </div>
+
+            <span className="how-counter" aria-live="polite">
+              {HOW_IT_WORKS_STEPS[activeIndex].number} / 0{totalSteps}
+            </span>
+
+            <div className="how-arrows">
               <button
-                key={step.number}
                 type="button"
-                role="tab"
-                aria-selected={idx === activeIndex}
-                aria-label={`Step ${step.number}: ${step.title}`}
-                className={`how-step-dot ${idx === activeIndex ? "is-active" : ""}`}
-                onClick={() => setActiveIndex(idx)}
+                className="how-arrow-btn how-arrow-btn--prev"
+                aria-label="Previous step"
+                disabled={activeIndex === 0}
+                onClick={goPrev}
               >
-                <span className="how-step-dot-bar" />
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="19" y1="12" x2="5" y2="12" />
+                  <polyline points="12 19 5 12 12 5" />
+                </svg>
               </button>
-            ))}
-          </div>
-
-          <span className="how-counter" aria-live="polite">
-            {HOW_IT_WORKS_STEPS[activeIndex].number} / 0{totalSteps}
-          </span>
-
-          <div className="how-arrows">
-            <button
-              type="button"
-              className="how-arrow-btn how-arrow-btn--prev"
-              aria-label="Previous step"
-              disabled={activeIndex === 0}
-              onClick={goPrev}
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
+              <button
+                type="button"
+                className="how-arrow-btn how-arrow-btn--next"
+                aria-label="Next step"
+                disabled={activeIndex === maxIndex}
+                onClick={goNext}
               >
-                <line x1="19" y1="12" x2="5" y2="12" />
-                <polyline points="12 19 5 12 12 5" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              className="how-arrow-btn how-arrow-btn--next"
-              aria-label="Next step"
-              disabled={activeIndex === maxIndex}
-              onClick={goNext}
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </button>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div
-        ref={viewportRef}
-        className="how-carousel"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
         <div
-          ref={trackRef}
-          className="how-track"
-          style={{ transform: `translate3d(-${translatePx}px, 0, 0)` }}
+          className="how-carousel"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
-          {HOW_IT_WORKS_STEPS.map((step, idx) => {
-            const isActive = idx === activeIndex;
-            const isPeekingNext = idx === activeIndex + 1;
+          <div className="how-track">
+            {HOW_IT_WORKS_STEPS.map((step, idx) => {
+              const isActive = idx === activeIndex;
+              const isCovered = idx < activeIndex;
+              const isUpcoming = idx > activeIndex;
 
-            return (
-              <article
-                key={step.number}
-                className={`how-card ${isActive ? "is-active" : ""} ${
-                  isPeekingNext ? "is-next" : ""
-                }`}
-                onClick={() => {
-                  if (!isActive) setActiveIndex(idx);
-                }}
-              >
-                <div className="how-card-top">
-                  <span className="how-card-icon">{step.icon}</span>
-                  <span className="how-card-num">Step {step.number}</span>
-                </div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </article>
-            );
-          })}
+              const stateClass = isActive
+                ? "is-active"
+                : isCovered
+                  ? "is-covered"
+                  : "is-upcoming";
+
+              return (
+                <article
+                  key={step.number}
+                  className={`how-card ${stateClass}`}
+                  aria-hidden={isUpcoming}
+                  style={
+                    {
+                      "--card-index": idx,
+                      zIndex: idx + 1,
+                    } as React.CSSProperties
+                  }
+                  onClick={isCovered ? () => setActiveIndex(idx) : undefined}
+                >
+                  <div className="how-card-rail">
+                    {isCovered ? (
+                      <button
+                        type="button"
+                        className="how-card-rail-trigger"
+                        aria-label={`Return to Step ${step.number}: ${step.title}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveIndex(idx);
+                        }}
+                      >
+                        <span className="how-card-icon">{step.icon}</span>
+                        <span className="how-card-rail-num">{step.number}</span>
+                      </button>
+                    ) : (
+                      <div className="how-card-rail-static">
+                        <span className="how-card-icon">{step.icon}</span>
+                        <span className="how-card-rail-num">{step.number}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="how-card-body">
+                    <span className="how-card-num">Step {step.number}</span>
+                    <h3>{step.title}</h3>
+                    <p>{step.description}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

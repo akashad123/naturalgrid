@@ -135,13 +135,11 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* ============ PROCESS / HOW IT WORKS (Sticky Peek Carousel) ============ */}
+      {/* ============ PROCESS / HOW IT WORKS (Overlapping Deck) ============ */}
       <HowItWorksCarousel />
 
-      {/* ============ CURTAIN STACK OVER STICKY PROCESS SECTION ============ */}
-      <div className="home-curtain-stack">
-        {/* ============ PROJECTS ============ */}
-        <section className="projects" id="projects">
+      {/* ============ PROJECTS ============ */}
+      <section className="projects" id="projects">
         <div className="section-head">
           <div className="section-head-copy">
             <p className="eyebrow section-label">Our Projects</p>
@@ -449,7 +447,6 @@ export const HomePage: React.FC = () => {
 
       {/* ============ TRUSTED BY ============ */}
       <TrustMarquee />
-      </div>
     </>
   );
 };
