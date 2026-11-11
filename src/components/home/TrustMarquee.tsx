@@ -47,6 +47,13 @@ export const TrustMarquee: React.FC<TrustMarqueeProps> = ({
               </span>
             ))}
           </div>
+          <div className="trusted-set" aria-hidden="true">
+            {BRANDS.map((brand, i) => (
+              <span key={`set4-${i}`} className="trusted-logo">
+                <span>{brand}</span>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

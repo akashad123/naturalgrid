@@ -40,17 +40,18 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
     const dialog = dialogRef.current;
     if (!dialog) return;
 
-    if (isOpen) {
-      if (!dialog.open) {
-        dialog.showModal();
-        document.body.style.overflow = "hidden";
-      }
-    } else {
-      if (dialog.open) {
-        dialog.close();
-        document.body.style.overflow = "";
-      }
+    if (isOpen && !dialog.open) {
+      dialog.showModal();
+      document.body.style.overflow = "hidden";
     }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {

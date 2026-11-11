@@ -8,6 +8,7 @@ export const NotFoundPage: React.FC = () => {
       <SeoHead
         title="Page Not Found"
         description="The page you are looking for does not exist."
+        noindex
       />
 
       <section className="page-hero">

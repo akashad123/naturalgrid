@@ -21,9 +21,9 @@ const STEPS: ServiceStep[] = [
   },
   {
     num: "03",
-    title: "Testing & Handover",
+    title: "Service & AMC",
     description:
-      "The system is tested for leaks and pressure, checked for thermal performance and handed over — with AMC plans available to keep it operating cleanly.",
+      "Periodic tube and tank checks, descaling where needed and breakdown support — the same statewide service network that backs our solar installations.",
   },
 ];
 
@@ -55,12 +55,12 @@ export const ServiceWaterHeaterPage: React.FC = () => {
         steps={STEPS}
         faqs={FAQS}
       >
-        <h3>Types We Supply &amp; Install</h3>
+        <h3>Types We Supply</h3>
         <ul>
           <li>
-            <strong>Evacuated Tube Collector (ETC):</strong> glass tubes with a
-            vacuum layer that captures heat efficiently even on cooler or hazy
-            days — the most popular and cost-effective choice for homes.
+            <strong>Evacuated Tube Collector (ETC):</strong> vacuum glass tubes
+            that perform well even in cooler weather — a popular, cost-effective
+            choice for homes.
           </li>
           <li>
             <strong>Flat Plate Collector (FPC):</strong> robust metal-based

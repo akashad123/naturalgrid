@@ -125,7 +125,7 @@ export const SiteFooter: React.FC = () => {
               <h3>Services</h3>
               {siteConfig.services.map((service) => (
                 <Link key={service.id} to={`/${service.slug}`}>
-                  {service.title}
+                  {service.footerTitle}
                 </Link>
               ))}
             </div>

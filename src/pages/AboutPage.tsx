@@ -1,10 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { SeoHead } from "@/components/common/SeoHead";
 import { PageHero } from "@/components/common/PageHero";
 import { EnergySlider } from "@/components/about/EnergySlider";
 import { TrustMarquee } from "@/components/home/TrustMarquee";
+import { useCounter } from "@/hooks/useCounter";
 
 export const AboutPage: React.FC = () => {
+  const { count: districtsCount, ref: districtsRef } = useCounter(14);
+  const { count: servicesCount, ref: servicesRef } = useCounter(8);
+
   return (
     <>
       <SeoHead
@@ -16,40 +21,109 @@ export const AboutPage: React.FC = () => {
       {/* ============ PAGE HERO ============ */}
       <PageHero
         badgeText="Future with Renewable"
-        title="A Solar Company Built Around Service"
+        title={"A Solar Company Built Around\u00A0Service"}
         description="We're a Wayanad-based solar company that sees the installation as the start of the relationship, not the end of it — fitting each system carefully and staying on to keep it running for years."
       />
 
       {/* ============ OUR JOURNEY ============ */}
       <section className="journey">
-        <div className="journey-copy">
-          <p className="eyebrow section-label">Our Journey</p>
-          <h2 className="section-title section-title--sub">
-            From Wayanad to All 14 Districts
-          </h2>
-          <p>
-            Natural Grid was started with a simple observation: across Kerala,
-            hundreds of rooftop solar systems sit underperforming or abandoned
-            because the company that installed them moved on, or couldn't support
-            them once the sale was complete.
-          </p>
-          <p>
-            We set out to be different. We began in Sulthan Bathery, Wayanad —
-            working on residential rooftops, small commercial systems and solar
-            water heaters. We took on the hard, unglamorous work: cleaning
-            panels properly, troubleshooting inverters, sorting out KSEB net-metering
-            delays and answering calls when a system showed an error code after a
-            monsoon storm.
-          </p>
-          <p>
-            Today, that service-first model is expanding across all 14 districts
-            of Kerala. We're building local technician networks so a customer in
-            Kasaragod or Kollam gets the same fast, knowledgeable response as a
-            neighbour in Wayanad.
-          </p>
+        <div>
+          <div className="hero-badge">
+            <span>About our journey</span>
+          </div>
         </div>
 
-        {/* How We Work Process List */}
+        <div className="journey-copy">
+          <p>
+            Natural Grid LLP is a Kerala-based renewable-energy company
+            headquartered in Sulthan Bathery, Wayanad. Incorporated as a Limited
+            Liability Partnership, we focus on solar power plant installation,
+            annual maintenance contracts (AMC), servicing, repair, inspection,
+            performance monitoring and complete lifecycle support. Our
+            strength comes from hands-on field experience — we understand what
+            happens to a solar plant after commissioning, and we have built our
+            company around solving exactly that.
+          </p>
+          <p>
+            We also collaborate with the Kisan Service Society (KSS), a
+            non-profit network with units across Kerala, helping solar awareness
+            and reliable service reach households and farmers even in rural areas
+            — while all technical assessments, quotations and payments are
+            handled directly and only by Natural Grid LLP.
+          </p>
+          <Link to="/contact" className="contact-btn">
+            <span>Contact Now</span>
+            <span className="btn-arrow">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      {/* ============ STATS ============ */}
+      <section className="stats-row">
+        <div className="stat stat-card">
+          <span ref={districtsRef} className="stat-number">
+            {districtsCount}
+          </span>
+          <span className="stat-label">Districts Covered Across Kerala</span>
+        </div>
+        <div className="stat stat-card">
+          <span className="stat-number">24h</span>
+          <span className="stat-label">Enquiry Response Target</span>
+        </div>
+        <div className="stat stat-card">
+          <span className="stat-number">24–48h</span>
+          <span className="stat-label">Service Visit Scheduling Target</span>
+        </div>
+        <div className="stat stat-card">
+          <span ref={servicesRef} className="stat-number">
+            {servicesCount}+
+          </span>
+          <span className="stat-label">End-to-End Solar Services</span>
+        </div>
+      </section>
+
+      {/* ============ WORK PROCESS ============ */}
+      <section className="process">
+        <div className="process-head">
+          <h2 className="section-title">How We Work</h2>
+          <p className="section-text">
+            However you reach us, every job follows the same five steps — so you
+            always know what is happening and what comes next.
+          </p>
+          <Link to="/contact" className="btn-dark">
+            <span>Talk to Us</span>
+            <span className="btn-arrow">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </span>
+          </Link>
+        </div>
+
         <ol className="process-steps">
           <li className="process-step">
             <div className="process-step-marker" aria-hidden="true">
@@ -104,9 +178,9 @@ export const AboutPage: React.FC = () => {
             <div className="process-step-body">
               <h3>We finish and check with you</h3>
               <p>
-                Once it is done, we test the system, walk you through how it
-                works, and only close the job when you are happy. Every enquiry
-                is followed up until it is properly wrapped up.
+                Once it is done, we test the system, walk you through how it works,
+                and only close the job when you are happy. Every enquiry is
+                followed up until it is properly wrapped up.
               </p>
             </div>
           </li>
@@ -131,7 +205,7 @@ export const AboutPage: React.FC = () => {
       {/* ============ CARE AFTER INSTALLATION SLIDER ============ */}
       <EnergySlider />
 
-      {/* ============ VISION ============ */}
+      {/* ============ SPEED & PRECISION / VISION ============ */}
       <section className="precision">
         <h2 className="section-title">Our Vision</h2>
 

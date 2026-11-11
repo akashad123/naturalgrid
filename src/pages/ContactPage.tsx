@@ -7,17 +7,34 @@ const FAQS = [
   {
     question: "Which areas do you serve?",
     answer:
-      "All 14 districts of Kerala. Our headquarters is in Sulthan Bathery, Wayanad, and we are actively building out district-level technician networks across the state.",
+      "We serve all 14 districts of Kerala, coordinated from our headquarters in Sulthan Bathery, Wayanad. District-level technical teams are being built for fast, local response.",
   },
   {
-    question: "How quickly do you respond?",
+    question: "How soon will you respond to my enquiry?",
     answer:
-      "We aim to respond to every phone call, WhatsApp enquiry, and web submission within 24 hours. Site assessments are typically scheduled within 24–48 hours depending on your location.",
+      "We aim to acknowledge every enquiry within 24 hours. Where a site visit is needed, we schedule it within 24–48 hours where practical — depending on your location, urgency and technician availability.",
   },
   {
-    question: "Do you provide after-sales service for systems you didn't install?",
+    question: "Can you service a system installed by someone else?",
     answer:
-      "Yes. A significant portion of our AMC customers transitioned to us after their original installer became unresponsive. We service, diagnose, and maintain all major brands and system types.",
+      "Yes. We provide AMC, repair and troubleshooting for solar plants regardless of who installed them — low generation, inverter errors, wiring concerns and more.",
+  },
+  {
+    question: "Do you guarantee generation output or subsidy amounts?",
+    answer:
+      "No. Generation depends on many site factors, and subsidy depends on the applicable Government / MNRE scheme and approvals. We give honest, realistic estimates and never guarantee output or subsidy figures.",
+  },
+  {
+    question: "How do I get a quote?",
+    answer: (
+      <>
+        Call <a href="tel:+919072634443">+91 90726 34443</a>, email{" "}
+        <a href="mailto:info@naturalgrid.in">info@naturalgrid.in</a>, message us
+        on <a href="https://wa.me/919072634443">WhatsApp</a>, or fill in the form
+        above. We&apos;ll review your KSEB bill and requirements and share an
+        official Natural Grid quotation.
+      </>
+    ),
   },
 ];
 

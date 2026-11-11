@@ -23,7 +23,7 @@ const STEPS: ServiceStep[] = [
     num: "03",
     title: "KSEB Coordination & Approval",
     description:
-      "We manage the coordination with KSEB from application to net-meter installation, system commissioning and subsidy portal verification.",
+      "Net-metering application, utility coordination and follow-up through verification and approval by the utility and authorities — handled on your behalf.",
   },
 ];
 
@@ -55,8 +55,12 @@ export const ServiceSubsidyPage: React.FC = () => {
         steps={STEPS}
         faqs={FAQS}
       >
-        <h3>Subsidy Factors</h3>
-        <p>Whether you receive a subsidy — and how much — depends on:</p>
+        <h3>Subsidy Is Never Automatic</h3>
+        <p>
+          Whether you receive a subsidy — and how much — depends on several
+          factors. We recommend being cautious of anyone who guarantees it.
+          Subsidy depends on:
+        </p>
         <ul>
           <li>The current Government / MNRE scheme in force.</li>
           <li>Customer eligibility.</li>

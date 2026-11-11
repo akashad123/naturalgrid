@@ -9,6 +9,14 @@ export function useCounter(targetValue: number, duration = 1400): { count: numbe
     const el = ref.current;
     if (!el) return;
 
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      setCount(targetValue);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;

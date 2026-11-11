@@ -12,12 +12,29 @@ const FAQS = [
   {
     question: "How is the recommended system size calculated?",
     answer:
-      "System size is calculated by dividing your daily electricity consumption by what one kW of solar typically generates in a day in Kerala (about 3.5 units). For residential bills, we divide the units by 60 days (KSEB two-month billing cycle); for commercial, we divide by 30 days.",
+      "We divide the average units on your bill by the days it covers to get your daily consumption, then divide that by 3.5 — the units a single kW typically generates in a day in Kerala. Residential bills are read as 60 days and commercial bills as 30. The exact size is confirmed after a site assessment.",
   },
   {
-    question: "Does this include the PM Surya Ghar subsidy?",
+    question: "Are subsidy and net metering included in the savings?",
     answer:
-      "The calculator estimates gross electricity bill savings. The Central Government subsidy (up to ₹78,000 for residential systems up to 3kW) is credited directly to your bank account after installation and inspection, reducing your net investment cost even further.",
+      "No. The yearly savings shown come from reduced electricity bills only. Subsidy eligibility and net-metering benefits depend on the applicable Government / MNRE scheme and KSEB rules — we'll explain what applies to you during your consultation, with no guaranteed-subsidy claims.",
+  },
+  {
+    question: "Will my actual savings be exactly this amount?",
+    answer:
+      "Not necessarily. Real savings depend on your actual consumption, tariff, weather, shading, system size and usage patterns. We give honest, realistic estimates — never guaranteed figures.",
+  },
+  {
+    question: "How do I get an exact quote?",
+    answer: (
+      <>
+        Contact us — call <a href="tel:+919072634443">+91 90726 34443</a>, email{" "}
+        <a href="mailto:info@naturalgrid.in">info@naturalgrid.in</a> or message us
+        on <a href="https://wa.me/919072634443">WhatsApp</a>. We&apos;ll review
+        your bill and site and share an official Natural Grid quotation with exact
+        cost, subsidy and payback details.
+      </>
+    ),
   },
 ];
 

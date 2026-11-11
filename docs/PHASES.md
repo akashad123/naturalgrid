@@ -32,18 +32,20 @@ Use `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, or `DONE`. Mark work DONE only afte
 
 ## Phase 3 — Motion, Interaction & Responsive Pass
 - [x] Hero video responsive swapping & reduced motion compliance (`HeroVideo.tsx`)
-- [x] Scroll reveal animations & number counters (`useCounter.ts`, `split-title`)
-- [x] Card sheen effect & scroll progress bar (`useSheen.ts`, `useScrollProgress.ts`)
-- [x] Mobile navigation drawer & accessible keyboard focus (`SiteHeader.tsx`)
+- [x] Scroll reveal (`useScrollReveal.ts` `[data-reveal]` + `.kenburns` + `IntersectionObserver`), number counters (`useCounter.ts`), and `split-title` word reveal (`PageHero.tsx`)
+- [x] Card sheen effect (`useScrollReveal.ts` + `useSheen.ts`) & scroll progress bar (`useScrollProgress.ts`)
+- [x] Mobile navigation drawer & accessible keyboard focus (`SiteHeader.tsx`), plus headless Chrome checks at desktop (`1440×900`) and mobile (`390×844`) with `0px` horizontal overflow
 
 ## Phase 4 — SEO, Accessibility & Performance Pass
-- [x] Dynamic document titles, meta descriptions, canonical links via `SeoHead.tsx`
-- [x] Accessibility: ARIA attributes, dialog focus traps, contrast ratios, sharp 0-radius edges
-- [x] Image srcset, WebP loading, CLS prevention
+- [x] Dynamic document titles, meta descriptions, canonical links, and `noindex` handling on 404 via `SeoHead.tsx`
+- [x] Extensionless SPA URLs updated in `public/sitemap.xml` matching route canonicals
+- [x] Accessibility: ARIA attributes, `<dialog>` modal close/overflow restoration (`GalleryModal.tsx`), contrast ratios, sharp 0-radius edges
+- [x] Image `srcset`, WebP loading, CLS prevention, and CSS cascade order fix (`tailwind-base.css` before `legacy.css`)
 - [x] Security headers & SPA rewrites in `vercel.json`
 
 ## Phase 5 — QA, Verification & Handover
-- [x] Production build passes (`tsc && vite build`: 0 errors, gzip 12.49 kB CSS, 78.46 kB JS)
-- [x] All 28 unit tests pass (`node --test --experimental-strip-types`)
+- [x] Production build passes (`tsc && vite build`: 0 errors, `dist/index.html` 4.27 kB, CSS 59.69 kB / gzip 12.46 kB, JS 271.66 kB / gzip 79.67 kB)
+- [x] All 28 unit tests pass (`node --test --experimental-strip-types`: 28/28 passed)
+- [x] Headless Chrome verification across all 11 routes at `1440×900` and `390×844` plus interactive checks (calculator, gallery lightbox, about slider, mobile nav, contact validation) with zero console/page/network errors
 - [x] Handover documentation current in `docs/MEMORY.md`
-- [x] Clean Git commit and push status verified
+- [ ] Push to remote repository (BLOCKED locally: no Git remote configured)

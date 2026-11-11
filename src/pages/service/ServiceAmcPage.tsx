@@ -24,7 +24,7 @@ const STEPS: ServiceStep[] = [
     num: "03",
     title: "Breakdown Assistance",
     description:
-      "Rapid response for unexpected system faults, spare-parts replacement coordination and warranty support with manufacturers where applicable.",
+      "Fast local response through district-level teams, spare-parts replacement coordination and warranty coordination with manufacturers, where applicable.",
   },
 ];
 
@@ -56,10 +56,10 @@ export const ServiceAmcPage: React.FC = () => {
         steps={STEPS}
         faqs={FAQS}
       >
-        <h3>What AMC Covers</h3>
+        <h3>What Our AMC Plans Cover</h3>
         <ul>
-          <li>Periodic technical inspection of solar panels, inverters and mounting structures.</li>
-          <li>Inverter diagnostics, fault troubleshooting and error-code clearance.</li>
+          <li>Scheduled periodic technical inspection.</li>
+          <li>Low-generation diagnosis and inverter-error support.</li>
           <li>Wiring, earthing and lightning-protection checks.</li>
           <li>Monitoring support and performance reporting.</li>
           <li>Breakdown assistance and preventive maintenance.</li>
