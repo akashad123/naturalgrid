@@ -58,8 +58,12 @@ export const HomePage: React.FC = () => {
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </Link>
-            <a href="#about" className="hero-btn hero-btn--ghost">
-              <span>Our Services</span>
+            <a
+              href="#about"
+              className="hero-btn hero-btn--ghost"
+              aria-label="Our Services"
+            >
+              <StaggerRollText text="Our Services" />
             </a>
           </div>
         </div>

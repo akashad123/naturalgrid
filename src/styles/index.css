@@ -422,16 +422,20 @@ html.lenis.lenis-smooth {
   }
 }
 
-/* Hover text-roll effect for Get a Free Quote (preserves 0px radius, white/green/cream theme, and fixed button bounds) */
-.hero-btn--solid:hover,
-.hero-btn--solid:focus-visible {
-  background: var(--cream-strong);
+/* Hover text-roll effect for hero buttons (preserves 0px radius, theme surfaces, and zero box translate/scale) */
+.hero-btn:hover,
+.hero-btn:focus-visible {
   transform: none;
 }
 
-.hero-btn--solid:hover svg,
-.hero-btn--solid:focus-visible svg {
+.hero-btn:hover svg,
+.hero-btn:focus-visible svg {
   transform: none;
+}
+
+.hero-btn--solid:hover,
+.hero-btn--solid:focus-visible {
+  background: var(--cream-strong);
 }
 
 .stagger-roll {
@@ -470,13 +474,13 @@ html.lenis.lenis-smooth {
   transform: translateY(-1.4em);
 }
 
-.hero-btn--solid:hover .stagger-roll-primary .stagger-roll-char,
-.hero-btn--solid:focus-visible .stagger-roll-primary .stagger-roll-char {
+.hero-btn:hover .stagger-roll-primary .stagger-roll-char,
+.hero-btn:focus-visible .stagger-roll-primary .stagger-roll-char {
   transform: translateY(1.4em);
 }
 
-.hero-btn--solid:hover .stagger-roll-secondary .stagger-roll-char,
-.hero-btn--solid:focus-visible .stagger-roll-secondary .stagger-roll-char {
+.hero-btn:hover .stagger-roll-secondary .stagger-roll-char,
+.hero-btn:focus-visible .stagger-roll-secondary .stagger-roll-char {
   transform: translateY(0);
 }
 
