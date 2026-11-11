@@ -45,8 +45,9 @@ Use `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, or `DONE`. Mark work DONE only afte
 - [x] Security headers, `cleanUrls: true`, and `trailingSlash: false` in `vercel.json`; legacy static duplicates removed and `README.md` updated
 
 ## Phase 5 — QA, Verification & Handover
-- [x] Production build & SSR prerendering pass (`npm run build`: `tsc`, Vite client build `dist/index.html` 4.27 kB / CSS 59.72 kB / JS 272.64 kB, Vite SSR build, and 11 prerendered HTML outputs with 0 warnings/errors)
+- [x] Landing hero cleanup (`/`) — removed `.topbar` on `/` (`Layout.tsx`), `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar` (`HomePage.tsx`), preserving inner-page `.topbar` and `/` footer contacts/socials
+- [x] Production build & SSR prerendering pass (`npm run build`: `tsc`, Vite client build `dist/index.html` 4.27 kB / CSS 59.72 kB / JS 269.57 kB, Vite SSR build 170.84 kB, and 11 prerendered HTML outputs with 0 warnings/errors)
 - [x] All 25 unit tests pass (`npm test` -> `node --test --experimental-strip-types`, covering `src/utils/*.ts`)
-- [x] Headless Chrome verification across all 11 routes at `1440×900` and `390×844`, raw prerendered HTML metadata checks, clean React hydration, and interactive flows with 0 console errors, 0 warnings, and 0 network errors
+- [x] Headless Chrome verification across all 11 routes at `1440×900` and `390×844`, raw prerendered HTML metadata checks, `/` hero element removal & header alignment checks, inner `/about` `.topbar` retention check, clean React hydration, and interactive flows with 0 console errors, 0 warnings, and 0 network errors
 - [x] Handover documentation current in `docs/MEMORY.md`
 - [ ] Live Web3Forms test submission and push to remote repository (BLOCKED locally: no Git remote configured)

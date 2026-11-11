@@ -10,11 +10,12 @@ import { FloatingActions } from "./FloatingActions";
 export const Layout: React.FC = () => {
   const location = useLocation();
   useScrollReveal(location.pathname);
+  const isHome = location.pathname === "/" || location.pathname === "/index.html";
 
   return (
     <div className="site-wrapper flex flex-col min-h-screen">
       <ScrollProgress />
-      <TopBar />
+      {!isHome && <TopBar />}
       <SiteHeader />
       <main id="main-content" className="flex-1">
         <Outlet />
