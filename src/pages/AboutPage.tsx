@@ -7,8 +7,8 @@ import { TrustMarquee } from "@/components/home/TrustMarquee";
 import { useCounter } from "@/hooks/useCounter";
 
 export const AboutPage: React.FC = () => {
-  const { count: districtsCount, ref: districtsRef } = useCounter(14);
-  const { count: servicesCount, ref: servicesRef } = useCounter(8);
+  const districtsRef = useCounter(14);
+  const servicesRef = useCounter(8, 1400, "+");
 
   return (
     <>
@@ -76,7 +76,7 @@ export const AboutPage: React.FC = () => {
       <section className="stats-row">
         <div className="stat stat-card">
           <span ref={districtsRef} className="stat-number">
-            {districtsCount}
+            0
           </span>
           <span className="stat-label">Districts Covered Across Kerala</span>
         </div>
@@ -90,7 +90,7 @@ export const AboutPage: React.FC = () => {
         </div>
         <div className="stat stat-card">
           <span ref={servicesRef} className="stat-number">
-            {servicesCount}+
+            0+
           </span>
           <span className="stat-label">End-to-End Solar Services</span>
         </div>

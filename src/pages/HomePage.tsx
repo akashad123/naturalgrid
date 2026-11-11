@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site";
 import { useCounter } from "@/hooks/useCounter";
 
 export const HomePage: React.FC = () => {
-  const { count: districtCount, ref: districtRef } = useCounter(14);
+  const districtRef = useCounter(14);
 
   return (
     <>
@@ -64,7 +64,7 @@ export const HomePage: React.FC = () => {
         <div className="about-side">
           <div className="stat">
             <span ref={districtRef} className="stat-number">
-              {districtCount}
+              0
             </span>
             <span className="stat-label">Districts Served Across Kerala</span>
           </div>
@@ -290,7 +290,6 @@ export const HomePage: React.FC = () => {
                 width="800"
                 height="1200"
                 alt="Solar panels installed on a rooftop"
-                loading="lazy"
                 decoding="async"
               />
             </div>
@@ -326,7 +325,6 @@ export const HomePage: React.FC = () => {
                 width="800"
                 height="600"
                 alt="Team working at a commercial solar installation"
-                loading="lazy"
                 decoding="async"
               />
             </div>
@@ -362,7 +360,6 @@ export const HomePage: React.FC = () => {
                 width="800"
                 height="1200"
                 alt="Ground-mounted solar panel array"
-                loading="lazy"
                 decoding="async"
               />
             </div>

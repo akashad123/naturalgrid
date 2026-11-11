@@ -1,10 +1,10 @@
 # Project Memory and Developer Handover
 
-Last updated: Landing Header Cleanup & Lenis Smooth Scroll Added
+Last updated: Lenis Smooth Scroll Jitter Eliminated & Frame-Pacing Tuned
 
 ## Current Status
-- **Current Phase:** Phase 5 — QA, Verification & Handover (Hero Simplified, Lenis Active, Verified)
-- **Overall Status:** Migration, UI/copy parity, landing hero cleanup, Lenis smooth scroll integration, repository cleanup, dynamic OG/Twitter SEO, build-time SSR prerendering (`src/entry-server.tsx` + `scripts/prerender.mjs`), and Vercel clean-URL configuration are complete. On `/` only, `<TopBar />`, the header/drawer `Contact Now` button (`SiteHeader.tsx`), `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar` are omitted per user request while keeping inner-page `<TopBar />` + `Contact Now` and `/` lower-section/footer CTAs intact. Global Lenis smooth scrolling (`lenis@^1.3.27`) is enabled via `useSmoothScroll.ts`.
+- **Current Phase:** Phase 5 — QA, Verification & Handover (Lenis Scroll Stutter Fixed & Verified)
+- **Overall Status:** Migration, UI/copy parity, landing hero cleanup, Lenis smooth scroll jitter optimization, repository cleanup, dynamic OG/Twitter SEO, build-time SSR prerendering (`src/entry-server.tsx` + `scripts/prerender.mjs`), and Vercel clean-URL configuration are complete. On `/` only, `<TopBar />`, the header/drawer `Contact Now` button (`SiteHeader.tsx`), `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar` are omitted while keeping inner-page `<TopBar />` + `Contact Now` and `/` lower-section/footer CTAs intact. Global Lenis smooth scrolling (`lenis@^1.3.27`) runs cleanly with `lerp: 0.08`, zero scroll-frame React re-renders, compositor-safe header/WhatsApp/marquee styles, and offscreen hero video pausing.
 
 ## Pages / Modules Completed
 - `src/pages/HomePage.tsx`: Hero with background photo/video, `.hero-headline`, `.hero-headline-accent`, `.hero-text`, and `.hero-actions` (`Get a Free Quote`, `Our Services`), plus metrics, short-titled services list, 4-step process, project cards, features accordion, and 4-set brand marquee (`TrustMarquee.tsx`). Removed `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar`.
@@ -34,17 +34,17 @@ Last updated: Landing Header Cleanup & Lenis Smooth Scroll Added
   - `*` (404 Not Found with `noindex`)
   - Backward compatibility redirects from all `*.html` paths to clean extensionless paths (`public/sitemap.xml` uses extensionless URLs).
 - **Shared Components & Styles:**
-  - `src/main.tsx`: Imports `src/styles/tailwind-base.css` -> `src/styles/legacy.css` -> `lenis/dist/lenis.css` -> `src/styles/index.css` so Tailwind Preflight never overrides `legacy.css` and `html.lenis.lenis-smooth` disables native `scroll-behavior: smooth` easing conflicts; uses `hydrateRoot` when `data-ssr-route` matches `window.location.pathname` and `createRoot` otherwise.
+  - `src/main.tsx` & `src/styles/index.css`: Imports `src/styles/tailwind-base.css` -> `src/styles/legacy.css` -> `lenis/dist/lenis.css` -> `src/styles/index.css` so Tailwind Preflight never overrides `legacy.css`, `html.lenis, html.lenis.lenis-smooth` disables native `scroll-behavior: smooth` easing conflicts, `.scroll-progress` updates via direct `scaleX` transforms without CSS transition lag, `.site-header.is-stuck` avoids sticky height/top/blur layout thrash, `.hero-btn--ghost`/`.menu-toggle` avoid blurring live hero video, `.float-btn--whatsapp::after` uses compositor-only `wa-pulse-gpu`, and `.trusted-track` / `[data-reveal]:not(.is-visible)` hint compositor promotion; `src/main.tsx` uses `hydrateRoot` when `data-ssr-route` matches `window.location.pathname` and `createRoot` otherwise.
   - `src/entry-server.tsx` & `scripts/prerender.mjs`: Build-time SSR renderer (`StaticRouter` + `SeoCollectorProvider`) outputting prerendered `dist/*.html` for all 10 public routes and `dist/404.html` (`noindex`).
   - `Layout`: Stitches `ScrollProgress`, `TopBar` (rendered on inner routes, omitted on `/` / `/index.html`), `SiteHeader` (flush at `top: 0` on `/` via `body:not(:has(.topbar))`, and omits `.contact-btn` / `.nav-contact` `Contact Now` CTA on `/`), `<Outlet />`, `FloatingActions`, `SiteFooter`, and runs `useScrollReveal(location.pathname)` + `useSmoothScroll(location.pathname)`.
-  - `useSmoothScroll` (`src/hooks/useSmoothScroll.ts`): SSR-safe `Lenis` (`^1.3.27`) hook with `autoRaf: true`, `anchors: true`, `stopInertiaOnNavigate: true`, `respectReducedMotion: true`, `<dialog[open]>`/`overflow: hidden` scroll guard, and immediate scroll reset on route changes.
+  - `useSmoothScroll` (`src/hooks/useSmoothScroll.ts`), `useScrollProgress` (`src/hooks/useScrollProgress.ts`), `useCounter` (`src/hooks/useCounter.ts`): `Lenis` (`^1.3.27`) configured with exponential `lerp: 0.08` (replacing wheel-ratchet `duration`), `autoRaf: true`, `anchors: true`, `stopInertiaOnNavigate: true`, `respectReducedMotion: true`, `<dialog[open]>`/`overflow: hidden` scroll guard, and immediate scroll reset on route changes; `ScrollProgress` caches `ResizeObserver` `maxScroll` and writes `transform` directly; `useCounter` returns a `span` ref and updates `textContent` on integer ticks with zero React re-renders.
   - `SeoHead` & `src/utils/seo.ts`: Shared resolver and DOM/SSR updater for `<title>`, `description`, `keywords`, `og:*`, `twitter:*`, `canonical`, and `noindex`.
   - `PageHero`: Standard inner page hero banner with word-by-word rising title animation (`split-title` / `title-word`).
   - `SolarCalculator`: Pure logic calculation with dual-input synchronization.
   - `ContactForm`: Inline validated form with 10-digit phone normalization and Web3Forms submission.
   - `GalleryModal`: Native accessible `<dialog>` image viewer with keyboard navigation and cleanup.
   - `EnergySlider`: Interactive 3-card slider with background photo cross-fading.
-  - `HeroVideo`: High-performance background video switcher with poster fallback and reduced-motion detection.
+  - `HeroVideo`: Background video switcher with poster fallback, reduced-motion guard, and `IntersectionObserver` (`rootMargin: "160px 0px"`) offscreen pause/resume so background video decode does not compete with scrolling lower sections.
 - **Configuration & Utilities:**
   - `src/config/site.ts`: Centralized brand metadata, contacts, social links, ordered `services` array (with `title`, `shortTitle`, `footerTitle`), `districts` array, and exact Google Maps embed URL.
   - `src/hooks/useScrollReveal.ts`: Ken Burns hero drift, staggered `[data-reveal]` observer, and pointer-device `.has-sheen` card effect with `prefers-reduced-motion` guard.
@@ -64,17 +64,18 @@ Last updated: Landing Header Cleanup & Lenis Smooth Scroll Added
    - 25 / 25 tests passing (`tests/calculator.test.js`, `tests/phone.test.js`, `tests/react-utils.test.js` importing `src/utils/calculator.ts`, `src/utils/phone.ts`, `src/utils/formatters.ts`, and `src/utils/seo.ts`).
 2. `npm run build` (`tsc && vite build && vite build --ssr ... && node scripts/prerender.mjs`):
    - Zero TypeScript, Vite, or React SSR warnings/errors.
-   - Client bundle: `dist/index.html` 4.27 kB (gzip 1.51 kB), `dist/assets/index-69hRLC70.css` 60.23 kB (gzip 12.62 kB), `dist/assets/index-b4v4TwDv.js` 290.11 kB (gzip 85.30 kB); SSR bundle `.prerender-ssr/entry-server.js` 171.79 kB (cleaned after prerendering 11 HTML files into `dist/`).
-3. Headless Chrome (`vite preview --port 4174`) audit:
+   - Client bundle: `dist/index.html` 4.27 kB (gzip 1.52 kB), `dist/assets/index-D3TPBZq3.css` 60.98 kB (gzip 12.75 kB), `dist/assets/index-CnBQCetg.js` 290.68 kB (gzip 85.47 kB); SSR bundle `.prerender-ssr/entry-server.js` 172.93 kB (cleaned after prerendering 11 HTML files into `dist/`).
+3. Headless Chrome (`vite preview --port 4174`) audit & CDP scroll trace:
+   - Scroll frame-pacing benchmark (`328` frames over 18 continuous wheel ticks + glide): `medianMs: 6.9`, `p95Ms: 7.3`, `maxMs: 27.8`, `jankyCount: 2` (`>20ms`), `reverseSteps: 0`, `htmlScrollBehavior: "auto"`, `htmlClasses: "lenis lenis-scrolling lenis-smooth"` (eliminated the `maxMs: 62.5` / `p95Ms: 13.8` / `jankyCount: 8` production sticky-header stall).
    - Tested all 11 routes at `1440×900` (desktop) and `390×844` (mobile): 0 console errors, 0 console warnings (clean hydration), 0 page exceptions, 0 failed asset requests, `0px` horizontal overflow (`-15px` delta with vertical scrollbar on desktop, `0px` on mobile), sharp `0px` radius, single `<h1>` per route, `noindex` restricted to 404.
    - Verified `/` hero & header omit `.topbar`, `.site-header .contact-btn`, `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar` (both DOM and raw prerendered HTML), `.site-header` aligns at `top: 0px`, footer retains contacts on `/`, and `/about` retains `.topbar` and `.site-header .contact-btn`.
    - Verified Lenis (`1.3.27`) runtime initialization (`html.lenis`, wheel scroll -> sticky header activation `is-stuck`, `#about` smooth anchor jump, and immediate reset to `y=0` upon navigating to `/about`).
    - Verified raw prerendered HTTP responses (`/`, `/about.html`, `/calculator.html`, `/404.html`) contain expected SSR metadata/content before JS runs.
-   - Verified calculator (`300` units -> `1.4` / `₹14,400` Residential; `2.9` / `₹28,800` Commercial), gallery lightbox open/next/close + overflow reset, about slider slide switch, contact invalid phone validation message + map embed, and mobile drawer/submenu open & route-change close.
+   - Verified calculator (`300` units -> `1.4` / `₹14,400` Residential; `2.9` / `₹28,800` Commercial), gallery lightbox open/next/close + overflow reset, about slider slide switch (`activeCardIdx: 1`) + stat refs (`["0","24h","24–48h","0+"]`), contact invalid phone validation message + map embed, and mobile drawer/submenu open & route-change close.
 
 ## Git State
 - **Branch:** `master`
-- **Previous Commit:** `1f93863`
+- **Previous Commit:** `60ea9db`
 - **Remote Status:** Local Git repository only (no remote upstream configured yet).
 
 ## Next Exact Step

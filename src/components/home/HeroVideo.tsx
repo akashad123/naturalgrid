@@ -45,14 +45,35 @@ export const HeroVideo: React.FC = () => {
     };
 
     video.addEventListener("playing", onPlaying);
-    const playPromise = video.play();
-    if (playPromise && typeof playPromise.catch === "function") {
-      playPromise.catch(() => {
-        // Autoplay policy prevented playback, keep poster visible
-      });
+
+    // Pause hero video decode when scrolled offscreen to keep lower-page scrolling smooth
+    let observer: IntersectionObserver | null = null;
+    if ("IntersectionObserver" in window) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            const resume = video.play();
+            if (resume && typeof resume.catch === "function") {
+              resume.catch(() => {});
+            }
+          } else {
+            video.pause();
+          }
+        },
+        { rootMargin: "160px 0px" }
+      );
+      observer.observe(video);
+    } else {
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {
+          // Autoplay policy prevented playback, keep poster visible
+        });
+      }
     }
 
     return () => {
+      observer?.disconnect();
       video.removeEventListener("playing", onPlaying);
     };
   }, [shouldLoadVideo, isMobile]);

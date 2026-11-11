@@ -8,7 +8,8 @@
   border-radius: 0 !important;
 }
 
-/* Disable native smooth-scroll easing when Lenis drives rAF scrolling */
+/* Disable native smooth-scroll easing whenever Lenis drives scrolling */
+html.lenis,
 html.lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
@@ -25,5 +26,60 @@ html.lenis.lenis-smooth {
   background: linear-gradient(90deg, #236537, #ff6700);
   z-index: 300;
   pointer-events: none;
-  transition: transform 0.08s linear;
+  will-change: transform;
+}
+
+/* Keep sticky header transitions strictly compositor/paint-safe (no top/padding layout shifts on scroll) */
+.site-header {
+  transform: translateZ(0);
+  will-change: transform, background-color, box-shadow;
+  transition: background-color 0.22s ease, box-shadow 0.22s ease,
+    border-color 0.22s ease, color 0.22s ease;
+}
+
+.site-header.is-stuck {
+  min-height: var(--header-h);
+  padding-block: clamp(12px, 1.6vw, 18px);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Avoid continuous live-video backdrop-filter blitting on hero overlay controls */
+.hero-btn--ghost,
+.menu-toggle {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: rgba(4, 24, 15, 0.36);
+}
+
+/* Promote marquee track and pending scroll-reveal elements only while animating */
+.trusted-track {
+  will-change: transform;
+}
+
+[data-reveal]:not(.is-visible) {
+  will-change: opacity, transform;
+}
+
+/* Compositor-only WhatsApp pulse (avoids main-thread per-frame box-shadow style/layer invalidation during scroll) */
+.float-btn--whatsapp::after {
+  border: 2px solid rgba(37, 211, 102, 0.45);
+  animation: wa-pulse-gpu 2.6s ease-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes wa-pulse-gpu {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.42);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
 }
