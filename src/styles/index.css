@@ -136,6 +136,63 @@ html.lenis.lenis-smooth {
   will-change: transform;
 }
 
+/* Lock Why Natural Grid row tracks on desktop (>= 1025px 2-column layout) so expanding accordions never shifts About Us vertically */
+@media (min-width: 1025px) {
+  .features {
+    grid-template-rows: max-content minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .features-side {
+    align-self: stretch;
+  }
+
+  .features-about {
+    align-self: start;
+    justify-content: flex-start;
+  }
+}
+
+/* Brand Partners marquee items: pointer cursor, static position (no vertical lift), dark green ink, and left-to-right underline */
+.trusted-marquee {
+  padding-block: 8px;
+}
+
+.trusted-logo {
+  position: relative;
+  line-height: 1.15;
+  cursor: pointer;
+  color: var(--ink);
+  opacity: 0.7;
+  transform: none;
+  transition:
+    color 0.24s ease,
+    opacity 0.24s ease;
+}
+
+.trusted-logo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.trusted-logo:hover {
+  color: var(--ink);
+  opacity: 1;
+  transform: none;
+}
+
+.trusted-logo:hover::after {
+  transform: scaleX(1);
+}
+
 [data-reveal]:not(.is-visible) {
   will-change: opacity, transform;
 }
@@ -1055,6 +1112,8 @@ html.lenis.lenis-smooth {
 
 @media (prefers-reduced-motion: reduce) {
   .stagger-roll-char,
+  .trusted-logo,
+  .trusted-logo::after,
   .projects-panel-wrap,
   .projects-item-num,
   .projects-item-main,
