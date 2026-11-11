@@ -147,30 +147,7 @@ export const HomePage: React.FC = () => {
             <h2 className="section-title section-title--sub">
               Solar for Homes, Businesses &amp; Industry
             </h2>
-            <p className="section-text">
-              On-grid, off-grid and hybrid systems for homes, businesses,
-              institutions and industry — plus solar pumps, street lights and
-              water heaters.
-            </p>
           </div>
-          <Link to="/gallery" className="btn-dark view-work-btn">
-            <span>View Our Work</span>
-            <span className="btn-arrow">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </span>
-          </Link>
         </div>
 
         <ProjectsAccordion />
@@ -187,24 +164,6 @@ export const HomePage: React.FC = () => {
             Approved brands, district-level service teams, 24-hour response
             targets and a service-first approach to solar.
           </p>
-          <Link to="/contact" className="btn-dark">
-            <span>Get Started</span>
-            <span className="btn-arrow">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </span>
-          </Link>
         </div>
 
         <div className="features-side">
@@ -320,24 +279,6 @@ export const HomePage: React.FC = () => {
             commissioning — and we've built our company around solving exactly
             that.
           </p>
-          <Link to="/contact" className="btn-dark">
-            <span>Contact Now</span>
-            <span className="btn-arrow">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </span>
-          </Link>
         </div>
       </section>
 
