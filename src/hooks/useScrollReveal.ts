@@ -7,7 +7,7 @@ const REVEAL_SELECTORS = [
   ".contact-hero > *",
   ".section-head",
   ".how-head",
-  ".how-step",
+  ".how-carousel",
   ".journey-copy",
   ".stat-card",
   ".project-card",

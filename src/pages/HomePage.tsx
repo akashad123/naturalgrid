@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { SeoHead } from "@/components/common/SeoHead";
 import { HeroVideo } from "@/components/home/HeroVideo";
+import { HowItWorksCarousel } from "@/components/home/HowItWorksCarousel";
 import { TrustMarquee } from "@/components/home/TrustMarquee";
 import { siteConfig } from "@/config/site";
 import { useCounter } from "@/hooks/useCounter";
@@ -98,9 +99,6 @@ export const HomePage: React.FC = () => {
 
         <div className="about-main">
           <p className="eyebrow section-label">Who We Are</p>
-          <div className="hero-badge">
-            <span>Service-first solar, across Kerala</span>
-          </div>
 
           <h2 className="about-heading">
             From residential rooftops to commercial and institutional projects,
@@ -128,126 +126,13 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* ============ PROCESS / HOW IT WORKS ============ */}
-      <section className="how" id="process">
-        <div className="how-head">
-          <p className="eyebrow section-label">How It Works</p>
-          <h2 className="section-title section-title--sub">
-            Going Solar in Four Simple Steps
-          </h2>
-          <p className="section-text">
-            From your first call to lifelong care, here's exactly what happens
-            when you go solar with Natural Grid — clear and jargon-free at every
-            step.
-          </p>
-        </div>
+      {/* ============ PROCESS / HOW IT WORKS (Sticky Peek Carousel) ============ */}
+      <HowItWorksCarousel />
 
-        <div className="how-grid">
-          <article className="how-step">
-            <span className="how-icon" aria-hidden="true">
-              <svg
-                width="30"
-                height="30"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-              </svg>
-            </span>
-            <span className="how-num">Step 01</span>
-            <h3>Consultation &amp; Survey</h3>
-            <p>
-              We study your KSEB bill, inspect your roof and understand your daily
-              power needs — then recommend the right system size with honest,
-              verified advice.
-            </p>
-          </article>
-
-          <article className="how-step">
-            <span className="how-icon" aria-hidden="true">
-              <svg
-                width="30"
-                height="30"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-                <line x1="10" y1="9" x2="8" y2="9" />
-              </svg>
-            </span>
-            <span className="how-num">Step 02</span>
-            <h3>Design &amp; Quote</h3>
-            <p>
-              You receive a tailored on-grid, off-grid or hybrid design and a
-              clear Natural Grid quotation, with guidance on net metering and
-              any applicable subsidy.
-            </p>
-          </article>
-
-          <article className="how-step">
-            <span className="how-icon" aria-hidden="true">
-              <svg
-                width="30"
-                height="30"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-              </svg>
-            </span>
-            <span className="how-num">Step 03</span>
-            <h3>Installation &amp; Approvals</h3>
-            <p>
-              Our team installs using approved, ISI-compliant materials and
-              handles the KSEB net-metering, inspection and commissioning — so
-              your system goes live safely.
-            </p>
-          </article>
-
-          <article className="how-step">
-            <span className="how-icon" aria-hidden="true">
-              <svg
-                width="30"
-                height="30"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <polyline points="9 11.5 11 13.5 15 9.5" />
-              </svg>
-            </span>
-            <span className="how-num">Step 04</span>
-            <h3>Service &amp; AMC</h3>
-            <p>
-              Once live, we stay with you — panel cleaning, preventive
-              maintenance and fast local support through district teams across
-              all 14 districts of Kerala.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      {/* ============ PROJECTS ============ */}
-      <section className="projects" id="projects">
+      {/* ============ CURTAIN STACK OVER STICKY PROCESS SECTION ============ */}
+      <div className="home-curtain-stack">
+        {/* ============ PROJECTS ============ */}
+        <section className="projects" id="projects">
         <div className="section-head">
           <div className="section-head-copy">
             <p className="eyebrow section-label">Our Projects</p>
@@ -555,6 +440,7 @@ export const HomePage: React.FC = () => {
 
       {/* ============ TRUSTED BY ============ */}
       <TrustMarquee />
+      </div>
     </>
   );
 };

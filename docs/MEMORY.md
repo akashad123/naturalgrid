@@ -1,13 +1,14 @@
 # Project Memory and Developer Handover
 
-Last updated: Compact Hero CTA & Floating Contact Buttons + Lenis Smooth Scroll Tuned
+Last updated: Who We Are Cleanup & Sticky How It Works Peek Carousel Implemented
 
 ## Current Status
-- **Current Phase:** Phase 5 — QA, Verification & Handover (Compact Buttons & Lenis Scroll Verified)
-- **Overall Status:** Migration, UI/copy parity, landing hero cleanup, compact hero/floating button sizing, Lenis smooth scroll jitter optimization, repository cleanup, dynamic OG/Twitter SEO, build-time SSR prerendering (`src/entry-server.tsx` + `scripts/prerender.mjs`), and Vercel clean-URL configuration are complete. On `/` only, `<TopBar />`, the header/drawer `Contact Now` button (`SiteHeader.tsx`), `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar` are omitted while keeping inner-page `<TopBar />` + `Contact Now` and `/` lower-section/footer CTAs intact; hero `.hero-btn` CTAs (`Get a Free Quote`, `Our Services`) and floating `.float-btn` buttons (WhatsApp, mobile call) use compact desktop and mobile dimensions via `src/styles/index.css`. Global Lenis smooth scrolling (`lenis@^1.3.27`) runs cleanly with `lerp: 0.08`, zero scroll-frame React re-renders, compositor-safe header/WhatsApp/marquee styles, and offscreen hero video pausing.
+- **Current Phase:** Phase 5 — QA, Verification & Handover (Sticky Peek Carousel & UI Cleanups Verified)
+- **Overall Status:** Migration, UI/copy parity, landing hero cleanup, compact hero/floating button sizing, Who We Are badge removal, sticky How It Works 3/4-peek carousel (`src/components/home/HowItWorksCarousel.tsx`), Lenis smooth scroll jitter optimization, repository cleanup, dynamic OG/Twitter SEO, build-time SSR prerendering (`src/entry-server.tsx` + `scripts/prerender.mjs`), and Vercel clean-URL configuration are complete. On `/` only, `<TopBar />`, the header/drawer `Contact Now` button (`SiteHeader.tsx`), `.hero-eyebrow`, `.hero-trust`, `.hero-featurebar`, and `#about .hero-badge` (`Service-first solar, across Kerala`) are omitted while keeping inner-page `<TopBar />` + `Contact Now` and `/` lower-section/footer CTAs intact; hero `.hero-btn` CTAs (`Get a Free Quote`, `Our Services`) and floating `.float-btn` buttons (WhatsApp, mobile call) use compact desktop and mobile dimensions via `src/styles/index.css`. Global Lenis smooth scrolling (`lenis@^1.3.27`) runs cleanly with `lerp: 0.08`, zero scroll-frame React re-renders, compositor-safe header/WhatsApp/marquee styles, and offscreen hero video pausing.
 
 ## Pages / Modules Completed
-- `src/pages/HomePage.tsx`: Hero with background photo/video, `.hero-headline`, `.hero-headline-accent`, `.hero-text`, and `.hero-actions` (`Get a Free Quote`, `Our Services`), plus metrics, short-titled services list, 4-step process, project cards, features accordion, and 4-set brand marquee (`TrustMarquee.tsx`). Removed `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar`.
+- `src/pages/HomePage.tsx`: Hero with background photo/video, `.hero-headline`, `.hero-headline-accent`, `.hero-text`, and `.hero-actions` (`Get a Free Quote`, `Our Services`), `#about` metrics & service links (with `Service-first solar, across Kerala` badge removed), sticky `<HowItWorksCarousel />`, and `.home-curtain-stack` (wrapping project cards, features accordion, and 4-set brand marquee `TrustMarquee.tsx`) gliding upward over `#process` during vertical scroll.
+- `src/components/home/HowItWorksCarousel.tsx`: Modular 4-card button/swipe/keyboard carousel (`Consultation & Survey`, `Design & Quote`, `Installation & Approvals`, `Service & AMC`) showing 1 full card + ~3/4 next card peek (`1.75` cards on desktop via `ResizeObserver`-measured offsets, clamped on Step 04) inside sticky `.how` (`z-index: 1`) beneath `.home-curtain-stack` (`z-index: 2`).
 - `src/pages/AboutPage.tsx`: `.journey` (`About our journey` badge, KSS collaboration copy, CTA), `.stats-row` (`14`, `24h`, `24–48h`, `8+` with `useCounter` on numeric stats), `.process` (`How We Work` 5-step list), interactive 3-card `EnergySlider`, `.precision` (`Our Vision`), brand marquee.
 - `src/pages/CalculatorPage.tsx`: Dedicated calculator page with live sync slider/input, residential/commercial mode, results pop animation, stale state dimming, and all 5 FAQ accordions.
 - `src/pages/GalleryPage.tsx`: Grid of 6 project installations with native accessible `<dialog>` lightbox modal, keyboard navigation (Esc, ArrowLeft, ArrowRight), and clean `body.style.overflow` cleanup.
@@ -64,10 +65,10 @@ Last updated: Compact Hero CTA & Floating Contact Buttons + Lenis Smooth Scroll 
    - 25 / 25 tests passing (`tests/calculator.test.js`, `tests/phone.test.js`, `tests/react-utils.test.js` importing `src/utils/calculator.ts`, `src/utils/phone.ts`, `src/utils/formatters.ts`, and `src/utils/seo.ts`).
 2. `npm run build` (`tsc && vite build && vite build --ssr ... && node scripts/prerender.mjs`):
    - Zero TypeScript, Vite, or React SSR warnings/errors.
-   - Client bundle: `dist/index.html` 4.27 kB (gzip 1.51 kB), `dist/assets/index-Dv-AVCTT.css` 61.58 kB (gzip 12.88 kB), `dist/assets/index-Dcip1UB6.js` 290.68 kB (gzip 85.47 kB); SSR bundle `.prerender-ssr/entry-server.js` 172.93 kB (cleaned after prerendering 11 HTML files into `dist/`).
-3. Headless Chrome (`vite preview --port 4174` & dev `3000`) audit & CDP scroll trace:
-   - Scroll frame-pacing benchmark (`328` frames over 18 continuous wheel ticks + glide): `medianMs: 6.9`, `p95Ms: 7.3`, `maxMs: 27.8`, `jankyCount: 2` (`>20ms`), `reverseSteps: 0`, `htmlScrollBehavior: "auto"`, `htmlClasses: "lenis lenis-scrolling lenis-smooth"` (eliminated the `maxMs: 62.5` / `p95Ms: 13.8` / `jankyCount: 8` production sticky-header stall).
+   - Client bundle: `dist/index.html` 4.27 kB (gzip 1.52 kB), `dist/assets/index-50gNY-qu.css` 65.50 kB (gzip 13.67 kB), `dist/assets/index-DJX_eHOv.js` 293.08 kB (gzip 86.18 kB); SSR bundle `.prerender-ssr/entry-server.js` 179.53 kB (cleaned after prerendering 11 HTML files into `dist/`).
+3. Headless Chrome (`vite preview --port 4174` & dev `3000`) audit:
    - Tested all 11 routes at `1440×900` (desktop) and `390×844` (mobile): 0 console errors, 0 console warnings (clean hydration), 0 page exceptions, 0 failed asset requests, `0px` horizontal overflow (`-15px` delta with vertical scrollbar on desktop, `0px` on mobile), sharp `0px` radius, single `<h1>` per route, `noindex` restricted to 404.
+   - Verified `#about` omits `Service-first solar, across Kerala` (`badgeCount: 0`), and `HowItWorksCarousel` renders `01 / 04 -> 04 / 04` (`Consultation & Survey` full + `Design & Quote` `0.75` peek -> `0.75` peek per step -> `Service & AMC` full), while `.how` stays sticky at `top: 94px` (`stuckAtStickyTop: true`) and `.home-curtain-stack` overlaps smoothly (`curtainTop: 373px`, `overlappedPx: 296px`) into `#projects` (mobile `howH: 568px`, `c0Ratio: 1`, `c1Ratio: 0.28`, `overflowX: 0`).
    - Verified rendered button bounding boxes on `/`: desktop `.hero-btn--solid` `182×39px`, `.hero-btn--ghost` `133×39px`, `.float-btn` `38×38px`; mobile `.hero-btn--solid` `169×37px`, `.hero-btn--ghost` `122×37px` side-by-side, `.float-btn` `36×36px`.
    - Verified `/` hero & header omit `.topbar`, `.site-header .contact-btn`, `.hero-eyebrow`, `.hero-trust`, and `.hero-featurebar` (both DOM and raw prerendered HTML), `.site-header` aligns at `top: 0px`, footer retains contacts on `/`, and `/about` retains `.topbar` and `.site-header .contact-btn`.
    - Verified Lenis (`1.3.27`) runtime initialization (`html.lenis`, wheel scroll -> sticky header activation `is-stuck`, `#about` smooth anchor jump, and immediate reset to `y=0` upon navigating to `/about`).
@@ -76,7 +77,7 @@ Last updated: Compact Hero CTA & Floating Contact Buttons + Lenis Smooth Scroll 
 
 ## Git State
 - **Branch:** `master`
-- **Previous Commit:** `7e0f6bb`
+- **Previous Commit:** `3787623`
 - **Remote Status:** Local Git repository only (no remote upstream configured yet).
 
 ## Next Exact Step
