@@ -4,6 +4,7 @@ import { SeoHead } from "@/components/common/SeoHead";
 import { StaggerRollText } from "@/components/common/StaggerRollText";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { HowItWorksCarousel } from "@/components/home/HowItWorksCarousel";
+import { ProjectsAccordion } from "@/components/home/ProjectsAccordion";
 import { TrustMarquee } from "@/components/home/TrustMarquee";
 import { siteConfig } from "@/config/site";
 import { useCounter } from "@/hooks/useCounter";
@@ -172,112 +173,7 @@ export const HomePage: React.FC = () => {
           </Link>
         </div>
 
-        <div className="project-grid">
-          <Link to="/gallery" className="project-card">
-            <div className="project-media">
-              <img
-                src="/images/rooftop-solar-800.webp"
-                srcSet="/images/rooftop-solar-800.webp 800w, /images/rooftop-solar-1600.webp 1600w"
-                sizes="(max-width: 560px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                width="800"
-                height="1200"
-                alt="Solar panels installed on a rooftop"
-                decoding="async"
-              />
-            </div>
-            <div className="project-info">
-              <div>
-                <h3>Residential Rooftop Solar</h3>
-                <p>On-Grid with Net Metering</p>
-              </div>
-              <span className="project-arrow" aria-hidden="true">
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </span>
-            </div>
-          </Link>
-
-          <Link to="/gallery" className="project-card">
-            <div className="project-media">
-              <img
-                src="/images/solar-team-800.webp"
-                srcSet="/images/solar-team-800.webp 800w, /images/solar-team-1600.webp 1600w"
-                sizes="(max-width: 560px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                width="800"
-                height="600"
-                alt="Team working at a commercial solar installation"
-                decoding="async"
-              />
-            </div>
-            <div className="project-info">
-              <div>
-                <h3>Commercial &amp; Institutional Solar</h3>
-                <p>Offices, Schools, Hospitals &amp; More</p>
-              </div>
-              <span className="project-arrow" aria-hidden="true">
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </span>
-            </div>
-          </Link>
-
-          <Link to="/gallery" className="project-card">
-            <div className="project-media">
-              <img
-                src="/images/ground-mounted-array-800.webp"
-                srcSet="/images/ground-mounted-array-800.webp 800w, /images/ground-mounted-array-1600.webp 1600w"
-                sizes="(max-width: 560px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                width="800"
-                height="1200"
-                alt="Ground-mounted solar panel array"
-                decoding="async"
-              />
-            </div>
-            <div className="project-info">
-              <div>
-                <h3>Industrial &amp; Ground-Mounted Solar</h3>
-                <p>Larger-Capacity Systems</p>
-              </div>
-              <span className="project-arrow" aria-hidden="true">
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </span>
-            </div>
-          </Link>
-        </div>
+        <ProjectsAccordion />
       </section>
 
       {/* ============ FEATURES ============ */}

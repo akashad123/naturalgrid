@@ -11,6 +11,7 @@ const REVEAL_SELECTORS = [
   ".journey-copy",
   ".stat-card",
   ".project-card",
+  ".projects-accordion",
   ".gallery-item",
   ".calc-inputs",
   ".calc-highlight",
