@@ -65,6 +65,70 @@ export const CalculatorPage: React.FC = () => {
             <div className="faq-head">
               <p className="eyebrow section-label">02 / Frequently Asked</p>
               <h2>Common Calculator Questions</h2>
+              <p className="faq-lead">
+                Based on Kerala rooftop irradiance, KSEB bi-monthly tariff
+                slabs, and standard MNRE on-grid sizing benchmarks.
+              </p>
+
+              <aside
+                className="faq-basis-card"
+                aria-label="Kerala solar estimation benchmarks"
+              >
+                <div className="faq-basis-art" aria-hidden="true">
+                  <svg viewBox="0 0 220 92" fill="none">
+                    <path
+                      d="M12 78 C54 64, 96 72, 138 60 C166 52, 192 58, 208 50"
+                      stroke="rgba(35, 101, 55, 0.28)"
+                      strokeWidth="1"
+                    />
+                    <circle
+                      cx="42"
+                      cy="28"
+                      r="11"
+                      fill="rgba(159, 76, 28, 0.1)"
+                      stroke="rgba(159, 76, 28, 0.42)"
+                      strokeWidth="1"
+                    />
+                    <path
+                      d="M42 10 V14 M42 42 V46 M24 28 H28 M56 28 H60 M30 16 L33 19 M51 37 L54 40 M54 16 L51 19 M33 37 L30 40"
+                      stroke="rgba(159, 76, 28, 0.36)"
+                      strokeWidth="1"
+                      strokeLinecap="round"
+                    />
+                    <polygon
+                      points="94,48 158,34 196,46 132,60"
+                      fill="rgba(35, 101, 55, 0.1)"
+                      stroke="rgba(6, 48, 36, 0.42)"
+                      strokeWidth="1.15"
+                    />
+                    <path
+                      d="M115 43 L153 55 M137 38 L175 50 M112 54 L177 40"
+                      stroke="rgba(35, 101, 55, 0.34)"
+                      strokeWidth="0.9"
+                    />
+                    <path
+                      d="M94 68 V54 L132 60 V68"
+                      stroke="rgba(6, 48, 36, 0.28)"
+                      strokeWidth="1"
+                    />
+                  </svg>
+                </div>
+
+                <dl className="faq-basis-metrics">
+                  <div>
+                    <dt>Avg Yield</dt>
+                    <dd>3.5 u / kW·day</dd>
+                  </div>
+                  <div>
+                    <dt>Tariff Basis</dt>
+                    <dd>₹8 / unit</dd>
+                  </div>
+                  <div>
+                    <dt>Billing Cycle</dt>
+                    <dd>60d Res · 30d Com</dd>
+                  </div>
+                </dl>
+              </aside>
             </div>
 
             <div className="faq">

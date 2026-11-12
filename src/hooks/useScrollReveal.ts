@@ -76,8 +76,50 @@ export const useScrollReveal = (routeKey: string): void => {
       revealObserver.observe(el);
     });
 
+    // Localized cursor spotlight tracking scoped strictly to hovered accordions
+    let rafId = 0;
+    let activeAccordion: HTMLElement | null = null;
+    let pointerX = 0;
+    let pointerY = 0;
+
+    const commitAccordionGlow = () => {
+      rafId = 0;
+      if (!activeAccordion) return;
+      const rect = activeAccordion.getBoundingClientRect();
+      activeAccordion.style.setProperty("--mx", `${pointerX - rect.left}px`);
+      activeAccordion.style.setProperty("--my", `${pointerY - rect.top}px`);
+    };
+
+    const handleAccordionPointerMove = (event: PointerEvent) => {
+      if (event.pointerType === "touch") return;
+      const target =
+        event.target instanceof Element
+          ? event.target.closest<HTMLElement>(".feature-acc")
+          : null;
+      if (!target) {
+        activeAccordion = null;
+        return;
+      }
+
+      activeAccordion = target;
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+
+      if (!rafId) {
+        rafId = window.requestAnimationFrame(commitAccordionGlow);
+      }
+    };
+
+    document.addEventListener("pointermove", handleAccordionPointerMove, {
+      passive: true,
+    });
+
     return () => {
       revealObserver.disconnect();
+      document.removeEventListener("pointermove", handleAccordionPointerMove);
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
     };
   }, [routeKey]);
 };

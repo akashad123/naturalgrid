@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { siteConfig } from "@/config/site";
 import { useStickyHeader } from "@/hooks/useStickyHeader";
@@ -7,13 +7,22 @@ export const SiteHeader: React.FC = () => {
   const isStuck = useStickyHeader(24);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [dropdownDismissed, setDropdownDismissed] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
-  // Close mobile nav on route change
+  // Close mobile nav on route change and clear lingering dropdown focus
   useEffect(() => {
     setMobileMenuOpen(false);
     setServicesDropdownOpen(false);
     document.body.classList.remove("nav-open");
+
+    if (
+      document.activeElement instanceof HTMLElement &&
+      dropdownRef.current?.contains(document.activeElement)
+    ) {
+      document.activeElement.blur();
+    }
   }, [location.pathname]);
 
   const toggleMobileMenu = () => {
@@ -69,12 +78,20 @@ export const SiteHeader: React.FC = () => {
         </NavLink>
 
         <div
-          className={`nav-dropdown ${servicesDropdownOpen ? "is-open" : ""}`}
+          ref={dropdownRef}
+          className={`nav-dropdown ${servicesDropdownOpen ? "is-open" : ""} ${
+            dropdownDismissed ? "is-dismissed" : ""
+          }`.trim()}
           onMouseEnter={() => {
-            if (window.innerWidth > 1024) setServicesDropdownOpen(true);
+            if (window.innerWidth > 1024 && !dropdownDismissed) {
+              setServicesDropdownOpen(true);
+            }
           }}
           onMouseLeave={() => {
-            if (window.innerWidth > 1024) setServicesDropdownOpen(false);
+            if (window.innerWidth > 1024) {
+              setServicesDropdownOpen(false);
+              setDropdownDismissed(false);
+            }
           }}
         >
           <button
@@ -84,7 +101,14 @@ export const SiteHeader: React.FC = () => {
             }`}
             aria-expanded={servicesDropdownOpen}
             aria-controls="services-menu"
-            onClick={toggleServicesDropdown}
+            onClick={(e) => {
+              if (window.innerWidth > 1024 && dropdownDismissed) {
+                setDropdownDismissed(false);
+                setServicesDropdownOpen(true);
+                return;
+              }
+              toggleServicesDropdown(e);
+            }}
           >
             <span>Services</span>
             <svg
@@ -107,6 +131,12 @@ export const SiteHeader: React.FC = () => {
                 key={service.id}
                 to={`/${service.slug}`}
                 className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={(e) => {
+                  // Dismiss immediately on selection and hold closed until pointer leaves nav bounds
+                  setServicesDropdownOpen(false);
+                  setDropdownDismissed(true);
+                  e.currentTarget.blur();
+                }}
               >
                 {service.title}
               </NavLink>
