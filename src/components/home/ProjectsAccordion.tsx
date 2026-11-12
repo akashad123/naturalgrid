@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { ProjectCategoryIllustration } from "./ProjectCategoryIllustration";
 
 /**
  * Data contract for each project category row in the Home page vertical accordion.
@@ -99,9 +100,10 @@ export const ProjectsAccordion: React.FC = () => {
             className={`projects-item${isActive ? " is-active" : ""}`}
             data-project-index={idx}
           >
-            {/* Left numeric rail column */}
+            {/* Left numeric rail column with category-specific illustration beneath */}
             <div className="projects-item-num-col" aria-hidden="true">
               <span className="projects-item-num">{item.num}</span>
+              <ProjectCategoryIllustration categoryId={item.id} />
             </div>
 
             {/* Right category heading + collapsible vertical showcase panel */}

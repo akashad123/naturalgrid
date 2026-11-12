@@ -793,9 +793,44 @@ html.lenis.lenis-smooth {
 }
 
 .projects-item-num-col {
+  position: relative;
+  overflow: hidden;
   padding: clamp(16px, 2vw, 24px) clamp(16px, 2vw, 28px) clamp(16px, 2vw, 24px) 0;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
+}
+
+.projects-item-art {
+  position: absolute;
+  left: 0;
+  right: clamp(16px, 2vw, 28px);
+  bottom: clamp(16px, 2.2vw, 26px);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 10px, 0);
+  transition:
+    opacity 0.34s ease,
+    transform 0.44s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.34s;
+}
+
+.projects-item.is-active .projects-item-art {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 0.38s ease 0.06s,
+    transform 0.46s cubic-bezier(0.22, 1, 0.36, 1) 0.04s,
+    visibility 0s linear 0s;
+}
+
+.projects-item-art-svg {
+  display: block;
+  width: 100%;
+  max-width: 292px;
+  height: auto;
 }
 
 .projects-item-num {
@@ -1240,6 +1275,7 @@ html.lenis.lenis-smooth {
   .footer-card .link-col a,
   .projects-panel-wrap,
   .projects-item-num,
+  .projects-item-art,
   .projects-item-main,
   .projects-item-arrow,
   .projects-item-title,
