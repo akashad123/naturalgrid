@@ -1155,9 +1155,11 @@ html.lenis.lenis-smooth {
   }
 }
 
-/* White compact expanding-arrow button system for View Projects & Why Natural Grid Contact Now */
+/* Universal compact button system (~34px height) with zero hover/active scaling or translation */
 .projects-card-cta,
-.features .contact-btn {
+.contact-btn,
+.btn-dark,
+.contact-hero .contact-btn {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -1184,26 +1186,49 @@ html.lenis.lenis-smooth {
     border-color 0.22s ease;
 }
 
+.btn-dark {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #ffffff;
+}
+
 .projects-card-cta:hover,
 .projects-card-cta:focus-visible,
 .projects-card-cta:active,
-.features .contact-btn:hover,
-.features .contact-btn:focus-visible,
-.features .contact-btn:active {
+.contact-btn:hover,
+.contact-btn:focus-visible,
+.contact-btn:active,
+.contact-hero .contact-btn:hover,
+.contact-hero .contact-btn:focus-visible,
+.contact-hero .contact-btn:active {
   background: var(--surface);
   border-color: rgba(6, 48, 36, 0.36);
   box-shadow: none;
   transform: none;
 }
 
+.btn-dark:hover,
+.btn-dark:focus-visible,
+.btn-dark:active {
+  background: var(--deep);
+  border-color: var(--deep);
+  box-shadow: none;
+  transform: none;
+}
+
 .projects-card-cta:focus-visible,
-.features .contact-btn:focus-visible {
+.contact-btn:focus-visible,
+.btn-dark:focus-visible,
+.submit-btn:focus-visible,
+.calc-run:focus-visible,
+.filter-btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 .projects-card-cta .btn-arrow,
-.features .contact-btn .btn-arrow {
+.contact-btn .btn-arrow,
+.btn-dark .btn-arrow {
   position: absolute;
   top: 0.3em;
   right: 0.3em;
@@ -1215,37 +1240,126 @@ html.lenis.lenis-smooth {
   width: 2.2em;
   background: var(--accent);
   color: #ffffff;
+  transform: none;
   transition:
     width 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
     background-color 0.25s ease;
 }
 
 .projects-card-cta:hover .btn-arrow,
 .projects-card-cta:focus-visible .btn-arrow,
-.features .contact-btn:hover .btn-arrow,
-.features .contact-btn:focus-visible .btn-arrow {
+.contact-btn:hover .btn-arrow,
+.contact-btn:focus-visible .btn-arrow,
+.btn-dark:hover .btn-arrow,
+.btn-dark:focus-visible .btn-arrow {
   width: calc(100% - 0.6em);
   background: var(--accent);
+  transform: none;
 }
 
 .projects-card-cta:active .btn-arrow,
-.features .contact-btn:active .btn-arrow {
-  transform: scale(0.95);
+.contact-btn:active .btn-arrow,
+.btn-dark:active .btn-arrow {
+  transform: none;
 }
 
 .projects-card-cta .btn-arrow svg,
-.features .contact-btn .btn-arrow svg {
+.contact-btn .btn-arrow svg,
+.btn-dark .btn-arrow svg {
   width: 1.15em;
   height: 1.15em;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: none;
+  transition: none;
 }
 
 .projects-card-cta:hover .btn-arrow svg,
 .projects-card-cta:focus-visible .btn-arrow svg,
-.features .contact-btn:hover .btn-arrow svg,
-.features .contact-btn:focus-visible .btn-arrow svg {
-  transform: translateX(0.1em);
+.contact-btn:hover .btn-arrow svg,
+.contact-btn:focus-visible .btn-arrow svg,
+.btn-dark:hover .btn-arrow svg,
+.btn-dark:focus-visible .btn-arrow svg {
+  transform: none;
+}
+
+/* Match standalone form, calculator, filter, slider, floating & lightbox buttons to compact size with zero hover scale/translate */
+.submit-btn,
+.calc-run {
+  min-height: 34px;
+  padding: 9px 18px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  box-shadow: none;
+  transform: none;
+}
+
+.submit-btn:hover,
+.submit-btn:focus-visible,
+.submit-btn:active,
+.calc-run:hover,
+.calc-run:focus-visible,
+.calc-run:active {
+  box-shadow: none;
+  transform: none;
+}
+
+.filter-btn {
+  min-height: 32px;
+  padding: 7px 14px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  transform: none;
+}
+
+.filter-btn:hover,
+.filter-btn:focus-visible,
+.filter-btn:active {
+  transform: none;
+}
+
+.energy-nav button {
+  width: 32px;
+  height: 32px;
+  transform: none;
+}
+
+.energy-nav button:hover,
+.energy-nav button:focus-visible,
+.energy-nav button:active,
+.how-arrow-btn:hover,
+.how-arrow-btn:focus-visible,
+.how-arrow-btn:active,
+.float-btn:hover,
+.float-btn:focus-visible,
+.float-btn:active,
+.lightbox-close:hover,
+.lightbox-close:focus-visible,
+.lightbox-close:active {
+  transform: none;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover,
+.lightbox-prev:focus-visible,
+.lightbox-next:focus-visible,
+.lightbox-prev:active,
+.lightbox-next:active {
+  transform: translateY(-50%);
+}
+
+@media (max-width: 560px) {
+  .energy-nav button {
+    width: 28px;
+    height: 28px;
+  }
+
+  .calc-cta .contact-btn {
+    width: fit-content;
+    align-self: flex-start;
+  }
 }
 
 /* Full-bleed emerald footer with solar horizon illustration, lockup, 4-col links & bottom utility bar */
@@ -1284,9 +1398,9 @@ html.lenis.lenis-smooth {
   position: absolute;
   left: clamp(8px, 3vw, 60px);
   bottom: 0;
-  height: clamp(205px, 21vw, 304px);
+  height: clamp(142px, 14.5vw, 206px);
   width: auto;
-  max-width: 52%;
+  max-width: 48%;
   display: block;
 }
 
@@ -1295,7 +1409,7 @@ html.lenis.lenis-smooth {
   z-index: 1;
   width: min(100%, var(--max-width));
   margin-inline: auto;
-  padding: clamp(56px, 6vw, 94px) clamp(20px, 4.2vw, 64px) clamp(64px, 6.8vw, 102px);
+  padding: clamp(48px, 5vw, 82px) clamp(20px, 4.2vw, 64px) clamp(54px, 5.8vw, 88px);
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -1457,14 +1571,14 @@ html.lenis.lenis-smooth {
 @media (max-width: 900px) {
   .footer-hero-content {
     justify-content: flex-start;
-    padding: 36px clamp(16px, 4vw, 32px) clamp(168px, 32vw, 224px);
+    padding: 32px clamp(16px, 4vw, 32px) clamp(124px, 24vw, 166px);
   }
 
   .footer-scene-svg {
     left: 50%;
     transform: translateX(-50%);
-    height: clamp(160px, 30vw, 220px);
-    max-width: 96%;
+    height: clamp(112px, 22vw, 152px);
+    max-width: 92%;
   }
 
   .footer-links {
@@ -1485,7 +1599,7 @@ html.lenis.lenis-smooth {
 
 @media (max-width: 560px) {
   .footer-hero-content {
-    padding: 30px 16px 168px;
+    padding: 28px 16px 124px;
   }
 
   .footer-lockup {
@@ -1507,8 +1621,8 @@ html.lenis.lenis-smooth {
   }
 
   .footer-scene-svg {
-    height: 158px;
-    max-width: 98%;
+    height: 112px;
+    max-width: 94%;
   }
 
   .footer-inner {
