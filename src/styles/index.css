@@ -754,6 +754,21 @@ html.lenis.lenis-smooth {
   }
 }
 
+/* Landing hero matched to PageHero framing while keeping HeroVideo beneath the NATURALGRID wordmark and copy */
+.page-hero.hero--about-match {
+  padding-top: calc(var(--header-h) + clamp(36px, 5vw, 76px));
+}
+
+.page-hero.hero--about-match > .hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.page-hero.hero--about-match .page-title {
+  margin-top: 0;
+}
+
 /* Hover text-roll effect for hero buttons (preserves 0px radius, theme surfaces, and zero box translate/scale) */
 .hero-btn:hover,
 .hero-btn:focus-visible {
@@ -826,6 +841,10 @@ html.lenis.lenis-smooth {
 /* ============ OUR PROJECTS VERTICAL ACCORDION ============ */
 .projects {
   padding-block: clamp(44px, 5vw, 72px);
+}
+
+.projects .section-head-copy .eyebrow {
+  margin-bottom: 0;
 }
 
 .projects-accordion {

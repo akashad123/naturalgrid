@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { SeoHead } from "@/components/common/SeoHead";
-import { StaggerRollText } from "@/components/common/StaggerRollText";
+import { PageHero } from "@/components/common/PageHero";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { HowItWorksCarousel } from "@/components/home/HowItWorksCarousel";
 import { FeaturesAboutIllustration, FeaturesPanelAccent } from "@/components/home/FeaturesIllustrations";
@@ -21,55 +21,14 @@ export const HomePage: React.FC = () => {
         canonicalPath="/"
       />
 
-      {/* ============ HERO ============ */}
-      <section className="hero">
-        <HeroVideo />
-
-        <div className="hero-content">
-          <h1 className="hero-headline">
-            <span>Kerala’s Trusted Solar Company,</span>
-            <span>
-              Built on <span className="hero-headline-accent">Service First.</span>
-            </span>
-          </h1>
-
-          <p className="hero-text">
-            Expert solar installation for homes and businesses across Kerala.
-            Save on your KSEB bills and switch to clean, renewable energy —
-            with service that stays with you long after commissioning.
-          </p>
-
-          <div className="hero-actions">
-            <Link
-              to="/contact"
-              className="hero-btn hero-btn--solid"
-              aria-label="Get a Free Quote"
-            >
-              <StaggerRollText text="Get a Free Quote" />
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </Link>
-            <a
-              href="#about"
-              className="hero-btn hero-btn--ghost"
-              aria-label="Our Services"
-            >
-              <StaggerRollText text="Our Services" />
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* ============ HERO (Matches inner PageHero without badge/topbar/buttons) ============ */}
+      <PageHero
+        className="hero--about-match"
+        badgeText=""
+        title={"Kerala’s Trusted Solar Company, Built on Service\u00A0First."}
+        description="Expert solar installation for homes and businesses across Kerala. Save on your KSEB bills and switch to clean, renewable energy — with service that stays with you long after commissioning."
+        background={<HeroVideo />}
+      />
 
       {/* ============ ABOUT / STATS ============ */}
       <section className="about" id="about">
@@ -145,9 +104,6 @@ export const HomePage: React.FC = () => {
         <div className="section-head">
           <div className="section-head-copy">
             <p className="eyebrow section-label">Our Projects</p>
-            <h2 className="section-title section-title--sub">
-              Solar for Homes, Businesses &amp; Industry
-            </h2>
           </div>
         </div>
 
@@ -158,9 +114,6 @@ export const HomePage: React.FC = () => {
       <section className="features" id="features">
         <div className="features-intro">
           <p className="eyebrow section-label">Why Natural Grid</p>
-          <h2 className="section-title section-title--sub">
-            Why customers choose Natural Grid
-          </h2>
           <p className="section-text">
             Approved brands, district-level service teams, 24-hour response
             targets and a service-first approach to solar.

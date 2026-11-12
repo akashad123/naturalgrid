@@ -5,6 +5,7 @@ interface PageHeroProps {
   title: string;
   description?: string;
   className?: string;
+  background?: React.ReactNode;
 }
 
 export const PageHero: React.FC<PageHeroProps> = ({
@@ -12,12 +13,14 @@ export const PageHero: React.FC<PageHeroProps> = ({
   title,
   description,
   className = "",
+  background,
 }) => {
   // Split title words to apply the word-by-word rise animation
   const words = title.split(" ");
 
   return (
     <section className={`page-hero ${className}`}>
+      {background}
       {badgeText && (
         <div className="hero-badge">
           <svg
