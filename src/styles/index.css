@@ -1567,6 +1567,18 @@ html.lenis.lenis-smooth {
   margin-top: 0;
 }
 
+/* Match footer social links font size to body description scale */
+.footer-socials .social-link {
+  font-size: clamp(0.88rem, 1.05vw, 0.97rem);
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+}
+
+.footer-socials .social-link svg {
+  width: 14px;
+  height: 14px;
+}
+
 .footer-copy {
   margin: 0;
 }
