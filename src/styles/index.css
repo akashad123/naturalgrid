@@ -1555,7 +1555,7 @@ html.lenis.lenis-smooth {
   background: transparent;
   border-top: 1px solid rgba(244, 245, 242, 0.22);
   text-align: left;
-  font-size: 0.84rem;
+  font-size: 0.76rem;
   color: rgba(244, 245, 242, 0.82);
 }
 
@@ -1567,16 +1567,17 @@ html.lenis.lenis-smooth {
   margin-top: 0;
 }
 
-/* Match footer social links font size to body description scale */
+/* Compact footer social links typography */
 .footer-socials .social-link {
-  font-size: clamp(0.88rem, 1.05vw, 0.97rem);
-  letter-spacing: 0.06em;
-  line-height: 1.5;
+  font-size: clamp(0.68rem, 0.75vw, 0.72rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
 }
 
 .footer-socials .social-link svg {
-  width: 14px;
-  height: 14px;
+  width: 11px;
+  height: 11px;
 }
 
 .footer-copy {
@@ -1683,7 +1684,11 @@ html.lenis.lenis-smooth {
     align-items: center;
     text-align: center;
     padding: 18px 52px 24px;
-    font-size: 0.78rem;
+    font-size: 0.7rem;
+  }
+
+  .footer-socials .social-link {
+    font-size: 0.68rem;
   }
 
   .footer-socials {
