@@ -3,10 +3,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 /**
- * Coordinates GSAP ScrollTrigger entrance, backdrop parallax depth,
- * and pointer-device focus choreography exclusively for the Gallery photos section.
- * Simplifies automatically to lightweight fades on mobile viewports and
- * disables motion when prefers-reduced-motion is enabled.
+ * Coordinates GSAP ScrollTrigger entrance, scrubbed internal photo parallax,
+ * alternating column scroll depth, backdrop parallax, and single-card hover
+ * accent choreography exclusively for the Gallery photos section.
+ * Simplifies automatically on mobile viewports and honors prefers-reduced-motion.
  */
 export const useGalleryGsap = (
   sectionRef: RefObject<HTMLElement | null>,
@@ -20,10 +20,6 @@ export const useGalleryGsap = (
 
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>(".gallery-item", section);
-      const topBackdrop = section.querySelector<HTMLElement>(".gallery-bg-svg--top");
-      const bottomBackdrop = section.querySelector<HTMLElement>(
-        ".gallery-bg-svg--bottom"
-      );
       const topSun = section.querySelector<SVGElement>(
         ".gallery-bg-svg--top .gallery-parallax-sun"
       );
@@ -41,38 +37,79 @@ export const useGalleryGsap = (
 
       const mm = gsap.matchMedia();
 
-      // Desktop & tablet: choreographed shutter reveal, backdrop parallax, and ambient clouds
+      // Desktop & tablet: crisp ScrollTrigger curtain reveals + live scrubbed photo parallax
       mm.add(
         "(min-width: 769px) and (prefers-reduced-motion: no-preference)",
         () => {
-          const cardCount = Math.max(cards.length, 1);
-          const staggerStep = Math.min(0.11, 0.56 / cardCount);
+          cards.forEach((card, idx) => {
+            const img = card.querySelector<HTMLImageElement>("img");
+            const bar = card.querySelector<HTMLElement>(".gallery-item-bar");
+            const zoom = card.querySelector<HTMLElement>(".gallery-zoom");
+            const colIndex = idx % 3;
 
-          if (cards.length > 0) {
-            gsap.set(cards, {
-              opacity: 0,
-              y: 32,
-              clipPath: "inset(14% 0% 0% 0%)",
-            });
+            // Per-card optical curtain reveal triggered cleanly as each card enters view
+            gsap.fromTo(
+              card,
+              {
+                opacity: 0,
+                clipPath: "inset(22% 0% 0% 0%)",
+              },
+              {
+                opacity: 1,
+                clipPath: "inset(0% 0% 0% 0%)",
+                duration: 0.85,
+                delay: colIndex * 0.09,
+                ease: "power3.out",
+                clearProps: "clipPath",
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top 92%",
+                  once: true,
+                },
+              }
+            );
 
-            gsap.to(cards, {
-              opacity: 1,
-              y: 0,
-              clipPath: "inset(0% 0% 0% 0%)",
-              duration: 0.78,
-              ease: "power3.out",
-              stagger: {
-                each: staggerStep,
-                from: "start",
-              },
-              clearProps: "clipPath,transform,willChange",
-              scrollTrigger: {
-                trigger: ".gallery-grid",
-                start: "top 86%",
-                once: true,
-              },
-            });
-          }
+            // Scrubbed alternating column depth synced 1:1 with Lenis scroll (no double-lerp lag)
+            gsap.fromTo(
+              card,
+              { y: colIndex === 1 ? 22 : -14 },
+              {
+                y: colIndex === 1 ? -22 : 14,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: ".gallery-grid",
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: true,
+                },
+              }
+            );
+
+            // Scrubbed internal photo window parallax (image glides cleanly inside overflow:hidden frame)
+            if (img) {
+              gsap.fromTo(
+                img,
+                { yPercent: -6 },
+                {
+                  yPercent: 6,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: card,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true,
+                  },
+                }
+              );
+            }
+
+            if (bar) {
+              gsap.set(bar, { scaleX: 0, transformOrigin: "left center" });
+            }
+            if (zoom) {
+              gsap.set(zoom, { opacity: 0 });
+            }
+          });
 
           // Subtle horizontal ambient float for upper sky clouds inside the backdrop
           if (topClouds) {
@@ -85,19 +122,19 @@ export const useGalleryGsap = (
             });
           }
 
-          // Scroll-scrubbed vertical parallax depth for backdrop sun, contours, and solar structures
+          // Scrubbed vertical parallax depth for backdrop sun, contours, and solar structures
           const scrubTargets: Array<{
             el: Element | Element[];
             fromY: number;
             toY: number;
           }> = [];
 
-          if (topSun) scrubTargets.push({ el: topSun, fromY: -10, toY: 16 });
+          if (topSun) scrubTargets.push({ el: topSun, fromY: -12, toY: 18 });
           if (ridges.length > 0) {
-            scrubTargets.push({ el: ridges, fromY: -12, toY: 14 });
+            scrubTargets.push({ el: ridges, fromY: -14, toY: 16 });
           }
           if (arrays.length > 0) {
-            scrubTargets.push({ el: arrays, fromY: 18, toY: -10 });
+            scrubTargets.push({ el: arrays, fromY: 20, toY: -12 });
           }
 
           scrubTargets.forEach(({ el, fromY, toY }) => {
@@ -111,50 +148,57 @@ export const useGalleryGsap = (
                   trigger: section,
                   start: "top bottom",
                   end: "bottom top",
-                  scrub: 0.85,
+                  scrub: true,
                 },
               }
             );
           });
 
-          if (topBackdrop || bottomBackdrop) {
-            gsap.fromTo(
-              [topBackdrop, bottomBackdrop].filter(Boolean),
-              { opacity: 0.78 },
-              {
-                opacity: 1,
-                duration: 0.9,
-                ease: "power2.out",
-                scrollTrigger: {
-                  trigger: section,
-                  start: "top 90%",
-                  once: true,
-                },
-              }
-            );
-          }
-
-          // Non-scaling fine-pointer spotlight focus across gallery cards (zero scale/translate)
+          // Single-card GPU hover accent (top hairline sweep + zoom pill fade; zero sibling repaint or card scale/translate)
           const hasFinePointer = window.matchMedia("(pointer: fine)").matches;
           const cleanups: Array<() => void> = [];
 
-          if (hasFinePointer && cards.length > 1) {
+          if (hasFinePointer) {
             cards.forEach((card) => {
+              const bar = card.querySelector<HTMLElement>(".gallery-item-bar");
+              const zoom = card.querySelector<HTMLElement>(".gallery-zoom");
+
               const handleEnter = () => {
-                gsap.to(cards, {
-                  opacity: (_idx, target) => (target === card ? 1 : 0.74),
-                  duration: 0.26,
-                  ease: "power2.out",
-                  overwrite: "auto",
-                });
+                if (bar) {
+                  gsap.to(bar, {
+                    scaleX: 1,
+                    duration: 0.28,
+                    ease: "power2.out",
+                    overwrite: "auto",
+                  });
+                }
+                if (zoom) {
+                  gsap.to(zoom, {
+                    opacity: 1,
+                    duration: 0.2,
+                    ease: "power2.out",
+                    overwrite: "auto",
+                  });
+                }
               };
+
               const handleLeave = () => {
-                gsap.to(cards, {
-                  opacity: 1,
-                  duration: 0.28,
-                  ease: "power2.out",
-                  overwrite: "auto",
-                });
+                if (bar) {
+                  gsap.to(bar, {
+                    scaleX: 0,
+                    duration: 0.22,
+                    ease: "power2.out",
+                    overwrite: "auto",
+                  });
+                }
+                if (zoom) {
+                  gsap.to(zoom, {
+                    opacity: 0,
+                    duration: 0.18,
+                    ease: "power2.out",
+                    overwrite: "auto",
+                  });
+                }
               };
 
               card.addEventListener("mouseenter", handleEnter);
@@ -177,33 +221,33 @@ export const useGalleryGsap = (
         }
       );
 
-      // Mobile viewports: lightweight single-pass entrance with static backdrop illustrations
+      // Mobile viewports: lightweight single-pass fade entrance with static backdrop & zero scrub overhead
       mm.add(
         "(max-width: 768px) and (prefers-reduced-motion: no-preference)",
         () => {
-          if (cards.length > 0) {
+          cards.forEach((card, idx) => {
             gsap.fromTo(
-              cards,
+              card,
               { opacity: 0, y: 14 },
               {
                 opacity: 1,
                 y: 0,
-                duration: 0.45,
+                duration: 0.42,
+                delay: Math.min(idx * 0.05, 0.2),
                 ease: "power2.out",
-                stagger: Math.min(0.06, 0.3 / Math.max(cards.length, 1)),
                 clearProps: "transform",
                 scrollTrigger: {
-                  trigger: ".gallery-grid",
-                  start: "top 90%",
+                  trigger: card,
+                  start: "top 92%",
                   once: true,
                 },
               }
             );
-          }
+          });
         }
       );
 
-      // Reduced motion fallback: immediate visibility without motion
+      // Reduced motion fallback: immediate full visibility without motion
       mm.add("(prefers-reduced-motion: reduce)", () => {
         if (cards.length > 0) {
           gsap.set(cards, { opacity: 1, clearProps: "all" });
@@ -211,7 +255,7 @@ export const useGalleryGsap = (
       });
     }, section);
 
-    // Refresh ScrollTrigger once lazy-loaded masonry thumbnails settle in layout
+    // Refresh ScrollTrigger once all gallery thumbnails decode cleanly
     const imgs = Array.from(
       section.querySelectorAll<HTMLImageElement>(".gallery-item img")
     );

@@ -98,13 +98,14 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({ limit }) => {
           <img
             src={item.thumbSrc}
             srcSet={item.srcSet}
-            sizes="(max-width: 440px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            sizes="(max-width: 560px) 100vw, (max-width: 1024px) 50vw, 33vw"
             width={item.width}
             height={item.height}
             alt={item.alt}
-            loading="lazy"
+            loading="eager"
             decoding="async"
           />
+          <span className="gallery-item-bar" aria-hidden="true" />
           <span className="gallery-zoom" aria-hidden="true">
             <svg
               width="16"
