@@ -1730,13 +1730,15 @@ html.lenis.lenis-smooth {
   user-select: none;
 }
 
-.about-stage {
+.about-stage,
+.home-stage {
   position: relative;
   overflow: clip;
   background: var(--page-bg);
 }
 
-.about-stage-inner {
+.about-stage-inner,
+.home-stage-inner {
   position: relative;
   z-index: 1;
 }

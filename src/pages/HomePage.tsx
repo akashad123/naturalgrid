@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { SeoHead } from "@/components/common/SeoHead";
 import { PageHero } from "@/components/common/PageHero";
+import { MinimalBackdrop } from "@/components/common/MinimalBackdrop";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { HowItWorksCarousel } from "@/components/home/HowItWorksCarousel";
 import { FeaturesAboutIllustration, FeaturesPanelAccent } from "@/components/home/FeaturesIllustrations";
@@ -32,7 +33,10 @@ export const HomePage: React.FC = () => {
       />
 
       {/* ============ ABOUT / STATS ============ */}
-      <section className="about" id="about">
+      <div className="home-stage">
+        <MinimalBackdrop />
+        <div className="home-stage-inner">
+          <section className="about" id="about">
         <div className="about-side">
           <div className="stat">
             <span ref={districtRef} className="stat-number">
@@ -96,12 +100,17 @@ export const HomePage: React.FC = () => {
           </Link>
         </div>
       </section>
+        </div>
+      </div>
 
       {/* ============ PROCESS / HOW IT WORKS (Overlapping Deck) ============ */}
       <HowItWorksCarousel />
 
-      {/* ============ PROJECTS ============ */}
-      <section className="projects" id="projects">
+      {/* ============ PROJECTS & FEATURES (Pinned NATURAL GRID + Scrollable Content) ============ */}
+      <div className="home-stage home-stage--projects">
+        <MinimalBackdrop />
+        <div className="home-stage-inner">
+          <section className="projects" id="projects">
         <div className="section-head">
           <div className="section-head-copy">
             <p className="eyebrow section-label">Our Projects</p>
@@ -238,6 +247,8 @@ export const HomePage: React.FC = () => {
           <FeaturesAboutIllustration />
         </div>
       </section>
+        </div>
+      </div>
 
       {/* ============ TRUSTED BY ============ */}
       <TrustMarquee />
