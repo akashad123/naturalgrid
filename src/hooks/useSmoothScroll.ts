@@ -11,7 +11,7 @@ export const useSmoothScroll = (pathname: string): void => {
 
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.08,
+      lerp: 0.1,
       smoothWheel: true,
       syncTouch: false,
       autoRaf: true,

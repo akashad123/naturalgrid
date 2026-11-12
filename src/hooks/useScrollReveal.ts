@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 
 const REVEAL_SELECTORS = [
-  ".hero-content",
-  ".hero-featurebar",
-  ".page-hero > *",
-  ".contact-hero > *",
   ".section-head",
   ".how-head",
   ".how-carousel",
@@ -26,18 +22,13 @@ const REVEAL_SELECTORS = [
   ".contact-form",
   ".map-head",
   ".map-embed",
-  ".footer-left",
-  ".footer-card",
 ];
 
-const SHEEN_SELECTORS =
-  ".stat-card, .calc-highlight, .calc-cta, .feature-acc";
-
 /**
- * Progressive motion and interaction hook mirroring legacy motion.js:
- * - Adds slow Ken Burns drift to hero imagery
+ * Progressive motion and interaction hook:
+ * - Adds slow Ken Burns drift to static hero poster imagery
  * - Applies staggered [data-reveal] entrance animations via IntersectionObserver
- * - Adds cursor-tracking radial sheen (--mx/--my) on interactive cards on pointer devices
+ *   strictly to below-the-fold sections (preventing hero/footer hydration flash)
  * Honors prefers-reduced-motion automatically.
  */
 export const useScrollReveal = (routeKey: string): void => {
@@ -50,7 +41,7 @@ export const useScrollReveal = (routeKey: string): void => {
       return;
     }
 
-    // Hero imagery slow drift
+    // Static hero poster slow drift (automatically paused via CSS while video plays)
     document.querySelectorAll<HTMLElement>(".hero-bg img").forEach((img) => {
       img.classList.add("kenburns");
     });
@@ -65,7 +56,7 @@ export const useScrollReveal = (routeKey: string): void => {
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
     );
 
     const siblingCount = new Map<HTMLElement | null, number>();
@@ -74,41 +65,19 @@ export const useScrollReveal = (routeKey: string): void => {
     );
 
     revealTargets.forEach((el) => {
-      // Page titles animate word-by-word instead — skip block reveal
       if (el.classList.contains("split-title")) return;
-      // Preserve persistent elements (such as footer) once already revealed
       if (el.classList.contains("is-visible")) return;
 
       const parent = el.parentElement;
       const index = siblingCount.get(parent) ?? 0;
       siblingCount.set(parent, index + 1);
-      el.style.setProperty("--reveal-delay", `${Math.min(index * 90, 360)}ms`);
+      el.style.setProperty("--reveal-delay", `${Math.min(index * 75, 280)}ms`);
       el.setAttribute("data-reveal", "");
       revealObserver.observe(el);
     });
 
-    // Cursor-following radial sheen on pointer devices (lightweight/static on narrow touch screens)
-    const sheenCleanups: Array<() => void> = [];
-    const hasFinePointer = window.matchMedia("(pointer: fine)").matches;
-
-    if (hasFinePointer) {
-      document.querySelectorAll<HTMLElement>(SHEEN_SELECTORS).forEach((el) => {
-        el.classList.add("has-sheen");
-        const handleMouseMove = (e: MouseEvent) => {
-          const rect = el.getBoundingClientRect();
-          el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-          el.style.setProperty("--my", `${e.clientY - rect.top}px`);
-        };
-        el.addEventListener("mousemove", handleMouseMove);
-        sheenCleanups.push(() =>
-          el.removeEventListener("mousemove", handleMouseMove)
-        );
-      });
-    }
-
     return () => {
       revealObserver.disconnect();
-      sheenCleanups.forEach((cleanup) => cleanup());
     };
   }, [routeKey]);
 };

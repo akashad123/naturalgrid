@@ -47,17 +47,12 @@ export function useScrollProgress(): React.RefObject<HTMLDivElement> {
     updateBar();
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", recalcBounds, { passive: true });
-
-    const resizeObserver =
-      "ResizeObserver" in window
-        ? new ResizeObserver(recalcBounds)
-        : null;
-    resizeObserver?.observe(document.documentElement);
+    window.addEventListener("load", recalcBounds, { once: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", recalcBounds);
-      resizeObserver?.disconnect();
+      window.removeEventListener("load", recalcBounds);
     };
   }, []);
 
