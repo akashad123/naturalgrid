@@ -1681,10 +1681,70 @@ html.lenis.lenis-smooth {
   }
 }
 
+/* ============ UNIFIED MINIMALIST BACKDROP & NATURAL GRID WATERMARK ============ */
+.minimal-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(35, 101, 55, 0.035) 0%,
+    rgba(244, 245, 242, 0.72) 50%,
+    rgba(35, 101, 55, 0.045) 100%
+  );
+}
+
+.minimal-backdrop-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  max-height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.minimal-backdrop-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.minimal-watermark {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.45rem, 11vw, 9.8rem);
+  line-height: 0.92;
+  letter-spacing: 0.06em;
+  color: rgba(6, 48, 36, 0.055);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.about-stage {
+  position: relative;
+  overflow: clip;
+  background: var(--page-bg);
+}
+
+.about-stage-inner {
+  position: relative;
+  z-index: 1;
+}
+
 /* ============ GALLERY BACKDROP ILLUSTRATIONS & GSAP PHOTO STAGE ============ */
 .gallery-section {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   padding: clamp(56px, 6.8vw, 104px) 0 clamp(76px, 9vw, 136px);
   background: var(--page-bg);
 }
@@ -1827,7 +1887,7 @@ html.lenis.lenis-smooth {
 /* ============ CALCULATOR STAGE, BACKDROP ART & RICH BREAKDOWN ============ */
 .calculator-stage {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   background: linear-gradient(
     180deg,
     rgba(35, 101, 55, 0.045) 0%,
@@ -1890,17 +1950,6 @@ html.lenis.lenis-smooth {
   margin-bottom: 0;
   position: sticky;
   top: 96px;
-}
-
-.calculator-stage .faq-illustration {
-  margin-top: 22px;
-  max-width: 340px;
-}
-
-.calculator-stage .faq-illustration svg {
-  width: 100%;
-  height: auto;
-  display: block;
 }
 
 .calculator-stage .faq {
@@ -2186,7 +2235,7 @@ html.lenis.lenis-smooth {
 
 .precision {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   border-top: 1px solid rgba(6, 48, 36, 0.1);
   grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
   gap: clamp(28px, 4.5vw, 76px);
@@ -2299,7 +2348,7 @@ html.lenis.lenis-smooth {
 /* ============ SERVICE DETAIL PAGES STAGE & EDITORIAL CARDS ============ */
 .services-stage {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   background: var(--page-bg);
 }
 
@@ -2560,13 +2609,8 @@ html.lenis.lenis-smooth {
     position: static;
   }
 
-  .calculator-stage .faq-illustration {
-    max-width: 280px;
-  }
-
-  .calc-bg-svg--mid {
-    top: 52%;
-    opacity: 0.65;
+  .minimal-bg-svg--bottom {
+    opacity: 0.72;
   }
 }
 

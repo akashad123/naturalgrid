@@ -4,6 +4,7 @@ import { SeoHead } from "@/components/common/SeoHead";
 import { PageHero } from "@/components/common/PageHero";
 import { EnergySlider } from "@/components/about/EnergySlider";
 import { AboutHorizonAccent } from "@/components/about/AboutBackdropIllustrations";
+import { MinimalBackdrop } from "@/components/common/MinimalBackdrop";
 import { TrustMarquee } from "@/components/home/TrustMarquee";
 import { useCounter } from "@/hooks/useCounter";
 
@@ -26,8 +27,11 @@ export const AboutPage: React.FC = () => {
         description="We're a Wayanad-based solar company that sees the installation as the start of the relationship, not the end of it — fitting each system carefully and staying on to keep it running for years."
       />
 
-      {/* ============ OUR JOURNEY (MINIMAL EDITORIAL GRID) ============ */}
-      <section className="journey">
+      <div className="about-stage">
+        <MinimalBackdrop />
+        <div className="about-stage-inner">
+          {/* ============ OUR JOURNEY (MINIMAL EDITORIAL GRID) ============ */}
+          <section className="journey">
         <div className="journey-aside">
           <p className="eyebrow section-label">01 / Our Journey</p>
           <h2 className="journey-heading">
@@ -178,6 +182,8 @@ export const AboutPage: React.FC = () => {
           </li>
         </ol>
       </section>
+        </div>
+      </div>
 
       {/* ============ CARE AFTER INSTALLATION SLIDER ============ */}
       <EnergySlider />

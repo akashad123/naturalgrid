@@ -65,67 +65,6 @@ export const CalculatorPage: React.FC = () => {
             <div className="faq-head">
               <p className="eyebrow section-label">02 / Frequently Asked</p>
               <h2>Common Calculator Questions</h2>
-
-              <div className="faq-illustration" aria-hidden="true">
-                <svg viewBox="0 0 280 156" fill="none">
-                  <defs>
-                    <radialGradient id="faq-sun-glow" cx="28%" cy="32%" r="36%">
-                      <stop offset="0%" stopColor="#9f4c1c" stopOpacity="0.16" />
-                      <stop offset="100%" stopColor="#9f4c1c" stopOpacity="0" />
-                    </radialGradient>
-                    <linearGradient id="faq-hill-fade" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#236537" stopOpacity="0.09" />
-                      <stop offset="100%" stopColor="#236537" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
-
-                  <circle cx="62" cy="46" r="42" fill="url(#faq-sun-glow)" />
-                  <circle
-                    cx="62"
-                    cy="46"
-                    r="14"
-                    fill="rgba(159, 76, 28, 0.08)"
-                    stroke="rgba(159, 76, 28, 0.42)"
-                    strokeWidth="1.15"
-                  />
-                  <path
-                    d="M62 22 V27 M62 65 V70 M38 46 H43 M81 46 H86 M45 29 L49 33 M75 59 L79 63 M79 29 L75 33 M49 59 L45 63"
-                    stroke="rgba(159, 76, 28, 0.36)"
-                    strokeWidth="1.1"
-                    strokeLinecap="round"
-                  />
-
-                  <path
-                    d="M8 124 C68 96, 138 112, 206 94 C236 86, 258 92, 272 86 L272 152 L8 152 Z"
-                    fill="url(#faq-hill-fade)"
-                  />
-                  <path
-                    d="M8 124 C68 96, 138 112, 206 94 C236 86, 258 92, 272 86"
-                    stroke="rgba(35, 101, 55, 0.32)"
-                    strokeWidth="1.1"
-                    strokeLinecap="round"
-                  />
-
-                  <g strokeLinecap="round" strokeLinejoin="round">
-                    <polygon
-                      points="118,86 210,64 252,82 160,104"
-                      fill="rgba(35, 101, 55, 0.08)"
-                      stroke="rgba(6, 48, 36, 0.45)"
-                      strokeWidth="1.25"
-                    />
-                    <path
-                      d="M148 79 L190 97 M179 71 L221 89 M139 95 L231 73"
-                      stroke="rgba(35, 101, 55, 0.35)"
-                      strokeWidth="1"
-                    />
-                    <path
-                      d="M158 104 V120 M210 92 V106"
-                      stroke="rgba(6, 48, 36, 0.32)"
-                      strokeWidth="1.15"
-                    />
-                  </g>
-                </svg>
-              </div>
             </div>
 
             <div className="faq">
