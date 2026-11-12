@@ -153,6 +153,54 @@ html.lenis.lenis-smooth {
   }
 }
 
+.features-about-art {
+  width: 100%;
+  max-width: clamp(320px, 36vw, 490px);
+  margin-top: clamp(22px, 2.8vw, 38px);
+}
+
+.features-about-art-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.features-panel h3,
+.features-panel .contact-btn {
+  position: relative;
+  z-index: 1;
+}
+
+.features-panel-art {
+  position: absolute;
+  right: clamp(12px, 2vw, 26px);
+  bottom: 0;
+  width: clamp(132px, 14vw, 196px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.features-panel-art-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1024px) {
+  .features-about-art {
+    max-width: 440px;
+    margin-top: 22px;
+  }
+}
+
+@media (max-width: 560px) {
+  .features-panel-art {
+    width: 124px;
+    right: 10px;
+    opacity: 0.85;
+  }
+}
+
 /* Brand Partners marquee items: pointer cursor, zero lift/underline, smooth dark-green color highlight without opacity layer thrashing */
 .trusted-logo {
   cursor: pointer;

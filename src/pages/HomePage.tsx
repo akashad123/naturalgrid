@@ -4,6 +4,7 @@ import { SeoHead } from "@/components/common/SeoHead";
 import { StaggerRollText } from "@/components/common/StaggerRollText";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { HowItWorksCarousel } from "@/components/home/HowItWorksCarousel";
+import { FeaturesAboutIllustration, FeaturesPanelAccent } from "@/components/home/FeaturesIllustrations";
 import { ProjectsAccordion } from "@/components/home/ProjectsAccordion";
 import { TrustMarquee } from "@/components/home/TrustMarquee";
 import { siteConfig } from "@/config/site";
@@ -171,6 +172,7 @@ export const HomePage: React.FC = () => {
             <span className="panel-watermark" aria-hidden="true">
               naturalgrid
             </span>
+            <FeaturesPanelAccent />
             <h3>Service First. Kerala-Wide.</h3>
             <Link to="/contact" className="contact-btn">
               <span>Contact Now</span>
@@ -279,6 +281,7 @@ export const HomePage: React.FC = () => {
             commissioning — and we've built our company around solving exactly
             that.
           </p>
+          <FeaturesAboutIllustration />
         </div>
       </section>
 
