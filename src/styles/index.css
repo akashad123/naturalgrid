@@ -1817,6 +1817,13 @@ html.lenis.lenis-smooth {
   }
 }
 
+/* Full-bleed edge-to-edge background image for About page Care After Installation section */
+.energy {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .stagger-roll-char,
   .trusted-logo,
