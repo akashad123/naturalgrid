@@ -24,7 +24,13 @@ export function renderRoute(url: string): { html: string; seo: ResolvedSeo } {
           collectedSeo = seo;
         }}
       >
-        <StaticRouter location={url}>
+        <StaticRouter
+          location={url}
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <AppRoutes />
         </StaticRouter>
       </SeoCollectorProvider>
