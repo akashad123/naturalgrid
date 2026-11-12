@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { SeoHead } from "@/components/common/SeoHead";
 import { PageHero } from "@/components/common/PageHero";
 import { EnergySlider } from "@/components/about/EnergySlider";
-import { AboutHorizonAccent } from "@/components/about/AboutBackdropIllustrations";
 import { MinimalBackdrop } from "@/components/common/MinimalBackdrop";
 import { TrustMarquee } from "@/components/home/TrustMarquee";
 import { useCounter } from "@/hooks/useCounter";
@@ -190,7 +189,6 @@ export const AboutPage: React.FC = () => {
 
       {/* ============ OUR VISION (MINIMAL EDITORIAL) ============ */}
       <section className="precision">
-        <AboutHorizonAccent />
         <div className="precision-head">
           <p className="eyebrow section-label">03 / Our Vision</p>
           <h2 className="section-title">Built for long-term trust across Kerala.</h2>

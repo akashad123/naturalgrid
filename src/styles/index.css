@@ -1877,11 +1877,70 @@ html.lenis.lenis-smooth {
   }
 }
 
-/* Full-bleed edge-to-edge background image for About page Care After Installation section */
+/* Full-bleed edge-to-edge background image & viewport-compact Care After Installation carousel */
 .energy {
   width: 100%;
   max-width: none;
   margin-inline: 0;
+  min-height: 0;
+  padding: clamp(24px, 3vw, 44px) clamp(16px, 3vw, 40px);
+}
+
+.energy-slider {
+  width: min(100%, 960px);
+}
+
+.energy-card {
+  padding: clamp(20px, 2.2vw, 30px);
+}
+
+.energy-card h2 {
+  margin-top: 10px;
+  font-size: clamp(1.32rem, 2vw, 1.85rem);
+  max-width: 28ch;
+}
+
+.energy-intro {
+  margin-top: 10px;
+  font-size: 0.92rem;
+  line-height: 1.54;
+  max-width: 68ch;
+}
+
+.energy-features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 24px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.energy-feature {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.energy-feature > p {
+  margin-top: 6px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.energy-card .contact-btn {
+  margin-top: 16px;
+}
+
+.energy-nav {
+  margin-top: 14px;
+}
+
+@media (max-width: 680px) {
+  .energy-features {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
 }
 
 /* ============ CALCULATOR STAGE, BACKDROP ART & RICH BREAKDOWN ============ */

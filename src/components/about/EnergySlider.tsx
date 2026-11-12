@@ -230,15 +230,17 @@ export const EnergySlider: React.FC = () => {
             <h2>{slide.title}</h2>
             <p className="energy-intro">{slide.intro}</p>
 
-            {slide.features.map((feat, fIdx) => (
-              <div key={fIdx} className="energy-feature">
-                <div className="energy-feature-head">
-                  {feat.icon}
-                  <h3>{feat.title}</h3>
+            <div className="energy-features">
+              {slide.features.map((feat, fIdx) => (
+                <div key={fIdx} className="energy-feature">
+                  <div className="energy-feature-head">
+                    {feat.icon}
+                    <h3>{feat.title}</h3>
+                  </div>
+                  <p>{feat.description}</p>
                 </div>
-                <p>{feat.description}</p>
-              </div>
-            ))}
+              ))}
+            </div>
 
             <Link to="/contact" className="contact-btn">
               <span>Contact Now</span>
