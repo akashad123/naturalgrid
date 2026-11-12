@@ -137,3 +137,10 @@ export const siteConfig = {
     },
   ] as ServiceItem[],
 };
+
+/**
+ * Look up configured SEO keywords for a service page by its service ID.
+ */
+export function getServiceKeywords(serviceId: string): string | undefined {
+  return siteConfig.services.find((service) => service.id === serviceId)?.keywords;
+}

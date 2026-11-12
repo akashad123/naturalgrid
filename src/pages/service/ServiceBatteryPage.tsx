@@ -5,6 +5,7 @@ import {
   ServiceFaq,
 } from "@/components/service/ServiceLayout";
 import { SeoHead } from "@/components/common/SeoHead";
+import { getServiceKeywords } from "@/config/site";
 
 const STEPS: ServiceStep[] = [
   {
@@ -46,6 +47,7 @@ export const ServiceBatteryPage: React.FC = () => {
       <SeoHead
         title="Battery Backup & Hybrid Systems"
         description="Hybrid solar power systems and energy storage in Kerala. Keep critical appliances running during grid power cuts."
+        keywords={getServiceKeywords("battery-backup")}
         canonicalPath="/service-battery-backup"
       />
 

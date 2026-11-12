@@ -15,6 +15,7 @@ export const AboutPage: React.FC = () => {
       <SeoHead
         title="About Us"
         description="Learn about Natural Grid LLP — a service-first solar energy company founded in Sulthan Bathery, Wayanad, with district-level service teams across Kerala."
+        keywords="Natural Grid LLP, solar company Wayanad, Sulthan Bathery solar, Kerala solar AMC company, Kisan Service Society solar"
         canonicalPath="/about"
       />
 

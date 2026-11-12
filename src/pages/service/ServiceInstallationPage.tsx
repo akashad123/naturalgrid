@@ -5,6 +5,7 @@ import {
   ServiceFaq,
 } from "@/components/service/ServiceLayout";
 import { SeoHead } from "@/components/common/SeoHead";
+import { getServiceKeywords } from "@/config/site";
 
 const STEPS: ServiceStep[] = [
   {
@@ -46,6 +47,7 @@ export const ServiceInstallationPage: React.FC = () => {
       <SeoHead
         title="Solar Power Plant Installation"
         description="Rooftop solar installation in Kerala. On-grid, off-grid, and hybrid solar systems engineered for Kerala homes and commercial properties."
+        keywords={getServiceKeywords("installation")}
         canonicalPath="/service-installation"
       />
 

@@ -44,6 +44,7 @@ export const CalculatorPage: React.FC = () => {
       <SeoHead
         title="Solar Savings Calculator"
         description="Calculate your rooftop solar requirements (kW) and annual electricity bill savings (₹) based on your KSEB bi-monthly consumption."
+        keywords="solar savings calculator Kerala, KSEB solar calculator, rooftop solar kW calculator, solar bill savings India"
         canonicalPath="/calculator"
       />
 

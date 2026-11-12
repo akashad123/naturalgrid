@@ -18,6 +18,7 @@ export const HomePage: React.FC = () => {
       <SeoHead
         title="Solar Installation, Service & AMC in Kerala"
         description="Service-first solar company in Kerala. Rooftop solar installation, AMC, repair, cleaning and monitoring with district-level support teams across all 14 districts."
+        keywords="solar company Kerala, rooftop solar Kerala, solar AMC Kerala, solar service near me, solar installation Wayanad, KSEB net metering"
         canonicalPath="/"
       />
 

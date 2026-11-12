@@ -5,6 +5,7 @@ import {
   ServiceFaq,
 } from "@/components/service/ServiceLayout";
 import { SeoHead } from "@/components/common/SeoHead";
+import { getServiceKeywords } from "@/config/site";
 
 const STEPS: ServiceStep[] = [
   {
@@ -46,6 +47,7 @@ export const ServiceSubsidyPage: React.FC = () => {
       <SeoHead
         title="Solar Subsidy & Net Metering"
         description="Assistance with PM Surya Ghar solar subsidies and KSEB net metering in Kerala. Transparent process and documentation support."
+        keywords={getServiceKeywords("subsidy")}
         canonicalPath="/service-subsidy"
       />
 

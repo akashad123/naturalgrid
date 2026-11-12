@@ -66,16 +66,7 @@ export const SeoHead: React.FC<SeoInput> = ({
 
     upsertMetaTag("name", "twitter:title", resolved.fullTitle);
     upsertMetaTag("name", "twitter:description", resolved.description);
-
-    // Robots directive (noindex on 404/non-public routes; cleaned up on valid routes)
-    const metaRobots = document.querySelector<HTMLMetaElement>(
-      'meta[name="robots"]'
-    );
-    if (resolved.noindex) {
-      upsertMetaTag("name", "robots", "noindex");
-    } else if (metaRobots) {
-      metaRobots.remove();
-    }
+    upsertMetaTag("name", "robots", resolved.robotsContent);
 
     // Canonical link (omitted on noindex error pages)
     let linkCanonical = document.querySelector<HTMLLinkElement>(
@@ -99,6 +90,7 @@ export const SeoHead: React.FC<SeoInput> = ({
     resolved.keywords,
     resolved.canonicalUrl,
     resolved.ogUrl,
+    resolved.robotsContent,
     resolved.noindex,
   ]);
 

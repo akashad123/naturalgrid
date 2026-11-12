@@ -12,6 +12,7 @@ export interface ResolvedSeo {
   keywords: string;
   canonicalUrl: string;
   ogUrl: string;
+  robotsContent: string;
   noindex: boolean;
 }
 
@@ -20,6 +21,9 @@ export const DEFAULT_SEO_DESCRIPTION =
 
 export const DEFAULT_SEO_KEYWORDS =
   "solar company Kerala, rooftop solar Kerala, solar AMC Kerala, solar service near me, solar installation Wayanad";
+
+export const INDEX_ROBOTS_DIRECTIVE = "index, follow, max-image-preview:large";
+export const NOINDEX_ROBOTS_DIRECTIVE = "noindex, nofollow";
 
 /**
  * Resolves full document title, metadata, and canonical URL identically
@@ -40,6 +44,7 @@ export function resolveSeoMetadata(
   const description = input.description?.trim() || DEFAULT_SEO_DESCRIPTION;
   const keywords = input.keywords?.trim() || DEFAULT_SEO_KEYWORDS;
   const noindex = Boolean(input.noindex);
+  const robotsContent = noindex ? NOINDEX_ROBOTS_DIRECTIVE : INDEX_ROBOTS_DIRECTIVE;
 
   const rawPath = input.canonicalPath ?? "/";
   const normalizedPath =
@@ -63,6 +68,7 @@ export function resolveSeoMetadata(
     keywords,
     canonicalUrl,
     ogUrl,
+    robotsContent,
     noindex,
   };
 }

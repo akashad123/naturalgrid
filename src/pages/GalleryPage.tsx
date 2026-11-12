@@ -15,6 +15,7 @@ export const GalleryPage: React.FC = () => {
       <SeoHead
         title="Gallery"
         description="Photos of completed solar installations across Kerala by Natural Grid LLP: residential rooftops, commercial arrays, and solar water heaters."
+        keywords="solar installation photos Kerala, rooftop solar projects Wayanad, Natural Grid solar gallery, commercial solar Kerala"
         canonicalPath="/gallery"
       />
 

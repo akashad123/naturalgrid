@@ -5,7 +5,7 @@ import {
   ServiceFaq,
 } from "@/components/service/ServiceLayout";
 import { SeoHead } from "@/components/common/SeoHead";
-import { siteConfig } from "@/config/site";
+import { getServiceKeywords, siteConfig } from "@/config/site";
 
 const STEPS: ServiceStep[] = [
   {
@@ -47,6 +47,7 @@ export const ServiceAmcPage: React.FC = () => {
       <SeoHead
         title="Annual Maintenance Contracts (AMC)"
         description="Comprehensive solar plant AMC and maintenance services in Kerala. Regular panel cleaning, inverter diagnostics, and quick breakdown repair."
+        keywords={getServiceKeywords("amc")}
         canonicalPath="/service-amc"
       />
 

@@ -44,6 +44,7 @@ export const ContactPage: React.FC = () => {
       <SeoHead
         title="Contact Us"
         description="Get in touch with Natural Grid LLP for rooftop solar installations, battery backup systems, and AMC maintenance anywhere in Kerala."
+        keywords="contact Natural Grid LLP, solar enquiry Kerala, Wayanad solar office, solar service helpline Kerala"
         canonicalPath="/contact"
       />
 
