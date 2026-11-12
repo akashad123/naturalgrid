@@ -1,116 +1,49 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { siteConfig } from "@/config/site";
+import {
+  FooterCornerWave,
+  FooterHeroIllustration,
+} from "./FooterIllustration";
+
+const SOCIAL_LINKS = [
+  { label: "Facebook", href: siteConfig.socials.facebook },
+  { label: "Instagram", href: siteConfig.socials.instagram },
+  { label: "LinkedIn", href: siteConfig.socials.linkedin },
+  { label: "YouTube", href: siteConfig.socials.youtube },
+] as const;
 
 export const SiteFooter: React.FC = () => {
   return (
     <footer className="site-footer">
-      <div className="footer-inner">
-        <span className="footer-watermark" aria-hidden="true">
-          naturalgrid
-        </span>
-
-        <div className="footer-left">
-          <Link to="/" className="footer-brand" aria-label="Natural Grid Home">
-            <img
-              src="/images/logo.webp"
-              width="320"
-              height="320"
-              alt={siteConfig.name}
-              className="footer-logo"
-              loading="lazy"
-              decoding="async"
-            />
-          </Link>
-          <h2 className="footer-title">Let's Build Energy&nbsp;Together</h2>
-          <div className="footer-socials">
-            <a
-              href={siteConfig.socials.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <span>Facebook</span>
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </a>
-            <a
-              href={siteConfig.socials.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <span>Instagram</span>
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </a>
-            <a
-              href={siteConfig.socials.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <span>LinkedIn</span>
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </a>
-            <a
-              href={siteConfig.socials.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <span>YouTube</span>
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </a>
+      {/* Upper full-bleed solar landscape band + right-aligned brand lockup */}
+      <div className="footer-hero">
+        <FooterHeroIllustration />
+        <div className="footer-hero-content">
+          <div className="footer-lockup">
+            <Link to="/" className="footer-brand" aria-label="Natural Grid Home">
+              <img
+                src="/images/logo.webp"
+                width="320"
+                height="320"
+                alt={siteConfig.name}
+                className="footer-logo"
+                loading="lazy"
+                decoding="async"
+              />
+            </Link>
+            <span className="footer-lockup-divider" aria-hidden="true" />
+            <h2 className="footer-title">
+              Let&apos;s Build
+              <br />
+              Energy Together
+            </h2>
           </div>
         </div>
+      </div>
 
+      {/* Open 4-column directory & bottom social / copyright hairline bar */}
+      <div className="footer-inner">
         <div className="footer-card">
           <div className="footer-links">
             <div className="link-col">
@@ -150,14 +83,44 @@ export const SiteFooter: React.FC = () => {
             </div>
           </div>
         </div>
+
+        <div className="footer-bottom">
+          <div className="footer-socials">
+            {SOCIAL_LINKS.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+              >
+                <span>{item.label}</span>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7 7 17 7 17 17" />
+                </svg>
+              </a>
+            ))}
+          </div>
+
+          <p className="footer-copy">
+            &copy; Copyright 2026 | <Link to="/">{siteConfig.legalName}</Link> | All
+            Rights Reserved
+          </p>
+        </div>
       </div>
 
-      <div className="footer-bottom">
-        <p>
-          &copy; Copyright 2026 | <Link to="/">{siteConfig.legalName}</Link> | All
-          Rights Reserved
-        </p>
-      </div>
+      <FooterCornerWave />
     </footer>
   );
 };

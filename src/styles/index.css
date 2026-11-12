@@ -1221,29 +1221,131 @@ html.lenis.lenis-smooth {
   transform: translateX(0.1em);
 }
 
-/* Full-bleed dark green footer extending edge-to-edge without outer white bars */
+/* Full-bleed emerald footer with solar horizon illustration, lockup, 4-col links & bottom utility bar */
 .site-footer {
+  position: relative;
   width: 100%;
   max-width: none;
   margin: 0;
-  background: var(--deep);
+  background: linear-gradient(180deg, #0b3a21 0%, #09321c 56%, #072917 100%);
+  color: #f4f5f2;
+  overflow: hidden;
+}
+
+.footer-hero {
+  position: relative;
+  width: 100%;
+}
+
+.footer-art {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.footer-hills-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.footer-scene-svg {
+  position: absolute;
+  left: clamp(8px, 3vw, 60px);
+  bottom: 0;
+  height: clamp(205px, 21vw, 304px);
+  width: auto;
+  max-width: 52%;
+  display: block;
+}
+
+.footer-hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, var(--max-width));
+  margin-inline: auto;
+  padding: clamp(56px, 6vw, 94px) clamp(20px, 4.2vw, 64px) clamp(64px, 6.8vw, 102px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.footer-lockup {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 28px);
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: clamp(92px, 8.8vw, 126px);
+  height: clamp(92px, 8.8vw, 126px);
+  margin-bottom: 0;
+  padding: clamp(7px, 0.7vw, 10px);
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  transition: border-color 0.2s ease;
+}
+
+.footer-brand:hover,
+.footer-brand:focus-visible {
+  border-color: var(--orange);
+}
+
+.footer-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  padding: 0;
+}
+
+.footer-lockup-divider {
+  width: 1px;
+  height: clamp(64px, 6.2vw, 90px);
+  background: rgba(244, 245, 242, 0.42);
+  flex-shrink: 0;
+}
+
+.footer-title {
+  font-size: clamp(1.8rem, 3.05vw, 3.05rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  max-width: none;
 }
 
 .footer-inner {
+  position: relative;
+  z-index: 1;
+  display: block;
   width: min(100%, var(--max-width));
   margin-inline: auto;
-  padding: clamp(14px, 1.6vw, 22px) clamp(14px, 1.5vw, 20px);
+  padding: 0 clamp(20px, 4.2vw, 64px);
+  background: transparent;
+  overflow: visible;
 }
 
-/* Blend footer navigation panel seamlessly into dark green footer instead of a separate stark white box */
+/* Open 4-column footer directory integrated directly onto the deep emerald background */
 .footer-card {
-  background: linear-gradient(
-    145deg,
-    rgba(244, 245, 242, 0.08) 0%,
-    rgba(35, 101, 55, 0.18) 45%,
-    rgba(12, 59, 34, 0) 100%
-  );
-  border-left: 1px solid rgba(244, 245, 242, 0.12);
+  background: transparent;
+  border: none;
+  padding: clamp(28px, 3.4vw, 48px) 0 clamp(28px, 3.2vw, 44px);
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(22px, 3vw, 48px);
 }
 
 .footer-card .link-col {
@@ -1260,10 +1362,10 @@ html.lenis.lenis-smooth {
 }
 
 .footer-card .link-col a {
-  font-size: 0.82rem;
+  font-size: 0.83rem;
   font-weight: 400;
-  line-height: 1.5;
-  color: rgba(244, 245, 242, 0.78);
+  line-height: 1.55;
+  color: rgba(244, 245, 242, 0.82);
   transition: color 0.2s ease;
 }
 
@@ -1272,20 +1374,32 @@ html.lenis.lenis-smooth {
   opacity: 1;
 }
 
-.footer-socials {
-  gap: clamp(18px, 2.6vw, 42px);
-}
-
-/* Seamlessly extend dark green through the bottom copyright bar without white padding */
 .footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px clamp(20px, 3vw, 40px);
+  flex-wrap: wrap;
   width: 100%;
   margin-top: 0;
-  padding: 16px clamp(16px, 2.4vw, 34px) 18px;
+  padding: clamp(18px, 2vw, 24px) 0 clamp(22px, 2.5vw, 30px);
   background: transparent;
-  border-top: 1px solid rgba(244, 245, 242, 0.14);
-  text-align: center;
-  font-size: 0.85rem;
-  color: rgba(244, 245, 242, 0.78);
+  border-top: 1px solid rgba(244, 245, 242, 0.22);
+  text-align: left;
+  font-size: 0.84rem;
+  color: rgba(244, 245, 242, 0.82);
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(18px, 2.6vw, 42px);
+  margin-top: 0;
+}
+
+.footer-copy {
+  margin: 0;
 }
 
 .footer-bottom a {
@@ -1298,22 +1412,107 @@ html.lenis.lenis-smooth {
   text-decoration: underline;
 }
 
-@media (max-width: 1024px) {
-  .footer-card {
-    border-left: none;
-    border-top: 1px solid rgba(244, 245, 242, 0.12);
+.footer-corner-art {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: clamp(220px, 25vw, 380px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer-corner-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .footer-hero-content {
+    justify-content: flex-start;
+    padding: 36px clamp(16px, 4vw, 32px) clamp(168px, 32vw, 224px);
+  }
+
+  .footer-scene-svg {
+    left: 50%;
+    transform: translateX(-50%);
+    height: clamp(160px, 30vw, 220px);
+    max-width: 96%;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px 24px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .footer-socials {
+    margin-top: 0;
   }
 }
 
 @media (max-width: 560px) {
-  .footer-inner {
-    padding: 12px;
+  .footer-hero-content {
+    padding: 30px 16px 168px;
   }
 
-  /* Keep centered mobile copyright clear of the bottom-right floating action buttons */
+  .footer-lockup {
+    gap: 14px;
+  }
+
+  .footer-brand {
+    width: 78px;
+    height: 78px;
+    padding: 6px;
+  }
+
+  .footer-lockup-divider {
+    height: 54px;
+  }
+
+  .footer-title {
+    font-size: clamp(1.38rem, 6.2vw, 1.75rem);
+  }
+
+  .footer-scene-svg {
+    height: 158px;
+    max-width: 98%;
+  }
+
+  .footer-inner {
+    padding: 0 16px;
+  }
+
+  .footer-card {
+    padding: 24px 0;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  /* Keep centered mobile social/copyright bar clear of bottom-right floating action buttons */
   .footer-bottom {
-    padding: 14px 58px 18px;
-    font-size: 0.8rem;
+    align-items: center;
+    text-align: center;
+    padding: 18px 52px 24px;
+    font-size: 0.78rem;
+  }
+
+  .footer-socials {
+    justify-content: center;
+    gap: 14px 18px;
+  }
+
+  .footer-corner-art {
+    width: 190px;
+    opacity: 0.72;
   }
 }
 
