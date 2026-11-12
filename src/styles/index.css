@@ -1426,10 +1426,12 @@ html.lenis.lenis-smooth {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: clamp(92px, 8.8vw, 126px);
-  height: clamp(92px, 8.8vw, 126px);
+  width: clamp(104px, 9.6vw, 136px);
+  height: clamp(104px, 9.6vw, 136px);
   margin-bottom: 0;
-  padding: clamp(7px, 0.7vw, 10px);
+  padding: clamp(12px, 1.15vw, 16px);
+  overflow: hidden;
+  border-radius: 50% !important;
   background: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.9);
   transition: border-color 0.2s ease;
@@ -1445,6 +1447,7 @@ html.lenis.lenis-smooth {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  border-radius: 50% !important;
   background: transparent;
   padding: 0;
 }
@@ -1607,9 +1610,9 @@ html.lenis.lenis-smooth {
   }
 
   .footer-brand {
-    width: 78px;
-    height: 78px;
-    padding: 6px;
+    width: 86px;
+    height: 86px;
+    padding: 10px;
   }
 
   .footer-lockup-divider {
@@ -1654,6 +1657,90 @@ html.lenis.lenis-smooth {
   .footer-corner-art {
     width: 190px;
     opacity: 0.72;
+  }
+}
+
+/* ============ GALLERY BACKDROP ILLUSTRATIONS & GSAP PHOTO STAGE ============ */
+.gallery-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(56px, 6.8vw, 104px) 0 clamp(76px, 9vw, 136px);
+  background: var(--page-bg);
+}
+
+.gallery-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.gallery-bg-svg {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gallery-bg-svg--top {
+  top: 0;
+  min-height: clamp(190px, 24vw, 340px);
+}
+
+.gallery-bg-svg--bottom {
+  bottom: 0;
+  min-height: clamp(180px, 23vw, 320px);
+}
+
+.gallery-section .gallery-page {
+  position: relative;
+  z-index: 1;
+  padding: 0 clamp(16px, 2.4vw, 34px);
+}
+
+.gallery-section .gallery-grid {
+  margin-top: 0;
+}
+
+/* Keep sharp 0px framing and zero scale/translate jumps on photo card hover */
+.gallery-section .gallery-item {
+  border: 1px solid rgba(6, 48, 36, 0.08);
+  transition: border-color 0.25s ease;
+}
+
+.gallery-section .gallery-item:hover,
+.gallery-section .gallery-item:focus-visible {
+  border-color: rgba(35, 101, 55, 0.45);
+}
+
+.gallery-section .gallery-item:hover img {
+  transform: none;
+}
+
+.gallery-section .gallery-zoom {
+  transform: none;
+  transition: opacity 0.25s ease;
+}
+
+.gallery-section .gallery-item:hover .gallery-zoom {
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 44px 0 64px;
+  }
+
+  .gallery-bg-svg--top {
+    min-height: 150px;
+    opacity: 0.78;
+  }
+
+  .gallery-bg-svg--bottom {
+    min-height: 145px;
+    opacity: 0.82;
   }
 }
 

@@ -12,7 +12,6 @@ const REVEAL_SELECTORS = [
   ".stat-card",
   ".project-card",
   ".projects-accordion",
-  ".gallery-item",
   ".calc-inputs",
   ".calc-highlight",
   ".calc-cta",
