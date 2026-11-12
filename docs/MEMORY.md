@@ -67,7 +67,7 @@ Last updated: Gallery Backdrop Illustrations, Gallery-Only GSAP Motion & Circula
    - 25 / 25 tests passing (`tests/calculator.test.js`, `tests/phone.test.js`, `tests/react-utils.test.js` importing `src/utils/calculator.ts`, `src/utils/phone.ts`, `src/utils/formatters.ts`, and `src/utils/seo.ts`).
 2. `npm run build` (`tsc && vite build && vite build --ssr ... && node scripts/prerender.mjs`):
    - Zero TypeScript, Vite, or React SSR warnings/errors.
-   - Client bundle: `dist/index.html` 4.27 kB (gzip 1.51 kB), `dist/assets/index-4hmjz-Wn.css` 86.10 kB (gzip 17.41 kB), `dist/assets/index-D92jj7gt.js` 448.16 kB (gzip 143.28 kB); SSR bundle `.prerender-ssr/entry-server.js` 244.45 kB (cleaned after prerendering 11 HTML files into `dist/`).
+   - Client bundle: `dist/index.html` 4.27 kB (gzip 1.51 kB), `dist/assets/index-4hmjz-Wn.css` 86.10 kB (gzip 17.41 kB), `dist/assets/index-Dd92ZKDS.js` 448.13 kB (gzip 143.27 kB); SSR bundle `.prerender-ssr/entry-server.js` 244.42 kB (cleaned after prerendering 11 HTML files into `dist/`).
 3. Headless Chrome (`vite preview --port 4174` & dev `3000`) audit:
    - Verified Gallery backdrop illustrations, Gallery-only GSAP ScrollTrigger/parallax/hover-focus, circular footer logo badge, universal compact buttons, full-scale matte footer solar illustration & inner hero badge removal (`verify-gallery.mjs`, `verify-features-trusted.mjs`, & `verify-site.mjs`): `/gallery` renders `.gallery-bg-svg--top` (`356.3px`) & `.gallery-bg-svg--bottom` (`336.5px`) behind `.gallery-grid`, GSAP initializes `.gallery-item` at `opacity: 0` offscreen and reveals all 6 cards cleanly (`opacity: 1`), `ScrollTrigger` shifts backdrop parallax transforms (`-10px -> 0.0899px` sun, `-1.9101px -> 3.8851px` lower ridges), pointer hover focuses active card (`1`) while softening siblings (`0.74`) with `transform: "none"` on `img`/`.gallery-zoom`/button, mobile (`390×844`) completes lightweight reveal (`1`) with `0px` overflow; `.footer-brand` renders as a clean circle (`borderRadius: "50%"`, `136×136px` desktop / `86×86px` mobile, `overflow: "hidden"`); `.footer-scene-svg` maintains full dimensions (`302.4px` height & `sceneRight: 666.9px` desktop; `158px` height mobile; `footerHeight: 668.3px`; `hasHalo: false`).
    - Verified `100svh` full-viewport heroes & site-wide TopBar/header `Contact Now`/`'Future with Renewable'` badge removal (`verify-site.mjs` & `verify-features-trusted.mjs`): all page heroes across `/`, `/about`, all 5 service pages, `/gallery`, `/calculator`, and `/contact` measure full viewport height (`heroBottom=900px` at `1440×900` desktop and `844px` at `390×844` mobile) with zero bottom white padding strip, zero `.topbar`, zero header/drawer `.contact-btn`, zero `'Future with Renewable'` hero badge (both hydrated DOM and raw SSR `/`, `/about.html`), while `#projects` omits `'Solar for Homes, Businesses & Industry'` and `#features` omits `'Why customers choose Natural Grid'`.
@@ -84,7 +84,7 @@ Last updated: Gallery Backdrop Illustrations, Gallery-Only GSAP Motion & Circula
 
 ## Git State
 - **Branch:** `master`
-- **Previous Commit:** `a2b4ac2`
+- **Previous Commit:** `3bca451`
 - **Remote Status:** Local Git repository only (no remote upstream configured yet).
 
 ## Next Exact Step

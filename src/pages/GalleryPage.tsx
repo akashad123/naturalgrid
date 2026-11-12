@@ -13,7 +13,7 @@ export const GalleryPage: React.FC = () => {
   return (
     <>
       <SeoHead
-        title="Gallery - Our Work in the Field"
+        title="Gallery"
         description="Photos of completed solar installations across Kerala by Natural Grid LLP: residential rooftops, commercial arrays, and solar water heaters."
         canonicalPath="/gallery"
       />
