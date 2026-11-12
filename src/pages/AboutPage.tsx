@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { SeoHead } from "@/components/common/SeoHead";
 import { PageHero } from "@/components/common/PageHero";
 import { EnergySlider } from "@/components/about/EnergySlider";
+import { AboutHorizonAccent } from "@/components/about/AboutBackdropIllustrations";
 import { TrustMarquee } from "@/components/home/TrustMarquee";
 import { useCounter } from "@/hooks/useCounter";
 
@@ -25,31 +26,27 @@ export const AboutPage: React.FC = () => {
         description="We're a Wayanad-based solar company that sees the installation as the start of the relationship, not the end of it — fitting each system carefully and staying on to keep it running for years."
       />
 
-      {/* ============ OUR JOURNEY ============ */}
+      {/* ============ OUR JOURNEY (MINIMAL EDITORIAL GRID) ============ */}
       <section className="journey">
-        <div>
-          <div className="hero-badge">
-            <span>About our journey</span>
-          </div>
+        <div className="journey-aside">
+          <p className="eyebrow section-label">01 / Our Journey</p>
+          <h2 className="journey-heading">
+            Built around what happens after commissioning.
+          </h2>
         </div>
 
         <div className="journey-copy">
           <p>
             Natural Grid LLP is a Kerala-based renewable-energy company
-            headquartered in Sulthan Bathery, Wayanad. Incorporated as a Limited
-            Liability Partnership, we focus on solar power plant installation,
-            annual maintenance contracts (AMC), servicing, repair, inspection,
-            performance monitoring and complete lifecycle support. Our
-            strength comes from hands-on field experience — we understand what
-            happens to a solar plant after commissioning, and we have built our
-            company around solving exactly that.
+            headquartered in Sulthan Bathery, Wayanad — focused on rooftop solar
+            installation, annual maintenance contracts (AMC), inspection,
+            monitoring, and complete lifecycle service across all 14 districts.
           </p>
           <p>
-            We also collaborate with the Kisan Service Society (KSS), a
-            non-profit network with units across Kerala, helping solar awareness
-            and reliable service reach households and farmers even in rural areas
-            — while all technical assessments, quotations and payments are
-            handled directly and only by Natural Grid LLP.
+            Through field work and collaboration with the Kisan Service Society
+            (KSS), we bring dependable solar guidance to urban and rural homes
+            alike — while every technical assessment, quotation, and payment stays
+            directly with Natural Grid LLP.
           </p>
           <Link to="/contact" className="contact-btn">
             <span>Contact Now</span>
@@ -72,8 +69,8 @@ export const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ============ STATS ============ */}
-      <section className="stats-row">
+      {/* ============ MINIMAL STATS BAR ============ */}
+      <section className="stats-row" aria-label="Key service standards">
         <div className="stat stat-card">
           <span ref={districtsRef} className="stat-number">
             0
@@ -86,23 +83,23 @@ export const AboutPage: React.FC = () => {
         </div>
         <div className="stat stat-card">
           <span className="stat-number">24–48h</span>
-          <span className="stat-label">Service Visit Scheduling Target</span>
+          <span className="stat-label">Site Visit Target</span>
         </div>
         <div className="stat stat-card">
           <span ref={servicesRef} className="stat-number">
             0+
           </span>
-          <span className="stat-label">End-to-End Solar Services</span>
+          <span className="stat-label">Years &amp; Services Experience</span>
         </div>
       </section>
 
-      {/* ============ WORK PROCESS ============ */}
+      {/* ============ WORK PROCESS (MINIMAL SPLIT LEDGER) ============ */}
       <section className="process">
         <div className="process-head">
-          <h2 className="section-title">How We Work</h2>
+          <p className="eyebrow section-label">02 / How We Work</p>
+          <h2 className="section-title">Five predictable steps.</h2>
           <p className="section-text">
-            However you reach us, every job follows the same five steps — so you
-            always know what is happening and what comes next.
+            Clear milestones from first enquiry through ongoing post-handover care.
           </p>
           <Link to="/contact" className="btn-dark">
             <span>Talk to Us</span>
@@ -126,76 +123,56 @@ export const AboutPage: React.FC = () => {
 
         <ol className="process-steps">
           <li className="process-step">
-            <div className="process-step-marker" aria-hidden="true">
-              <span className="process-step-num">01</span>
-              <span className="process-step-line"></span>
-            </div>
+            <span className="process-step-num" aria-hidden="true">01</span>
             <div className="process-step-body">
               <h3>You reach out</h3>
               <p>
-                Call, message or fill in the form — a real person picks it up. We
-                get back to you within 24 hours and, where practical, arrange a
-                site visit within 24–48 hours.
+                A real technician responds within 24 hours and schedules a site
+                visit within 24–48 hours where practical.
               </p>
             </div>
           </li>
 
           <li className="process-step">
-            <div className="process-step-marker" aria-hidden="true">
-              <span className="process-step-num">02</span>
-              <span className="process-step-line"></span>
-            </div>
+            <span className="process-step-num" aria-hidden="true">02</span>
             <div className="process-step-body">
-              <h3>We visit, evaluate, and document the best solution</h3>
+              <h3>Site audit &amp; written quote</h3>
               <p>
-                We look at your roof, wiring and KSEB bill, then give you a clear
-                written plan and quote. We also help with the KSEB and subsidy
-                paperwork where it is needed.
+                We review your roof, wiring, and KSEB bill, then issue a clear
+                written specification plus net-metering and subsidy paperwork.
               </p>
             </div>
           </li>
 
           <li className="process-step">
-            <div className="process-step-marker" aria-hidden="true">
-              <span className="process-step-num">03</span>
-              <span className="process-step-line"></span>
-            </div>
+            <span className="process-step-num" aria-hidden="true">03</span>
             <div className="process-step-body">
-              <h3>The right team does the work</h3>
+              <h3>Trained installation team</h3>
               <p>
-                Trained technicians install your system using approved,
-                ISI-compliant materials — with safe, careful workmanship from the
-                first bracket to the final connection.
+                District technicians install approved, ISI-compliant materials
+                with clean routing from structural mounts to earthing.
               </p>
             </div>
           </li>
 
           <li className="process-step">
-            <div className="process-step-marker" aria-hidden="true">
-              <span className="process-step-num">04</span>
-              <span className="process-step-line"></span>
-            </div>
+            <span className="process-step-num" aria-hidden="true">04</span>
             <div className="process-step-body">
-              <h3>We finish and check with you</h3>
+              <h3>Commissioning &amp; walkthrough</h3>
               <p>
-                Once it is done, we test the system, walk you through how it works,
-                and only close the job when you are happy. Every enquiry is
-                followed up until it is properly wrapped up.
+                Every protection check and system test is completed and walked
+                through with you before handover.
               </p>
             </div>
           </li>
 
           <li className="process-step">
-            <div className="process-step-marker" aria-hidden="true">
-              <span className="process-step-num">05</span>
-              <span className="process-step-line"></span>
-            </div>
+            <span className="process-step-num" aria-hidden="true">05</span>
             <div className="process-step-body">
-              <h3>We stay on with AMC</h3>
+              <h3>Long-term AMC support</h3>
               <p>
-                After handover we keep in touch. Our AMC plans cover
-                inspection, monitoring and breakdown help — so your plant keeps
-                generating well, year after year.
+                Scheduled inspections, output monitoring, and prompt breakdown
+                help keep generation steady year after year.
               </p>
             </div>
           </li>
@@ -205,23 +182,38 @@ export const AboutPage: React.FC = () => {
       {/* ============ CARE AFTER INSTALLATION SLIDER ============ */}
       <EnergySlider />
 
-      {/* ============ SPEED & PRECISION / VISION ============ */}
+      {/* ============ OUR VISION (MINIMAL EDITORIAL) ============ */}
       <section className="precision">
-        <h2 className="section-title">Our Vision</h2>
+        <AboutHorizonAccent />
+        <div className="precision-head">
+          <p className="eyebrow section-label">03 / Our Vision</p>
+          <h2 className="section-title">Built for long-term trust across Kerala.</h2>
+        </div>
 
         <div className="precision-copy">
           <p className="precision-brand">
             Natural Grid<sup>LLP</sup>
           </p>
           <p>
-            Natural Grid is committed to becoming one of Kerala's most trusted
-            solar service and AMC providers. Our vision is to deliver reliable,
-            responsive, and professional after-sales support across all 14
-            districts through dedicated local service teams. As we grow, we aim
-            to expand into battery energy storage, EV charging solutions, and
-            advanced renewable energy services, building a strong service
-            network that will eventually extend beyond Kerala.
+            Headquartered in Wayanad, our goal is reliable, local after-sales
+            solar support in all 14 districts — expanding steadily into battery
+            energy storage, EV charging, and clean-energy servicing that puts
+            post-commissioning care first.
           </p>
+          <div className="precision-pillars">
+            <div className="precision-pillar">
+              <strong>14 Districts</strong>
+              <span>Dedicated local service dispatch</span>
+            </div>
+            <div className="precision-pillar">
+              <strong>AMC First</strong>
+              <span>Preventive care beyond installation</span>
+            </div>
+            <div className="precision-pillar">
+              <strong>Storage &amp; EV</strong>
+              <span>Ready for next-generation grids</span>
+            </div>
+          </div>
         </div>
       </section>
 

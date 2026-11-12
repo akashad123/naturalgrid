@@ -52,6 +52,7 @@ export const ServiceWaterHeaterPage: React.FC = () => {
       />
 
       <ServiceLayout
+        serviceId="water-heater"
         title="Solar Water Heaters"
         heroText="Heat water with free sunlight instead of electricity or gas. We supply and install evacuated-tube and flat-plate solar water heaters for homes, apartments, hostels, hospitals and commercial kitchens — sized to your daily hot-water needs and backed by the same service-first support as our solar power systems."
         steps={STEPS}

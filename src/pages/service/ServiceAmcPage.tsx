@@ -52,6 +52,7 @@ export const ServiceAmcPage: React.FC = () => {
       />
 
       <ServiceLayout
+        serviceId="amc"
         title="Annual Maintenance Contracts (AMC)"
         heroText="Most solar problems don't appear on day one. Dust build-up, wiring wear, inverter faults, loose connections and monsoon-related issues gradually reduce generation — often without the owner noticing. Our Annual Maintenance Contracts are designed to protect your investment."
         steps={STEPS}

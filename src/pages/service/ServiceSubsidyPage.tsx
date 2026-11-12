@@ -52,6 +52,7 @@ export const ServiceSubsidyPage: React.FC = () => {
       />
 
       <ServiceLayout
+        serviceId="subsidy"
         title="Solar Subsidy & Net Metering"
         heroText="Eligible residential rooftop solar customers may receive a central-government subsidy under the applicable MNRE scheme, credited directly to the customer's bank account after approval. We assist with the complete process."
         steps={STEPS}

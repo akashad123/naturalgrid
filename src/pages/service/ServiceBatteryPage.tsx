@@ -52,6 +52,7 @@ export const ServiceBatteryPage: React.FC = () => {
       />
 
       <ServiceLayout
+        serviceId="battery-backup"
         title="Battery Backup & Grid Systems"
         heroText="Standard on-grid solar systems shut down during grid failure for safety (anti-islanding). If you need power during outages, a hybrid or off-grid system with batteries is required — and that's exactly what we design and install."
         steps={STEPS}

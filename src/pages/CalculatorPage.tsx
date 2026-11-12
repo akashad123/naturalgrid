@@ -2,6 +2,7 @@ import React from "react";
 import { SeoHead } from "@/components/common/SeoHead";
 import { PageHero } from "@/components/common/PageHero";
 import { SolarCalculator } from "@/components/calculator/SolarCalculator";
+import { CalculatorBackdropIllustrations } from "@/components/calculator/CalculatorBackdropIllustrations";
 
 const FAQS = [
   {
@@ -53,38 +54,44 @@ export const CalculatorPage: React.FC = () => {
         description="Enter the average units from your electricity bill and your property type to instantly estimate the solar system size you need and your yearly savings. Contact us for exact figures and a detailed quotation."
       />
 
-      <SolarCalculator />
+      <section className="calculator-stage" aria-label="Solar savings estimator">
+        <CalculatorBackdropIllustrations />
 
-      {/* ============ FAQ ============ */}
-      <section className="faq-section" aria-label="Frequently asked questions">
-        <div className="faq-head">
-          <p className="eyebrow section-label">FAQ</p>
-          <h2>Frequently Asked Questions</h2>
-        </div>
+        <div className="calculator-stage-inner">
+          <SolarCalculator />
 
-        <div className="faq">
-          {FAQS.map((faq, idx) => (
-            <details key={idx} className="feature-acc">
-              <summary>
-                <span>{faq.question}</span>
-                <span className="acc-icon">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  >
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </svg>
-                </span>
-              </summary>
-              <p>{faq.answer}</p>
-            </details>
-          ))}
+          {/* ============ FAQ ============ */}
+          <div className="faq-section" aria-label="Frequently asked questions">
+            <div className="faq-head">
+              <p className="eyebrow section-label">02 / Frequently Asked</p>
+              <h2>Common Calculator Questions</h2>
+            </div>
+
+            <div className="faq">
+              {FAQS.map((faq, idx) => (
+                <details key={idx} className="feature-acc">
+                  <summary>
+                    <span>{faq.question}</span>
+                    <span className="acc-icon">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      >
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p>{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </>

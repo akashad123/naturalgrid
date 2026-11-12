@@ -52,6 +52,7 @@ export const ServiceInstallationPage: React.FC = () => {
       />
 
       <ServiceLayout
+        serviceId="installation"
         title="Solar Power Plant Installation"
         heroText="Natural Grid offers end-to-end solar installation — design, supply, installation and commissioning of rooftop and ground-mounted systems for homes, businesses and institutions, with complete KSEB coordination and documentation assistance."
         steps={STEPS}
