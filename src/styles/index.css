@@ -137,7 +137,11 @@ html.lenis.lenis-smooth {
   }
 }
 
-/* Promote marquee track cleanly and pause scrolling when brand marquee is hovered */
+/* Promote marquee track cleanly, pause on hover, and add generous top breathing room for Brand Partners */
+.trusted {
+  padding-top: clamp(56px, 7.5vw, 108px);
+}
+
 .trusted-marquee {
   contain: layout style;
 }
