@@ -754,19 +754,27 @@ html.lenis.lenis-smooth {
   }
 }
 
-/* Landing hero matched to PageHero framing while keeping HeroVideo beneath the NATURALGRID wordmark and copy */
-.page-hero.hero--about-match {
+/* Remove topbar offset site-wide and expand all page heroes to full 100svh viewport height */
+:root {
+  --topbar-h: 0px;
+}
+
+.page-hero,
+.contact-hero {
+  min-height: 100vh;
+  min-height: 100svh;
   padding-top: calc(var(--header-h) + clamp(36px, 5vw, 76px));
 }
 
+.page-hero:not(:has(.hero-badge)) .page-title {
+  margin-top: 0;
+}
+
+/* Landing hero keeps HeroVideo anchored behind the NATURALGRID wordmark and copy */
 .page-hero.hero--about-match > .hero-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-}
-
-.page-hero.hero--about-match .page-title {
-  margin-top: 0;
 }
 
 /* Hover text-roll effect for hero buttons (preserves 0px radius, theme surfaces, and zero box translate/scale) */

@@ -9,7 +9,7 @@ interface PageHeroProps {
 }
 
 export const PageHero: React.FC<PageHeroProps> = ({
-  badgeText = "Future with Renewable",
+  badgeText = "",
   title,
   description,
   className = "",

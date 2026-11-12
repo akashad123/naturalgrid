@@ -35,8 +35,6 @@ export const SiteHeader: React.FC = () => {
   };
 
   const isServiceActive = location.pathname.startsWith("/service-");
-  const isHome =
-    location.pathname === "/" || location.pathname === "/index.html";
 
   return (
     <header className={`site-header ${isStuck ? "is-stuck" : ""}`}>
@@ -129,27 +127,6 @@ export const SiteHeader: React.FC = () => {
         >
           Savings Calculator
         </NavLink>
-
-        {!isHome && (
-          <Link to="/contact" className="contact-btn nav-contact">
-            <span>Contact Now</span>
-            <span className="btn-arrow">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </span>
-          </Link>
-        )}
       </nav>
 
       <div className="header-actions">
@@ -182,27 +159,6 @@ export const SiteHeader: React.FC = () => {
             )}
           </svg>
         </button>
-
-        {!isHome && (
-          <Link to="/contact" className="contact-btn">
-            <span>Contact Now</span>
-            <span className="btn-arrow">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </span>
-          </Link>
-        )}
       </div>
     </header>
   );
