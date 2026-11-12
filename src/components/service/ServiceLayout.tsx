@@ -32,7 +32,6 @@ export const ServiceLayout: React.FC<ServiceLayoutProps> = ({
   return (
     <>
       <PageHero
-        badgeText="Our Services"
         title={title}
         description={heroText}
       />

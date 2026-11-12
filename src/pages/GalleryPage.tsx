@@ -13,7 +13,6 @@ export const GalleryPage: React.FC = () => {
       />
 
       <PageHero
-        badgeText="Our Work in the Field"
         title="Gallery"
         description="A look at our solar work across Kerala — rooftop and ground-mounted installations, commercial and institutional projects, solar products and our teams on site."
       />

@@ -48,7 +48,6 @@ export const CalculatorPage: React.FC = () => {
       />
 
       <PageHero
-        badgeText="Plan Your Solar Investment"
         title="Solar Savings Calculator"
         description="Enter the average units from your electricity bill and your property type to instantly estimate the solar system size you need and your yearly savings. Contact us for exact figures and a detailed quotation."
       />

@@ -1,7 +1,7 @@
 /**
  * Etched emerald and muted amber landscape illustrations for the full-bleed SiteFooter:
  * - FooterHeroIllustration: full-width undulating green topographic contour hills with a
- *   compact, matte left-anchored solar scene (dull un-glowed sun, scaled solar house, & PV array).
+ *   full-scale matte left-anchored solar scene (dull un-glowed sun, rooftop pavilion, & PV array).
  * - FooterCornerWave: subtle matching contour wave accent tucked in the bottom-right footer corner.
  */
 export function FooterHeroIllustration() {
@@ -90,140 +90,137 @@ export function FooterHeroIllustration() {
         </defs>
 
         {/* Subtle sunlit clouds */}
-        <g stroke="rgba(130, 214, 158, 0.38)" strokeWidth="1" strokeLinecap="round">
-          <path d="M56 128 H98 M62 128 C65 120, 75 118, 80 122 C85 114, 96 117, 96 128" />
-          <path d="M352 120 H392 M357 120 C360 113, 369 112, 374 115 C378 109, 389 112, 389 120" />
+        <g stroke="rgba(130, 214, 158, 0.42)" strokeWidth="1.05" strokeLinecap="round">
+          <path d="M52 104 H102 M59 104 C62 94, 74 92, 80 97 C86 88, 100 91, 100 104" />
+          <path d="M368 96 H414 M374 96 C377 88, 388 86, 393 90 C398 83, 411 86, 411 96" />
         </g>
 
-        {/* Compact matte dull-orange sun without glow halo */}
+        {/* Full-size matte dull-orange sun without glow or radial illumination */}
         <circle
-          cx="228"
-          cy="144"
-          r="24"
+          cx="242"
+          cy="112"
+          r="38"
           stroke="rgba(176, 90, 38, 0.24)"
-          strokeWidth="0.9"
+          strokeWidth="1"
         />
         <circle
-          cx="228"
-          cy="144"
-          r="19"
+          cx="242"
+          cy="112"
+          r="31"
           fill="#9f4c1c"
           fillOpacity="0.72"
           stroke="rgba(196, 112, 62, 0.4)"
-          strokeWidth="1"
+          strokeWidth="1.15"
         />
 
-        {/* Scaled-down solar service pavilion & foliage */}
-        <g strokeLinecap="round" strokeLinejoin="round" transform="translate(465 256) scale(0.76) translate(-496 -256)">
+        {/* Secondary solar service building & grid ridge on right hill (100% solar, zero turbines) */}
+        <g strokeLinecap="round" strokeLinejoin="round">
           {/* Solar rooftop pavilion silhouette */}
           <path
             d="M446 254 V216 L496 190 L546 216 V254 Z"
             fill="rgba(16, 68, 38, 0.72)"
-            stroke="rgba(122, 217, 150, 0.44)"
+            stroke="rgba(122, 217, 150, 0.46)"
             strokeWidth="1.2"
           />
           <path
             d="M438 219 L496 186 L554 219"
-            stroke="rgba(170, 236, 189, 0.62)"
-            strokeWidth="1.4"
+            stroke="rgba(170, 236, 189, 0.68)"
+            strokeWidth="1.5"
           />
-          {/* Muted matte roof-mounted solar subarray */}
+          {/* Matte muted roof-mounted solar subarray */}
           <polygon
             points="496,191 536,212 528,220 488,199"
             fill="rgba(159, 76, 28, 0.28)"
             stroke="rgba(176, 94, 46, 0.46)"
-            strokeWidth="1.1"
+            strokeWidth="1.15"
           />
           {/* Building subtle window / doorway details */}
-          <line x1="484" y1="254" x2="484" y2="233" stroke="rgba(122, 217, 150, 0.4)" strokeWidth="1.1" />
-          <line x1="506" y1="254" x2="506" y2="233" stroke="rgba(122, 217, 150, 0.4)" strokeWidth="1.1" />
-          <line x1="484" y1="233" x2="506" y2="233" stroke="rgba(122, 217, 150, 0.4)" strokeWidth="1.1" />
+          <line x1="484" y1="254" x2="484" y2="233" stroke="rgba(122, 217, 150, 0.42)" strokeWidth="1.1" />
+          <line x1="506" y1="254" x2="506" y2="233" stroke="rgba(122, 217, 150, 0.42)" strokeWidth="1.1" />
+          <line x1="484" y1="233" x2="506" y2="233" stroke="rgba(122, 217, 150, 0.42)" strokeWidth="1.1" />
 
           {/* Foliage flanking the solar pavilion */}
           <path
             d="M402 256 C402 238, 420 232, 429 242 C436 234, 449 239, 449 256 Z"
             fill="#145630"
-            stroke="rgba(110, 206, 140, 0.42)"
+            stroke="rgba(110, 206, 140, 0.45)"
             strokeWidth="1.1"
           />
           <path
             d="M548 256 C548 242, 562 237, 569 245 C576 238, 588 243, 588 256 Z"
             fill="#145630"
-            stroke="rgba(110, 206, 140, 0.4)"
+            stroke="rgba(110, 206, 140, 0.42)"
             strokeWidth="1.05"
           />
         </g>
 
-        {/* Compact foreground foliage & tilted solar array */}
-        <g transform="translate(196 286) scale(0.84) translate(-196 -286)">
-          {/* Ground foliage left of main solar array */}
-          <path
-            d="M34 268 C34 246, 54 236, 66 250 C76 238, 96 244, 96 268 Z"
-            fill="#155d34"
-            stroke="rgba(122, 217, 150, 0.5)"
-            strokeWidth="1.15"
+        {/* Ground foliage left of main solar array */}
+        <path
+          d="M34 268 C34 246, 54 236, 66 250 C76 238, 96 244, 96 268 Z"
+          fill="#155d34"
+          stroke="rgba(122, 217, 150, 0.5)"
+          strokeWidth="1.15"
+        />
+
+        {/* Foreground precision-tilted multi-panel solar array */}
+        <g strokeLinecap="round" strokeLinejoin="round">
+          {/* Mounting piers & base shadow */}
+          <ellipse cx="198" cy="281" rx="134" ry="8" fill="rgba(5, 22, 12, 0.55)" />
+          <line x1="98" y1="238" x2="98" y2="274" stroke="rgba(154, 232, 178, 0.72)" strokeWidth="2.4" />
+          <line x1="148" y1="246" x2="148" y2="278" stroke="rgba(154, 232, 178, 0.72)" strokeWidth="2.4" />
+          <line x1="202" y1="254" x2="202" y2="282" stroke="rgba(154, 232, 178, 0.72)" strokeWidth="2.4" />
+          <line x1="254" y1="262" x2="254" y2="285" stroke="rgba(154, 232, 178, 0.72)" strokeWidth="2.4" />
+          <line x1="298" y1="268" x2="298" y2="288" stroke="rgba(154, 232, 178, 0.72)" strokeWidth="2.4" />
+
+          {/* Tilted photovoltaic array plane */}
+          <polygon
+            points="74,172 322,228 302,272 90,238"
+            fill="url(#footer-panel-surface)"
+            stroke="#b6efc5"
+            strokeWidth="1.9"
+          />
+          {/* Top-edge metallic solar catchlight */}
+          <polyline
+            points="74,172 322,228"
+            stroke="#e4ffeb"
+            strokeWidth="2.2"
+          />
+          {/* Beveled lower frame depth */}
+          <polyline
+            points="74,172 69,179 86,243 302,278 324,233"
+            stroke="rgba(154, 232, 178, 0.52)"
+            strokeWidth="1.35"
           />
 
-          {/* Foreground precision-tilted multi-panel solar array */}
-          <g strokeLinecap="round" strokeLinejoin="round">
-            {/* Mounting piers & base shadow */}
-            <ellipse cx="198" cy="281" rx="134" ry="8" fill="rgba(5, 22, 12, 0.55)" />
-            <line x1="98" y1="238" x2="98" y2="274" stroke="rgba(154, 232, 178, 0.72)" strokeWidth="2.4" />
-            <line x1="148" y1="246" x2="148" y2="278" stroke="rgba(154, 232, 178, 0.72)" strokeWidth="2.4" />
-            <line x1="202" y1="254" x2="202" y2="282" stroke="rgba(154, 232, 178, 0.72)" strokeWidth="2.4" />
-            <line x1="254" y1="262" x2="254" y2="285" stroke="rgba(154, 232, 178, 0.72)" strokeWidth="2.4" />
-            <line x1="298" y1="268" x2="298" y2="288" stroke="rgba(154, 232, 178, 0.72)" strokeWidth="2.4" />
-
-            {/* Tilted photovoltaic array plane */}
-            <polygon
-              points="74,172 322,228 302,272 90,238"
-              fill="url(#footer-panel-surface)"
-              stroke="#b6efc5"
-              strokeWidth="1.9"
-            />
-            {/* Top-edge metallic solar catchlight */}
-            <polyline
-              points="74,172 322,228"
-              stroke="#e4ffeb"
-              strokeWidth="2.2"
-            />
-            {/* Beveled lower frame depth */}
-            <polyline
-              points="74,172 69,179 86,243 302,278 324,233"
-              stroke="rgba(154, 232, 178, 0.52)"
-              strokeWidth="1.35"
-            />
-
-            {/* Horizontal center seam splitting upper & lower PV rows */}
-            <line
-              x1="82"
-              y1="205"
-              x2="312"
-              y2="250"
-              stroke="rgba(196, 245, 209, 0.72)"
-              strokeWidth="1.2"
-            />
-
-            {/* Vertical module dividers across 6 bays */}
-            <line x1="115" y1="181" x2="126" y2="244" stroke="rgba(196, 245, 209, 0.65)" strokeWidth="1.15" />
-            <line x1="156" y1="190" x2="162" y2="250" stroke="rgba(196, 245, 209, 0.65)" strokeWidth="1.15" />
-            <line x1="198" y1="200" x2="198" y2="256" stroke="rgba(196, 245, 209, 0.65)" strokeWidth="1.15" />
-            <line x1="239" y1="209" x2="233" y2="262" stroke="rgba(196, 245, 209, 0.65)" strokeWidth="1.15" />
-            <line x1="280" y1="219" x2="268" y2="267" stroke="rgba(196, 245, 209, 0.65)" strokeWidth="1.15" />
-
-            {/* Diagonal subtle specular reflection lines */}
-            <line x1="128" y1="190" x2="150" y2="207" stroke="rgba(255, 255, 255, 0.34)" strokeWidth="1.1" />
-            <line x1="206" y1="208" x2="226" y2="224" stroke="rgba(255, 255, 255, 0.3)" strokeWidth="1.1" />
-          </g>
-
-          {/* Foreground meadow tuft flanking right array corner */}
-          <path
-            d="M312 276 C312 260, 328 254, 336 263 C342 256, 354 260, 354 276 Z"
-            fill="#155d34"
-            stroke="rgba(122, 217, 150, 0.45)"
-            strokeWidth="1.05"
+          {/* Horizontal center seam splitting upper & lower PV rows */}
+          <line
+            x1="82"
+            y1="205"
+            x2="312"
+            y2="250"
+            stroke="rgba(196, 245, 209, 0.72)"
+            strokeWidth="1.2"
           />
+
+          {/* Vertical module dividers across 6 bays */}
+          <line x1="115" y1="181" x2="126" y2="244" stroke="rgba(196, 245, 209, 0.65)" strokeWidth="1.15" />
+          <line x1="156" y1="190" x2="162" y2="250" stroke="rgba(196, 245, 209, 0.65)" strokeWidth="1.15" />
+          <line x1="198" y1="200" x2="198" y2="256" stroke="rgba(196, 245, 209, 0.65)" strokeWidth="1.15" />
+          <line x1="239" y1="209" x2="233" y2="262" stroke="rgba(196, 245, 209, 0.65)" strokeWidth="1.15" />
+          <line x1="280" y1="219" x2="268" y2="267" stroke="rgba(196, 245, 209, 0.65)" strokeWidth="1.15" />
+
+          {/* Diagonal subtle specular reflection lines */}
+          <line x1="128" y1="190" x2="150" y2="207" stroke="rgba(255, 255, 255, 0.34)" strokeWidth="1.1" />
+          <line x1="206" y1="208" x2="226" y2="224" stroke="rgba(255, 255, 255, 0.3)" strokeWidth="1.1" />
         </g>
+
+        {/* Foreground meadow tuft flanking right array corner */}
+        <path
+          d="M312 276 C312 260, 328 254, 336 263 C342 256, 354 260, 354 276 Z"
+          fill="#155d34"
+          stroke="rgba(122, 217, 150, 0.45)"
+          strokeWidth="1.05"
+        />
       </svg>
     </div>
   );

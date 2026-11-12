@@ -1398,9 +1398,9 @@ html.lenis.lenis-smooth {
   position: absolute;
   left: clamp(8px, 3vw, 60px);
   bottom: 0;
-  height: clamp(142px, 14.5vw, 206px);
+  height: clamp(205px, 21vw, 304px);
   width: auto;
-  max-width: 48%;
+  max-width: 52%;
   display: block;
 }
 
@@ -1409,7 +1409,7 @@ html.lenis.lenis-smooth {
   z-index: 1;
   width: min(100%, var(--max-width));
   margin-inline: auto;
-  padding: clamp(48px, 5vw, 82px) clamp(20px, 4.2vw, 64px) clamp(54px, 5.8vw, 88px);
+  padding: clamp(56px, 6vw, 94px) clamp(20px, 4.2vw, 64px) clamp(64px, 6.8vw, 102px);
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -1571,14 +1571,14 @@ html.lenis.lenis-smooth {
 @media (max-width: 900px) {
   .footer-hero-content {
     justify-content: flex-start;
-    padding: 32px clamp(16px, 4vw, 32px) clamp(124px, 24vw, 166px);
+    padding: 36px clamp(16px, 4vw, 32px) clamp(168px, 32vw, 224px);
   }
 
   .footer-scene-svg {
     left: 50%;
     transform: translateX(-50%);
-    height: clamp(112px, 22vw, 152px);
-    max-width: 92%;
+    height: clamp(160px, 30vw, 220px);
+    max-width: 96%;
   }
 
   .footer-links {
@@ -1599,7 +1599,7 @@ html.lenis.lenis-smooth {
 
 @media (max-width: 560px) {
   .footer-hero-content {
-    padding: 28px 16px 124px;
+    padding: 30px 16px 168px;
   }
 
   .footer-lockup {
@@ -1621,8 +1621,8 @@ html.lenis.lenis-smooth {
   }
 
   .footer-scene-svg {
-    height: 112px;
-    max-width: 94%;
+    height: 158px;
+    max-width: 98%;
   }
 
   .footer-inner {
