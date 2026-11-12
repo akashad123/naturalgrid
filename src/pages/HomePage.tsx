@@ -106,11 +106,8 @@ export const HomePage: React.FC = () => {
       {/* ============ PROCESS / HOW IT WORKS (Overlapping Deck) ============ */}
       <HowItWorksCarousel />
 
-      {/* ============ PROJECTS & FEATURES (Pinned NATURAL GRID + Scrollable Content) ============ */}
-      <div className="home-stage home-stage--projects">
-        <MinimalBackdrop />
-        <div className="home-stage-inner">
-          <section className="projects" id="projects">
+      {/* ============ PROJECTS ============ */}
+      <section className="projects" id="projects">
         <div className="section-head">
           <div className="section-head-copy">
             <p className="eyebrow section-label">Our Projects</p>
@@ -247,8 +244,6 @@ export const HomePage: React.FC = () => {
           <FeaturesAboutIllustration />
         </div>
       </section>
-        </div>
-      </div>
 
       {/* ============ TRUSTED BY ============ */}
       <TrustMarquee />
