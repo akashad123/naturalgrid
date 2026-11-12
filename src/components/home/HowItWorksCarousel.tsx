@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 
+import { HowItWorksBackdrop } from "./HowItWorksBackdrop";
+
 interface ProcessStep {
   number: string;
   title: string;
@@ -273,6 +275,8 @@ export const HowItWorksCarousel: React.FC = () => {
                   }
                   onClick={isInteractive ? () => setActiveIndex(idx) : undefined}
                 >
+                  <HowItWorksBackdrop stepNumber={step.number} />
+
                   <div className="how-card-rail">
                     {isInteractive ? (
                       <button

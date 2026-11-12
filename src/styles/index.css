@@ -341,13 +341,25 @@ html.lenis.lenis-smooth {
 }
 
 .how-card {
+  position: relative;
   grid-area: 1 / 1;
   justify-self: end;
   width: calc(100% - var(--card-index, 0) * var(--how-spine));
-  min-height: clamp(276px, 27vw, 372px);
+  min-height: clamp(296px, 28vw, 378px);
   display: grid;
   grid-template-columns: var(--how-spine) minmax(0, 1fr);
-  background: #114528;
+  background-color: #104226;
+  background-image: radial-gradient(
+      circle at 90% 10%,
+      rgba(242, 221, 184, 0.08) 0%,
+      rgba(255, 103, 0, 0.04) 28%,
+      transparent 56%
+    ),
+    linear-gradient(
+      155deg,
+      rgba(35, 101, 55, 0.28) 0%,
+      rgba(12, 59, 34, 0.45) 100%
+    );
   border: 1px solid rgba(244, 245, 242, 0.18);
   border-top: 2px solid rgba(244, 245, 242, 0.24);
   text-align: left;
@@ -379,14 +391,14 @@ html.lenis.lenis-smooth {
 
 .how-card.is-peek {
   transform: translate3d(calc(75cqi - var(--how-spine)), 0, 0);
-  background: #104226;
+  background-color: #104226;
   border-color: rgba(244, 245, 242, 0.22);
   border-top-color: rgba(242, 221, 184, 0.36);
   cursor: pointer;
 }
 
 .how-card.is-peek:hover {
-  background: #134b2c;
+  background-color: #134b2c;
   border-top-color: var(--orange);
 }
 
@@ -396,20 +408,31 @@ html.lenis.lenis-smooth {
 
 .how-card.is-active {
   transform: translate3d(0, 0, 0);
-  background: #14502f;
+  background-color: #14502f;
+  background-image: radial-gradient(
+      circle at 91% 9%,
+      rgba(255, 103, 0, 0.14) 0%,
+      rgba(242, 221, 184, 0.11) 26%,
+      transparent 54%
+    ),
+    linear-gradient(
+      155deg,
+      rgba(35, 101, 55, 0.36) 0%,
+      rgba(12, 59, 34, 0.52) 100%
+    );
   border-color: rgba(242, 221, 184, 0.4);
   border-top-color: var(--orange);
 }
 
 .how-card.is-covered {
   transform: translate3d(0, 0, 0);
-  background: #0e3d23;
+  background-color: #0e3d23;
   border-color: rgba(244, 245, 242, 0.18);
   cursor: pointer;
 }
 
 .how-card.is-covered:hover {
-  background: #134a2b;
+  background-color: #134a2b;
   border-top-color: var(--orange);
 }
 
@@ -420,6 +443,8 @@ html.lenis.lenis-smooth {
 }
 
 .how-card-rail {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -483,10 +508,12 @@ html.lenis.lenis-smooth {
 }
 
 .how-card-body {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(24px, 3.2vw, 44px);
+  padding: clamp(26px, 3.2vw, 42px) clamp(24px, 3.2vw, 44px) clamp(72px, 7.6vw, 94px);
   min-width: 0;
 }
 
@@ -514,6 +541,58 @@ html.lenis.lenis-smooth {
   line-height: 1.65;
   color: rgba(244, 245, 242, 0.84);
   max-width: 52ch;
+}
+
+/* Minimal Natural Grid solar backdrop anchored behind card copy */
+.how-card-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  transition: opacity 0.35s ease;
+}
+
+.how-card.is-peek .how-card-backdrop {
+  opacity: 0.55;
+}
+
+.how-card.is-covered .how-card-backdrop {
+  opacity: 0;
+}
+
+.how-card-art {
+  position: absolute;
+  display: block;
+}
+
+.how-card-art--sun {
+  top: 0;
+  right: 0;
+  width: clamp(112px, 13.5vw, 168px);
+  height: auto;
+}
+
+.how-card-art--hills {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: clamp(50px, 6.2vw, 80px);
+}
+
+.how-card-art--left {
+  left: calc(var(--how-spine) + clamp(16px, 2.2vw, 32px));
+  bottom: clamp(4px, 0.8vw, 10px);
+  width: clamp(86px, 9.2vw, 122px);
+  height: auto;
+}
+
+.how-card-art--right {
+  right: clamp(18px, 3.2vw, 44px);
+  bottom: clamp(4px, 0.8vw, 10px);
+  width: clamp(118px, 13vw, 168px);
+  height: auto;
 }
 
 @media (max-width: 900px) {
@@ -548,7 +627,7 @@ html.lenis.lenis-smooth {
   }
 
   .how-card {
-    min-height: 256px;
+    min-height: 282px;
   }
 
   .how-card-rail {
@@ -575,7 +654,7 @@ html.lenis.lenis-smooth {
   }
 
   .how-card-body {
-    padding: 18px 16px;
+    padding: 18px 16px 68px;
     justify-content: flex-start;
   }
 
@@ -602,6 +681,28 @@ html.lenis.lenis-smooth {
   .how-arrow-btn svg {
     width: 12px;
     height: 12px;
+  }
+
+  .how-card-art--sun {
+    width: 92px;
+  }
+
+  .how-card-art--hills {
+    height: 44px;
+  }
+
+  .how-card-art--left {
+    left: calc(var(--how-spine) + 12px);
+    bottom: 4px;
+    width: 68px;
+    opacity: 0.72;
+  }
+
+  .how-card-art--right {
+    right: 12px;
+    bottom: 4px;
+    width: 92px;
+    opacity: 0.78;
   }
 }
 
