@@ -152,78 +152,38 @@ export const CalculatorBackdropIllustrations: React.FC = () => {
         </g>
       </svg>
 
-      {/* Mid-band architectural contour & solar yield geometry across lower FAQ region */}
+      {/* Mid-band minimal solar glow & smooth contour waves */}
       <svg
         className="calc-bg-svg calc-bg-svg--mid"
-        viewBox="0 0 1440 420"
+        viewBox="0 0 1440 360"
         preserveAspectRatio="xMidYMid slice"
         fill="none"
       >
         <defs>
-          <radialGradient id="calc-mid-glow" cx="76%" cy="46%" r="48%">
-            <stop offset="0%" stopColor="#236537" stopOpacity="0.08" />
-            <stop offset="65%" stopColor="#236537" stopOpacity="0.02" />
+          <radialGradient id="calc-mid-glow" cx="72%" cy="48%" r="44%">
+            <stop offset="0%" stopColor="#236537" stopOpacity="0.065" />
             <stop offset="100%" stopColor="#236537" stopOpacity="0" />
           </radialGradient>
           <linearGradient id="calc-mid-line" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#236537" stopOpacity="0" />
-            <stop offset="28%" stopColor="#236537" stopOpacity="0.16" />
-            <stop offset="78%" stopColor="#236537" stopOpacity="0.22" />
+            <stop offset="30%" stopColor="#236537" stopOpacity="0.14" />
+            <stop offset="75%" stopColor="#236537" stopOpacity="0.18" />
             <stop offset="100%" stopColor="#236537" stopOpacity="0" />
           </linearGradient>
         </defs>
 
-        <rect width="1440" height="420" fill="url(#calc-mid-glow)" />
+        <rect width="1440" height="360" fill="url(#calc-mid-glow)" />
 
         <path
-          d="M0 165 C280 218, 540 120, 860 158 C1120 190, 1290 120, 1440 148"
+          d="M0 148 C320 206, 660 112, 1020 156 C1220 180, 1340 132, 1440 146"
           stroke="url(#calc-mid-line)"
           strokeWidth="1.05"
         />
         <path
-          d="M0 248 C340 286, 680 198, 1020 242 C1210 266, 1340 226, 1440 238"
+          d="M0 226 C360 264, 720 184, 1080 226 C1240 244, 1360 210, 1440 222"
           stroke="url(#calc-mid-line)"
-          strokeWidth="0.9"
-          strokeDasharray="6 6"
+          strokeWidth="0.85"
         />
-
-        {/* Right-flank schematic solar inverter & net-meter geometry */}
-        <g transform="translate(1120 82)" strokeLinecap="round" strokeLinejoin="round">
-          <circle
-            cx="148"
-            cy="128"
-            r="102"
-            stroke="rgba(35, 101, 55, 0.16)"
-            strokeWidth="1"
-            strokeDasharray="4 5"
-          />
-          <circle
-            cx="148"
-            cy="128"
-            r="64"
-            stroke="rgba(6, 48, 36, 0.14)"
-            strokeWidth="0.9"
-          />
-          <rect
-            x="104"
-            y="88"
-            width="88"
-            height="80"
-            fill="rgba(35, 101, 55, 0.04)"
-            stroke="rgba(6, 48, 36, 0.22)"
-            strokeWidth="1.1"
-          />
-          <path
-            d="M118 114 H178 M118 128 H162 M118 142 H148"
-            stroke="rgba(35, 101, 55, 0.26)"
-            strokeWidth="1"
-          />
-          <path
-            d="M148 56 V76 M148 180 V200 M76 128 H96 M200 128 H220"
-            stroke="rgba(35, 101, 55, 0.24)"
-            strokeWidth="1"
-          />
-        </g>
       </svg>
     </div>
   );
