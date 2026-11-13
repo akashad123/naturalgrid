@@ -1,16 +1,11 @@
 import React from "react";
-import { siteConfig } from "@/config/site";
 
 /**
- * Sticky-centered minimalist architectural backdrop shared uniformly across
- * Gallery, Savings Calculator, Services, and About sections:
- * - Pinned center NATURAL GRID watermark text
- * - Pinned minimalist drafting plus (+) markers, sky clouds, and matte sun SVG
- * Foreground content scrolls smoothly over the fixed-center visual canvas.
+ * Sticky-centered minimalist architectural backdrop:
+ * - Minimalist drafting plus (+) markers, sky clouds, and matte sun SVG
+ * - Clean visual canvas without distracting background typography
  */
 export const MinimalBackdrop: React.FC = () => {
-  const watermarkLabel = siteConfig.shortName.toUpperCase();
-
   return (
     <div className="minimal-backdrop" aria-hidden="true">
       <div className="minimal-backdrop-sticky">
@@ -106,8 +101,6 @@ export const MinimalBackdrop: React.FC = () => {
             />
           </g>
         </svg>
-
-        <span className="minimal-watermark">{watermarkLabel}</span>
       </div>
     </div>
   );

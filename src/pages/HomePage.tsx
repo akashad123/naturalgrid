@@ -4,7 +4,6 @@ import { SeoHead } from "@/components/common/SeoHead";
 import { PageHero } from "@/components/common/PageHero";
 import { StaggerRollText } from "@/components/common/StaggerRollText";
 import { Accordion } from "@/components/common/Accordion";
-import { MinimalBackdrop } from "@/components/common/MinimalBackdrop";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { HowItWorksCarousel } from "@/components/home/HowItWorksCarousel";
 import { FeaturesAboutIllustration, FeaturesPanelAccent } from "@/components/home/FeaturesIllustrations";
@@ -87,10 +86,7 @@ export const HomePage: React.FC = () => {
       </PageHero>
 
       {/* ============ ABOUT / STATS ============ */}
-      <div className="home-stage">
-        <MinimalBackdrop />
-        <div className="home-stage-inner">
-          <section className="about" id="about">
+      <section className="about" id="about">
         <div className="about-side">
           <div className="stat">
             <span ref={districtRef} className="stat-number">
@@ -154,8 +150,6 @@ export const HomePage: React.FC = () => {
           </Link>
         </div>
       </section>
-        </div>
-      </div>
 
       {/* ============ PROCESS / HOW IT WORKS (Overlapping Deck) ============ */}
       <HowItWorksCarousel />
@@ -183,9 +177,6 @@ export const HomePage: React.FC = () => {
 
         <div className="features-side">
           <div className="features-panel">
-            <span className="panel-watermark" aria-hidden="true">
-              naturalgrid
-            </span>
             <FeaturesPanelAccent />
             <h3>Service First. Kerala-Wide.</h3>
             <Link to="/contact" className="contact-btn">

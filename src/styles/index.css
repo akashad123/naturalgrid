@@ -1736,33 +1736,7 @@ html.lenis.lenis-smooth {
   display: block;
 }
 
-.minimal-watermark {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  text-align: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(2.45rem, 11vw, 9.8rem);
-  line-height: 0.92;
-  letter-spacing: 0.06em;
-  color: rgba(6, 48, 36, 0.055);
-  white-space: nowrap;
-  user-select: none;
-}
 
-.about-stage,
-.home-stage {
-  position: relative;
-  overflow: clip;
-  background: var(--page-bg);
-}
-
-.about-stage-inner,
-.home-stage-inner {
-  position: relative;
-  z-index: 1;
-}
 
 /* ============ GALLERY BACKDROP ILLUSTRATIONS & GSAP PHOTO STAGE ============ */
 .gallery-section {
