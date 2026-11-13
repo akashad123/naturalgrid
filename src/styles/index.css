@@ -843,18 +843,30 @@ html.lenis.lenis-smooth {
   object-fit: cover;
   object-position: right center;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  transform: translateZ(0);
 }
 
 .hero-bg--image::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(3, 40, 24, 0.7) 0%,
-    rgba(3, 40, 24, 0.48) 35%,
-    rgba(3, 40, 24, 0.75) 100%
-  );
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 40, 24, 0.72) 0%,
+      rgba(3, 40, 24, 0.5) 45%,
+      rgba(3, 40, 24, 0.2) 75%,
+      rgba(3, 40, 24, 0.05) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 40, 24, 0.65) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba(3, 40, 24, 0.75) 100%
+    );
   pointer-events: none;
 }
 
