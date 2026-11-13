@@ -1,6 +1,7 @@
 import React from "react";
 import { SeoHead } from "@/components/common/SeoHead";
 import { PageHero } from "@/components/common/PageHero";
+import { Accordion } from "@/components/common/Accordion";
 import { SolarCalculator } from "@/components/calculator/SolarCalculator";
 import { CalculatorBackdropIllustrations } from "@/components/calculator/CalculatorBackdropIllustrations";
 
@@ -67,30 +68,16 @@ export const CalculatorPage: React.FC = () => {
               <h2>Common Calculator Questions</h2>
             </div>
 
-            <div className="faq">
-              {FAQS.map((faq, idx) => (
-                <details key={idx} className="feature-acc">
-                  <summary>
-                    <span>{faq.question}</span>
-                    <span className="acc-icon">
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      >
-                        <line x1="12" y1="5" x2="12" y2="19" />
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                      </svg>
-                    </span>
-                  </summary>
-                  <p>{faq.answer}</p>
-                </details>
-              ))}
-            </div>
+            <Accordion
+              className="faq"
+              name="calculator-faq"
+              items={FAQS.map((faq, idx) => ({
+                id: idx,
+                title: faq.question,
+                content: faq.answer,
+              }))}
+              defaultOpenIndex={0}
+            />
           </div>
         </div>
       </section>

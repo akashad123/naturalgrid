@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { SeoHead } from "@/components/common/SeoHead";
 import { PageHero } from "@/components/common/PageHero";
 import { StaggerRollText } from "@/components/common/StaggerRollText";
+import { Accordion } from "@/components/common/Accordion";
 import { MinimalBackdrop } from "@/components/common/MinimalBackdrop";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { HowItWorksCarousel } from "@/components/home/HowItWorksCarousel";
@@ -11,6 +12,27 @@ import { ProjectsAccordion } from "@/components/home/ProjectsAccordion";
 import { TrustMarquee } from "@/components/home/TrustMarquee";
 import { siteConfig } from "@/config/site";
 import { useCounter } from "@/hooks/useCounter";
+
+const WHY_NATURAL_GRID_ITEMS = [
+  {
+    id: "service-first",
+    title: "Service-first philosophy",
+    content:
+      "We build trust through what happens after installation, not just the sale — structured AMC plans, preventive maintenance and genuine long-term customer care.",
+  },
+  {
+    id: "quality-materials",
+    title: "Approved quality materials",
+    content:
+      "We work with reputed brands and ISI-approved materials — panels, inverters, protection equipment, cabling and mounting structures. Final make and model depend on technical design, availability and the approved quotation.",
+  },
+  {
+    id: "honest-communication",
+    title: "Honest communication",
+    content:
+      "No exaggerated generation promises. Just clear, verified information and proper documentation at every step.",
+  },
+];
 
 export const HomePage: React.FC = () => {
   const districtRef = useCounter(14);
@@ -186,82 +208,12 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
 
-          <div className="features-acc">
-            <details className="feature-acc">
-              <summary>
-                <span>Service-first philosophy</span>
-                <span className="acc-icon">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  >
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </svg>
-                </span>
-              </summary>
-              <p>
-                We build trust through what happens after installation, not
-                just the sale — structured AMC plans, preventive maintenance and
-                genuine long-term customer care.
-              </p>
-            </details>
-
-            <details className="feature-acc">
-              <summary>
-                <span>Approved quality materials</span>
-                <span className="acc-icon">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  >
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </svg>
-                </span>
-              </summary>
-              <p>
-                We work with reputed brands and ISI-approved materials — panels,
-                inverters, protection equipment, cabling and mounting
-                structures. Final make and model depend on technical design,
-                availability and the approved quotation.
-              </p>
-            </details>
-
-            <details className="feature-acc">
-              <summary>
-                <span>Honest communication</span>
-                <span className="acc-icon">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  >
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </svg>
-                </span>
-              </summary>
-              <p>
-                No exaggerated generation promises. Just clear, verified
-                information and proper documentation at every step.
-              </p>
-            </details>
-          </div>
+          <Accordion
+            className="features-acc"
+            name="why-natural-grid"
+            items={WHY_NATURAL_GRID_ITEMS}
+            defaultOpenIndex={0}
+          />
         </div>
 
         <div className="features-about">
