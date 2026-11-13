@@ -47,7 +47,7 @@ export const HomePage: React.FC = () => {
 
       {/* ============ HERO ============ */}
       <PageHero
-        className="hero--about-match hero--green-wind"
+        className="hero--white-solar"
         badgeText=""
         title={"Kerala’s Trusted Solar Company, Built on Service\u00A0First."}
         description="Expert solar installation for homes and businesses across Kerala. Save on your KSEB bills and switch to clean, renewable energy — with service that stays with you long after commissioning."

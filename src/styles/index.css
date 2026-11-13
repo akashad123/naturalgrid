@@ -819,52 +819,289 @@ html.lenis.lenis-smooth {
   margin-top: 0;
 }
 
-/* Landing hero keeps HeroVideo anchored behind the NATURALGRID wordmark and copy */
-.page-hero.hero--about-match > .hero-bg {
+/* Landing hero keeps background image anchored behind the NATURALGRID wordmark and copy */
+.page-hero.hero--white-solar > .hero-bg {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
 }
 
-/* Background Image for Landing Hero (replaces video with user-provided green wind turbine visual) */
-.page-hero.hero--green-wind {
-  background-color: #034121;
+/* Background Image for Landing Hero — pristine white background with high-clarity solar panel visual */
+.page-hero.hero--white-solar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: var(--ink) !important;
+  padding-inline: clamp(24px, 6vw, 100px);
+  padding-top: calc(var(--header-h) + clamp(16px, 3vw, 36px));
+  padding-bottom: clamp(60px, 8vw, 100px);
+  overflow: hidden;
 }
 
-.hero-bg--image {
+.page-hero.hero--white-solar::before {
+  display: none !important;
+  content: none !important;
+}
+
+.page-hero.hero--white-solar > * {
+  position: relative;
+  z-index: 3;
+}
+
+.page-hero.hero--white-solar .title-word {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  color: #063024 !important;
+}
+
+.page-hero.hero--white-solar .page-title,
+.page-hero.hero--white-solar .split-title {
+  color: #063024 !important;
+  text-shadow: none !important;
+  max-width: 14ch;
+  font-size: clamp(2.3rem, 3.8vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-top: 0;
+  margin-bottom: clamp(14px, 1.8vw, 20px);
+}
+
+.page-hero.hero--white-solar .page-hero-text {
+  color: #244b3b !important;
+  text-shadow: none !important;
+  font-size: clamp(0.95rem, 1.15vw, 1.15rem);
+  line-height: 1.6;
+  max-width: 44ch;
+  margin-top: 0;
+  margin-bottom: clamp(24px, 2.8vw, 32px);
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+.page-hero.hero--white-solar .hero-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 14px !important;
+  margin-top: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  animation: none !important;
+  z-index: 5 !important;
+}
+
+.page-hero.hero--white-solar .hero-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  height: clamp(38px, 3.2vw, 44px) !important;
+  padding: 0 clamp(14px, 1.8vw, 22px) !important;
+  font-size: clamp(0.78rem, 0.95vw, 0.88rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.03em !important;
+  text-decoration: none !important;
+  border-radius: 0 !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  animation: none !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease !important;
+}
+
+.page-hero.hero--white-solar .hero-btn--solid {
+  background: #063024 !important;
+  color: #ffffff !important;
+  border: 1.5px solid #063024 !important;
+  box-shadow: 0 4px 14px rgba(6, 48, 36, 0.15) !important;
+}
+
+.page-hero.hero--white-solar .hero-btn--solid:hover,
+.page-hero.hero--white-solar .hero-btn--solid:focus-visible {
+  background: #17492a !important;
+  border-color: #17492a !important;
+  color: #ffffff !important;
+}
+
+.page-hero.hero--white-solar .hero-btn--ghost {
+  background: transparent !important;
+  color: #063024 !important;
+  border: 1.5px solid #063024 !important;
+}
+
+.page-hero.hero--white-solar .hero-btn--ghost:hover,
+.page-hero.hero--white-solar .hero-btn--ghost:focus-visible {
+  background: #063024 !important;
+  color: #ffffff !important;
+  border-color: #063024 !important;
+}
+
+/* Header adapts to white solar hero from the initial frame */
+body:has(.hero--white-solar) .site-header:not(.is-stuck) {
+  color: var(--ink);
+}
+
+body:has(.hero--white-solar) .site-header:not(.is-stuck) .logo-mark,
+body:has(.hero--white-solar) .site-header:not(.is-stuck) .logo-tagline {
+  text-shadow: none;
+}
+
+body:has(.hero--white-solar) .site-header:not(.is-stuck) .logo-tagline {
+  color: var(--accent);
+}
+
+body:has(.hero--white-solar) .site-header:not(.is-stuck) .nav-link {
+  color: var(--ink);
+}
+
+body:has(.hero--white-solar) .site-header:not(.is-stuck) .nav-link:hover,
+body:has(.hero--white-solar) .site-header:not(.is-stuck) .nav-link.active,
+body:has(.hero--white-solar) .site-header:not(.is-stuck) .nav-dropdown:hover .nav-dropdown-toggle,
+body:has(.hero--white-solar) .site-header:not(.is-stuck) .nav-dropdown:focus-within .nav-dropdown-toggle {
+  color: var(--accent);
+}
+
+body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
+  color: var(--ink);
+}
+
+.hero-bg--white-solar {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
   overflow: hidden;
-  background-color: #034121;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
 }
 
-.hero-bg--image::before {
+.hero-bg--white-solar::before,
+.hero-bg--white-solar::after {
   display: none !important;
+  content: none !important;
 }
 
-.hero-bg-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: right center;
-  display: block;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: high-quality;
-  transform: translateZ(0);
+.hero-bg--white-solar picture {
+  position: static !important;
+  inset: auto !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
-.hero-bg--image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(3, 40, 24, 0.45) 0%,
-    transparent 14%
-  );
-  pointer-events: none;
+.hero-bg--white-solar img,
+.hero-bg--white-solar .hero-solar-img {
+  position: absolute !important;
+  right: clamp(10px, 3vw, 50px) !important;
+  top: 50% !important;
+  transform: translateY(-46%) !important;
+  width: clamp(340px, 48vw, 780px) !important;
+  height: auto !important;
+  max-height: 76vh !important;
+  object-fit: contain !important;
+  object-position: right center !important;
+  display: block !important;
+  z-index: 1 !important;
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: high-quality !important;
+}
+
+@media (max-width: 1024px) {
+  .page-hero.hero--white-solar {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding-inline: clamp(16px, 4vw, 32px) !important;
+    justify-content: flex-start !important;
+    padding-top: calc(var(--header-h) + 16px) !important;
+    min-height: auto !important;
+    padding-bottom: clamp(60px, 8vw, 100px) !important;
+  }
+
+  .page-hero.hero--white-solar .page-title,
+  .page-hero.hero--white-solar .split-title {
+    order: 1 !important;
+    max-width: 22ch !important;
+    margin-inline: auto !important;
+    font-size: clamp(2rem, 5vw, 3rem) !important;
+    margin-bottom: 14px !important;
+  }
+
+  .page-hero.hero--white-solar .page-hero-text {
+    order: 2 !important;
+    max-width: 52ch !important;
+    margin-inline: auto !important;
+    font-size: clamp(0.92rem, 1.8vw, 1.05rem) !important;
+    margin-bottom: 22px !important;
+  }
+
+  .page-hero.hero--white-solar .hero-actions {
+    order: 3 !important;
+    justify-content: center !important;
+    margin-inline: auto !important;
+    margin-bottom: 24px !important;
+  }
+
+  .page-hero.hero--white-solar > .hero-bg,
+  .hero-bg--white-solar {
+    order: 4 !important;
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 620px !important;
+    margin-inline: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .hero-bg--white-solar picture {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .hero-bg--white-solar img,
+  .hero-bg--white-solar .hero-solar-img {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 540px !important;
+    height: auto !important;
+    margin-inline: auto !important;
+    object-fit: contain !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-hero.hero--white-solar .hero-actions {
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .page-hero.hero--white-solar .hero-btn {
+    height: 38px !important;
+    padding: 0 14px !important;
+    font-size: 0.74rem !important;
+    letter-spacing: 0.02em !important;
+  }
 }
 
 /* Hover text-roll effect for hero buttons (preserves 0px radius, theme surfaces, and zero box translate/scale) */
