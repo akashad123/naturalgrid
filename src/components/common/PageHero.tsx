@@ -6,6 +6,7 @@ interface PageHeroProps {
   description?: string;
   className?: string;
   background?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const PageHero: React.FC<PageHeroProps> = ({
@@ -14,6 +15,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   description,
   className = "",
   background,
+  children,
 }) => {
   // Split title words to apply the word-by-word rise animation
   const words = title.split(" ");
@@ -64,6 +66,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
       </h1>
 
       {description && <p className="page-hero-text">{description}</p>}
+      {children}
     </section>
   );
 };

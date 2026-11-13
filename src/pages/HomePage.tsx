@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { SeoHead } from "@/components/common/SeoHead";
 import { PageHero } from "@/components/common/PageHero";
+import { StaggerRollText } from "@/components/common/StaggerRollText";
 import { MinimalBackdrop } from "@/components/common/MinimalBackdrop";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { HowItWorksCarousel } from "@/components/home/HowItWorksCarousel";
@@ -23,14 +24,45 @@ export const HomePage: React.FC = () => {
         canonicalPath="/"
       />
 
-      {/* ============ HERO (Matches inner PageHero without badge/topbar/buttons) ============ */}
+      {/* ============ HERO ============ */}
       <PageHero
         className="hero--about-match"
         badgeText=""
         title={"Kerala’s Trusted Solar Company, Built on Service\u00A0First."}
         description="Expert solar installation for homes and businesses across Kerala. Save on your KSEB bills and switch to clean, renewable energy — with service that stays with you long after commissioning."
         background={<HeroVideo />}
-      />
+      >
+        <div className="hero-actions">
+          <Link
+            to="/contact"
+            className="hero-btn hero-btn--solid"
+            aria-label="Get a Free Quote"
+          >
+            <StaggerRollText text="Get a Free Quote" />
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </Link>
+          <a
+            href="#about"
+            className="hero-btn hero-btn--ghost"
+            aria-label="Our Services"
+          >
+            <StaggerRollText text="Our Services" />
+          </a>
+        </div>
+      </PageHero>
 
       {/* ============ ABOUT / STATS ============ */}
       <div className="home-stage">
