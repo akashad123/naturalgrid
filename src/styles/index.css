@@ -137,13 +137,19 @@ html.lenis.lenis-smooth {
   }
 }
 
-/* Promote marquee track cleanly, pause on hover, and add generous top breathing room for Brand Partners */
+/* Brand Partners: compact, balanced vertical spacing without dead white gaps */
 .trusted {
-  padding-top: clamp(56px, 7.5vw, 108px);
+  padding-top: clamp(20px, 2.5vw, 36px);
+  padding-bottom: clamp(20px, 2.5vw, 36px);
+}
+
+.precision + .trusted {
+  padding-top: clamp(12px, 1.6vw, 22px);
 }
 
 .trusted-marquee {
   contain: layout style;
+  margin-top: clamp(14px, 1.8vw, 22px);
 }
 
 .trusted-track {
@@ -2295,7 +2301,9 @@ html.lenis.lenis-smooth {
   border-top: 1px solid rgba(6, 48, 36, 0.1);
   grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
   gap: clamp(28px, 4.5vw, 76px);
-  padding: clamp(52px, 6.5vw, 96px) clamp(16px, 2.4vw, 34px);
+  padding-top: clamp(40px, 4.8vw, 68px);
+  padding-bottom: clamp(20px, 2.4vw, 32px);
+  padding-inline: clamp(16px, 2.4vw, 34px);
 }
 
 .about-horizon-art {
