@@ -895,7 +895,7 @@ html.lenis.lenis-smooth {
   flex-wrap: wrap !important;
   align-items: center !important;
   justify-content: flex-start !important;
-  gap: 14px !important;
+  gap: 10px !important;
   margin-top: 0 !important;
   opacity: 1 !important;
   visibility: visible !important;
@@ -908,12 +908,12 @@ html.lenis.lenis-smooth {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 8px !important;
-  height: clamp(38px, 3.2vw, 44px) !important;
-  padding: 0 clamp(14px, 1.8vw, 22px) !important;
-  font-size: clamp(0.78rem, 0.95vw, 0.88rem) !important;
+  gap: 6px !important;
+  height: 35px !important;
+  padding: 0 16px !important;
+  font-size: 0.72rem !important;
   font-weight: 600 !important;
-  letter-spacing: 0.03em !important;
+  letter-spacing: 0.06em !important;
   text-decoration: none !important;
   border-radius: 0 !important;
   cursor: pointer !important;
@@ -922,6 +922,11 @@ html.lenis.lenis-smooth {
   transform: none !important;
   animation: none !important;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease !important;
+}
+
+.page-hero.hero--white-solar .hero-btn svg {
+  width: 12px !important;
+  height: 12px !important;
 }
 
 .page-hero.hero--white-solar .hero-btn--solid {
@@ -1090,17 +1095,24 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
   .page-hero.hero--white-solar .hero-actions {
     gap: 8px !important;
     width: 100% !important;
+    justify-content: center !important;
   }
 
   .page-hero.hero--white-solar .hero-btn {
-    height: 38px !important;
-    padding: 0 14px !important;
-    font-size: 0.74rem !important;
-    letter-spacing: 0.02em !important;
+    height: 32px !important;
+    padding: 0 12px !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.04em !important;
+    gap: 5px !important;
+  }
+
+  .page-hero.hero--white-solar .hero-btn svg {
+    width: 11px !important;
+    height: 11px !important;
   }
 }
 
