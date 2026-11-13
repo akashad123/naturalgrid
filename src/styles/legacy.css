@@ -851,41 +851,12 @@ section[id] {
   color: #fff;
 }
 
-/* ============ HERO WORDMARK ============ */
-/* The oversized NATURALGRID that every hero is cropped against. Drawn as
-   a pseudo-element so it stays decorative (never read out, never indexed)
-   and needs no markup on any page. Sized in vw so it always bleeds a
-   little past both edges; faded downward so the crop looks intentional. */
+/* ============ HERO WORDMARK (REMOVED AS PER USER REQUEST) ============ */
 .hero::after,
 .page-hero::after,
 .contact-hero::after {
-  content: "NATURALGRID";
-  position: absolute;
-  left: 50%;
-  /* Only the feet of the letters are trimmed. A deeper cut reads as a
-     rendering fault rather than a deliberate crop. */
-  bottom: -0.06em;
-  transform: translateX(-50%);
-  z-index: 1;
-  font-family: var(--font-brand);
-  font-size: 16.5vw;
-  font-weight: 700;
-  /* Line box hugs the capitals, so the reserved space below the content
-     is the letters themselves and not empty leading */
-  line-height: 0.72;
-  letter-spacing: -0.045em;
-  white-space: nowrap;
-  pointer-events: none;
-  user-select: none;
-  background: linear-gradient(
-    180deg,
-    rgba(242, 221, 184, 0.82) 0%,
-    rgba(242, 221, 184, 0.4) 56%,
-    rgba(242, 221, 184, 0.06) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  display: none !important;
+  content: none !important;
 }
 
 /* Headline lines rise in one after another */
