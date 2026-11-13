@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { siteConfig } from "@/config/site";
 import {
   ResolvedSeo,
@@ -19,35 +20,9 @@ export const SeoCollectorProvider: React.FC<{
   </SeoCollectorContext.Provider>
 );
 
-function upsertMetaTag(
-  attrName: "name" | "property",
-  attrValue: string,
-  content: string
-): void {
-  let meta = document.querySelector<HTMLMetaElement>(
-    `meta[${attrName}="${attrValue}"]`
-  );
-  if (!meta) {
-    meta = document.createElement("meta");
-    meta.setAttribute(attrName, attrValue);
-    document.head.appendChild(meta);
-  }
-  meta.setAttribute("content", content);
-}
-
-export const SeoHead: React.FC<SeoInput> = ({
-  title,
-  description,
-  keywords,
-  canonicalPath,
-  noindex = false,
-}) => {
+export const SeoHead: React.FC<SeoInput> = (props) => {
   const collectSeo = useContext(SeoCollectorContext);
-  const resolved = resolveSeoMetadata(
-    { title, description, keywords, canonicalPath, noindex },
-    siteConfig.name,
-    siteConfig.url
-  );
+  const resolved = resolveSeoMetadata(props, siteConfig.name, siteConfig.url);
 
   // During build-time SSR prerendering, report resolved metadata synchronously
   if (collectSeo) {
@@ -55,44 +30,48 @@ export const SeoHead: React.FC<SeoInput> = ({
   }
 
   useEffect(() => {
-    document.title = resolved.fullTitle;
-
-    upsertMetaTag("name", "description", resolved.description);
-    upsertMetaTag("name", "keywords", resolved.keywords);
-
-    upsertMetaTag("property", "og:title", resolved.fullTitle);
-    upsertMetaTag("property", "og:description", resolved.description);
-    upsertMetaTag("property", "og:url", resolved.ogUrl);
-
-    upsertMetaTag("name", "twitter:title", resolved.fullTitle);
-    upsertMetaTag("name", "twitter:description", resolved.description);
-    upsertMetaTag("name", "robots", resolved.robotsContent);
-
-    // Canonical link (omitted on noindex error pages)
-    let linkCanonical = document.querySelector<HTMLLinkElement>(
-      'link[rel="canonical"]'
-    );
-    if (resolved.canonicalUrl) {
-      if (!linkCanonical) {
-        linkCanonical = document.createElement("link");
-        linkCanonical.setAttribute("rel", "canonical");
-        document.head.appendChild(linkCanonical);
-      }
-      linkCanonical.setAttribute("href", resolved.canonicalUrl);
-    } else if (linkCanonical) {
-      linkCanonical.remove();
-    }
-
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  }, [
-    resolved.fullTitle,
-    resolved.description,
-    resolved.keywords,
-    resolved.canonicalUrl,
-    resolved.ogUrl,
-    resolved.robotsContent,
-    resolved.noindex,
-  ]);
+  }, [resolved.canonicalUrl]);
 
-  return null;
+  return (
+    <Helmet>
+      <title>{resolved.fullTitle}</title>
+      <meta name="description" content={resolved.description} />
+      <meta name="keywords" content={resolved.keywords} />
+      <meta name="robots" content={resolved.robotsContent} />
+
+      {/* Open Graph */}
+      <meta property="og:title" content={resolved.fullTitle} />
+      <meta property="og:description" content={resolved.description} />
+      <meta property="og:url" content={resolved.ogUrl} />
+      <meta property="og:image" content={resolved.ogImage} />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content={siteConfig.name} />
+
+      {/* Twitter Cards */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={resolved.fullTitle} />
+      <meta name="twitter:description" content={resolved.description} />
+      <meta name="twitter:image" content={resolved.ogImage} />
+
+      {/* Canonical URL */}
+      {resolved.canonicalUrl && (
+        <link rel="canonical" href={resolved.canonicalUrl} />
+      )}
+
+      {/* Google Search Console verification token (if configured) */}
+      {typeof import.meta !== "undefined" &&
+        import.meta.env?.VITE_GOOGLE_SITE_VERIFICATION && (
+          <meta
+            name="google-site-verification"
+            content={import.meta.env.VITE_GOOGLE_SITE_VERIFICATION}
+          />
+        )}
+
+      {/* Structured Data (Schema.org JSON-LD) */}
+      {resolved.schemaJson && (
+        <script type="application/ld+json">{resolved.schemaJson}</script>
+      )}
+    </Helmet>
+  );
 };

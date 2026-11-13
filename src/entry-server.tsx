@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
+import { HelmetProvider } from "react-helmet-async";
 import { SeoCollectorProvider } from "@/components/common/SeoHead";
 import { AppRoutes } from "@/routes/AppRoutes";
 import { siteConfig } from "@/config/site";
@@ -17,23 +18,27 @@ export function renderRoute(url: string): { html: string; seo: ResolvedSeo } {
     siteConfig.url
   );
 
+  const helmetContext = {};
+
   const html = ReactDOMServer.renderToString(
     <React.StrictMode>
-      <SeoCollectorProvider
-        onCollect={(seo) => {
-          collectedSeo = seo;
-        }}
-      >
-        <StaticRouter
-          location={url}
-          future={{
-            v7_startTransition: true,
-            v7_relativeSplatPath: true,
+      <HelmetProvider context={helmetContext}>
+        <SeoCollectorProvider
+          onCollect={(seo) => {
+            collectedSeo = seo;
           }}
         >
-          <AppRoutes />
-        </StaticRouter>
-      </SeoCollectorProvider>
+          <StaticRouter
+            location={url}
+            future={{
+              v7_startTransition: true,
+              v7_relativeSplatPath: true,
+            }}
+          >
+            <AppRoutes />
+          </StaticRouter>
+        </SeoCollectorProvider>
+      </HelmetProvider>
     </React.StrictMode>
   );
 

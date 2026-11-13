@@ -1,0 +1,50 @@
+# Natural Grid LLP
+
+> Natural Grid LLP is a service-first solar energy company headquartered in Sulthan Bathery, Wayanad, Kerala, providing engineering, installation, and lifecycle maintenance for rooftop solar systems across all 14 districts in Kerala.
+
+## Company Information
+- Name: Natural Grid LLP
+- Headquarters: Sulthan Bathery, Wayanad, Kerala, India - 673592
+- Phone: +91 90726 34443
+- Email: info@naturalgrid.in
+- Website: https://naturalgrid.in
+- Working Hours: Monday - Saturday: 9:00 AM - 6:00 PM IST (24h response target)
+
+## Core Services
+- Rooftop Solar Installation: On-grid, off-grid, and hybrid solar photovoltaic (PV) power systems for residential homes, villas, commercial establishments, and institutions.
+- Annual Maintenance Contracts (AMC): Preventive solar panel cleaning, electrical testing, inverter diagnostics, string monitoring, thermal imaging, and guaranteed breakdown response across Kerala.
+- Battery Backup & Hybrid Storage: LiFePO4 and lead-acid solar battery energy storage systems (BESS) for uninterrupted power supply during grid outages.
+- PM Surya Ghar Muft Bijli Yojana: End-to-end subsidy documentation, KSEB Soura net-metering portal application, technical feasibility review, and commissioning assistance for central government subsidies up to ₹78,000.
+- Solar Water Heating: ETC and FPC pressurized and non-pressurized solar thermal water heaters.
+
+## Geographic Coverage
+Natural Grid LLP operates dedicated installation and technical service teams across all 14 Kerala districts:
+- Thiruvananthapuram: https://naturalgrid.in/solar-installation/thiruvananthapuram
+- Kollam: https://naturalgrid.in/solar-installation/kollam
+- Pathanamthitta: https://naturalgrid.in/solar-installation/pathanamthitta
+- Alappuzha: https://naturalgrid.in/solar-installation/alappuzha
+- Kottayam: https://naturalgrid.in/solar-installation/kottayam
+- Idukki: https://naturalgrid.in/solar-installation/idukki
+- Ernakulam: https://naturalgrid.in/solar-installation/ernakulam
+- Thrissur: https://naturalgrid.in/solar-installation/thrissur
+- Palakkad: https://naturalgrid.in/solar-installation/palakkad
+- Malappuram: https://naturalgrid.in/solar-installation/malappuram
+- Kozhikode: https://naturalgrid.in/solar-installation/kozhikode
+- Wayanad: https://naturalgrid.in/solar-installation/wayanad
+- Kannur: https://naturalgrid.in/solar-installation/kannur
+- Kasaragod: https://naturalgrid.in/solar-installation/kasaragod
+
+## Primary URLs
+- Homepage: https://naturalgrid.in/
+- About Us: https://naturalgrid.in/about
+- Solar Installation: https://naturalgrid.in/service-installation
+- Solar Battery Backup: https://naturalgrid.in/service-battery-backup
+- Solar AMC & Maintenance: https://naturalgrid.in/service-amc
+- PM Surya Ghar Subsidy Guide: https://naturalgrid.in/service-subsidy
+- Solar Water Heating: https://naturalgrid.in/service-water-heater
+- Project Gallery: https://naturalgrid.in/gallery
+- Solar Savings Calculator: https://naturalgrid.in/calculator
+- Contact & Free Quote: https://naturalgrid.in/contact
+
+## Full Documentation for AI Search
+- Extended Context: https://naturalgrid.in/llms-full.txt

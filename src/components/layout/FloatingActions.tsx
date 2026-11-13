@@ -1,5 +1,6 @@
 import React from "react";
 import { siteConfig } from "@/config/site";
+import { trackPhoneClick, trackWhatsAppClick } from "@/utils/analytics";
 
 export const FloatingActions: React.FC = () => {
   return (
@@ -8,6 +9,7 @@ export const FloatingActions: React.FC = () => {
         href={`https://wa.me/${siteConfig.phoneRaw.replace(/\D/g, "")}`}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackWhatsAppClick("floating_button")}
         className="float-btn float-btn--whatsapp wa-pulse"
         aria-label="Chat with us on WhatsApp"
       >
@@ -23,6 +25,7 @@ export const FloatingActions: React.FC = () => {
       </a>
       <a
         href={`tel:${siteConfig.phoneRaw}`}
+        onClick={() => trackPhoneClick("floating_button")}
         className="float-btn float-btn--call"
         aria-label="Call Natural Grid"
       >

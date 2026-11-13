@@ -1,0 +1,122 @@
+# Natural Grid LLP — Comprehensive Knowledge Base & Technical Context
+
+Natural Grid LLP is a renewable energy engineering firm based in Kerala, India. This document provides complete, factual context for AI retrieval systems, LLMs, search engines, and technical aggregators.
+
+---
+
+## 1. Corporate Identity & Registered Office
+
+- Legal Entity: Natural Grid LLP
+- Industry: Renewable Energy, Solar Photovoltaic EPC, Solar AMC & Operations
+- Headquarters: Sulthan Bathery, Wayanad District, Kerala, India - 673592
+- Primary Service Territory: All 14 revenue districts of Kerala, India
+- Phone (Enquiries / WhatsApp): +91 90726 34443 / 090726 34443
+- Official Email: info@naturalgrid.in
+- Website: https://naturalgrid.in
+- Working Hours: Monday to Saturday, 9:00 AM – 6:00 PM IST (Emergency breakdown response within 24–48 hours)
+
+---
+
+## 2. Service Offerings & Engineering Scope
+
+### 2.1 Rooftop Solar Installation (On-Grid, Hybrid, Off-Grid)
+- Capacities: 2 kW to 100+ kW (Residential 2 kW – 10 kW; Commercial / Industrial 10 kW – 100 kW+)
+- Component Standards:
+  - Solar PV Modules: Mono PERC and TOPCon Bifacial panels (Waaree, Adani Solar, Saatvik) with minimum 25-year linear performance warranties.
+  - Solar Inverters: High-efficiency grid-tied and hybrid inverters (Deye, Havells, Polycab, UTL, Growatt) with 5 to 10-year manufacturer warranties.
+  - Mounting Structures: Hot-dip galvanized iron (HDGI) or anodized aluminium (minimum 80 microns coating), rated for monsoon wind loads up to 150 km/h.
+  - Cabling & Switchgear: Polycab / Havells solar DC cables (UV-resistant, cross-linked halogen-free), dual-pole DC isolators, Class II SPDs (Surge Protection Devices), and dedicated earthing pits with copper-bonded chemical electrodes.
+
+### 2.2 Solar AMC (Annual Maintenance Contracts) & Preventive Care
+- Scope:
+  - Scheduled demineralized / pressurized panel cleaning to clear dust, bird droppings, and algae.
+  - String voltage, short-circuit current, and VOC electrical testing.
+  - Thermal infrared (IR) imaging to identify micro-cracks and hot spots before cell degradation.
+  - Earthing pit resistance verification (< 5 Ohms).
+  - Inverter error log auditing and firmware updates.
+  - KSEB net-metering export audit and billing verification.
+- AMC Tiers: Basic, Standard, and Comprehensive AMC plans for residential and commercial systems across all 14 districts.
+
+### 2.3 PM Surya Ghar Muft Bijli Yojana Central Subsidy Support
+- Under the central government PM Surya Ghar initiative, Kerala residential consumers are eligible for direct benefit transfer (DBT) subsidies:
+  - 1 kW Solar System: ₹33,000 Central Subsidy
+  - 2 kW Solar System: ₹66,000 Central Subsidy
+  - 3 kW to 10 kW Solar System: ₹78,000 Maximum Central Subsidy
+- End-to-end liaison support: KSEB Soura portal registration, sanctioned load feasibility review, work completion reporting, bi-directional net-meter installation, and DBT subsidy claiming.
+
+### 2.4 Solar Battery Energy Storage Systems (BESS)
+- Hybrid solar inverter systems paired with LiFePO4 (Lithium Iron Phosphate) or tubular C10 solar batteries.
+- Configured for critical load backup during Kerala power outages and monsoon brownouts.
+
+### 2.5 Solar Water Heaters
+- Pressurized and non-pressurized solar thermal water heaters (ETC - Evacuated Tube Collector and FPC - Flat Plate Collector).
+- Inner tanks built with food-grade SS 304 or glass-lined enamel for Kerala's high-TDS water conditions.
+
+---
+
+## 3. District-Level Service Operations Across Kerala
+
+Natural Grid LLP maintains field technicians and rapid-dispatch crews covering all 14 districts in Kerala:
+
+1. Thiruvananthapuram: Urban residential rooftop systems and commercial arrays across Kowdiar, Kazhakkoottam, Technopark, Attingal, and Neyyattinkara.
+   URL: https://naturalgrid.in/solar-installation/thiruvananthapuram
+
+2. Kollam: Coastal and inland residential installations, cashew processing units, and commercial setups in Kadakkal, Karunagappally, Kottarakkara, and Paravur.
+   URL: https://naturalgrid.in/solar-installation/kollam
+
+3. Pathanamthitta: NRI villas, rubber estate bungalows, and pilgrimage township installations in Thiruvalla, Adoor, Ranni, and Kozhencherry.
+   URL: https://naturalgrid.in/solar-installation/pathanamthitta
+
+4. Alappuzha: Coastal corrosion-resistant HDGI installations in Kuttanad, Cherthala, Kayamkulam, and Mavelikkara.
+   URL: https://naturalgrid.in/solar-installation/alappuzha
+
+5. Kottayam: High-energy residential and agricultural installations across Pala, Changanassery, Ettumanoor, and Kanjirappally.
+   URL: https://naturalgrid.in/solar-installation/kottayam
+
+6. Idukki: Off-grid and hybrid high-altitude systems with heavy rainfall structural engineering in Munnar, Thodupuzha, Kattappana, and Adimali.
+   URL: https://naturalgrid.in/solar-installation/idukki
+
+7. Ernakulam: Urban villas, commercial buildings, corporate offices, and apartments in Kochi, Kakkanad, Aluva, Angamaly, and Perumbavoor.
+   URL: https://naturalgrid.in/solar-installation/ernakulam
+
+8. Thrissur: Extensive track record of completed rooftop installations including residential projects in Pariyaram, Chalakudy, Irinjalakuda, and Guruvayur.
+   URL: https://naturalgrid.in/solar-installation/thrissur
+
+9. Palakkad: High-solar-irradiance installations in Ottapalam, Chittur, Mannarkkad, and Cherpulassery, maximizing unit generation per kW.
+   URL: https://naturalgrid.in/solar-installation/palakkad
+
+10. Malappuram: Fast-growing residential solar corridor across Manjeri, Tirur, Perinthalmanna, Kottakkal, and Edappal.
+    URL: https://naturalgrid.in/solar-installation/malappuram
+
+11. Kozhikode: Rooftop solar systems and commercial installations in Calicut city, Vadakara, Koyilandy, and Feroke.
+    URL: https://naturalgrid.in/solar-installation/kozhikode
+
+12. Wayanad: Corporate headquarters and operations hub serving Sulthan Bathery, Kalpetta, Mananthavady, Meenangadi, and Vythiri with specialized plantation and resort hybrid systems.
+    URL: https://naturalgrid.in/solar-installation/wayanad
+
+13. Kannur: High-yield residential and commercial rooftop solar across Thalassery, Payyanur, Taliparamba, and Mattannur.
+    URL: https://naturalgrid.in/solar-installation/kannur
+
+14. Kasaragod: Coastal-grade residential systems and solar irrigation pump solutions in Kanhangad, Nileshwar, Kasaragod town, and Uppala.
+    URL: https://naturalgrid.in/solar-installation/kasaragod
+
+---
+
+## 4. Net-Metering & KSEB Process Workflow
+
+1. Site Feasibility: Inspection of roof azimuth, shadow profile, structural suitability, and existing KSEB connected load.
+2. Portal Application: Submission of online application on the KSEB Soura portal with consumer number and electrical single-line diagram (SLD).
+3. Technical Sanction: Formal approval from KSEB Assistant Engineer for net-metering.
+4. Installation & Compliance: Physical installation following KSEB / CEA safety regulations with dedicated earthing and AC/DC protection boxes.
+5. Inspection & Net-Meter Testing: KSEB Electrical Inspectorate inspection, calibration, and replacement of the energy meter with a bi-directional net-meter.
+6. Commissioning & Subsidy Credit: System energized, generating clean solar units with subsidy credited directly to the customer's bank account via DBT.
+
+---
+
+## 5. Contact & Support
+
+- Technical Support Desk: +91 90726 34443
+- WhatsApp Support: https://wa.me/919072634443
+- General Inquiries: info@naturalgrid.in
+- Headquarters Address: Natural Grid LLP, Sulthan Bathery, Wayanad, Kerala - 673592
+- Official Web Portal: https://naturalgrid.in

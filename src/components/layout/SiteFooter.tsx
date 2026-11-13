@@ -82,6 +82,27 @@ export const SiteFooter: React.FC = () => {
               </Link>
             </div>
           </div>
+
+          {/* Crawlable Local SEO District Directory */}
+          <div className="footer-districts">
+            <span className="footer-districts-label">
+              Solar Installation Across Kerala:
+            </span>
+            <div className="footer-districts-list">
+              {siteConfig.districts.map((districtName) => {
+                const slug = districtName.toLowerCase().replace(/\s+/g, "-");
+                return (
+                  <Link
+                    key={slug}
+                    to={`/solar-installation/${slug}`}
+                    className="footer-district-link"
+                  >
+                    Solar in {districtName}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         <div className="footer-bottom">

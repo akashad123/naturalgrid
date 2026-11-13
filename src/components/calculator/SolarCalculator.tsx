@@ -7,6 +7,7 @@ import {
   PropertyType,
 } from "@/utils/calculator";
 import { formatINR, formatKw } from "@/utils/formatters";
+import { trackCalculatorUsed } from "@/utils/analytics";
 
 interface SolarCalculatorProps {
   embedded?: boolean;
@@ -71,6 +72,7 @@ export const SolarCalculator: React.FC<SolarCalculatorProps> = ({
     });
     setHasCalculated(true);
     setIsStale(false);
+    trackCalculatorUsed(preset.units, preset.propertyType, r.solarSizeKw);
   };
 
   const runCalculation = () => {
@@ -81,6 +83,7 @@ export const SolarCalculator: React.FC<SolarCalculatorProps> = ({
     });
     setHasCalculated(true);
     setIsStale(false);
+    trackCalculatorUsed(units, propertyType, r.solarSizeKw);
 
     if (window.innerWidth <= 1024 && resultsRef.current) {
       resultsRef.current.scrollIntoView({

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { siteConfig } from "@/config/site";
 import { normalizePhone } from "@/utils/phone";
+import { trackFormSubmission } from "@/utils/analytics";
 
 interface FormErrors {
   firstName?: string;
@@ -98,6 +99,7 @@ export const ContactForm: React.FC = () => {
       const data = await response.json();
 
       if (response.ok && data.success) {
+        trackFormSubmission("general_enquiry");
         setStatus({
           type: "success",
           message:
