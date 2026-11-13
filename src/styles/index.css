@@ -82,12 +82,18 @@ html.lenis.lenis-smooth {
   gap: 7px;
 }
 
+.hero-btn--solid {
+  background: #ffffff !important;
+  color: var(--deep, #063024) !important;
+  border: 1px solid #ffffff !important;
+}
+
 .hero-btn--ghost {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  background: var(--cream);
-  border-color: transparent;
-  color: var(--deep);
+  background: var(--cream, #f2ddb8) !important;
+  border: 1px solid var(--cream, #f2ddb8) !important;
+  color: var(--deep, #063024) !important;
 }
 
 .hero-btn svg {
@@ -822,7 +828,7 @@ html.lenis.lenis-smooth {
 
 /* Background Image for Landing Hero (replaces video with user-provided green wind turbine visual) */
 .page-hero.hero--green-wind {
-  background-color: #03401f;
+  background-color: #034121;
 }
 
 .hero-bg--image {
@@ -831,6 +837,7 @@ html.lenis.lenis-smooth {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  background-color: #034121;
 }
 
 .hero-bg--image::before {
@@ -840,7 +847,7 @@ html.lenis.lenis-smooth {
 .hero-bg-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: right center;
   display: block;
   image-rendering: -webkit-optimize-contrast;
@@ -852,21 +859,11 @@ html.lenis.lenis-smooth {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(3, 40, 24, 0.72) 0%,
-      rgba(3, 40, 24, 0.5) 45%,
-      rgba(3, 40, 24, 0.2) 75%,
-      rgba(3, 40, 24, 0.05) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(3, 40, 24, 0.65) 0%,
-      transparent 30%,
-      transparent 70%,
-      rgba(3, 40, 24, 0.75) 100%
-    );
+  background: linear-gradient(
+    180deg,
+    rgba(3, 40, 24, 0.45) 0%,
+    transparent 14%
+  );
   pointer-events: none;
 }
 

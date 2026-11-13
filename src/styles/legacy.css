@@ -851,12 +851,40 @@ section[id] {
   color: #fff;
 }
 
-/* ============ HERO WORDMARK (REMOVED AS PER USER REQUEST) ============ */
+/* ============ HERO WORDMARK ============ */
 .hero::after,
 .page-hero::after,
 .contact-hero::after {
-  display: none !important;
-  content: none !important;
+  display: none;
+  content: none;
+}
+
+/* Landing page hero wordmark restored specifically at bottom as requested */
+.page-hero.hero--green-wind::after {
+  content: "NATURALGRID" !important;
+  display: block !important;
+  position: absolute;
+  left: 50%;
+  bottom: -0.06em;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-family: var(--font-brand);
+  font-size: 16.5vw;
+  font-weight: 700;
+  line-height: 0.72;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  background: linear-gradient(
+    180deg,
+    rgba(242, 221, 184, 0.82) 0%,
+    rgba(242, 221, 184, 0.4) 56%,
+    rgba(242, 221, 184, 0.06) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Headline lines rise in one after another */

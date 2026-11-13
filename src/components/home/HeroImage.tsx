@@ -6,10 +6,10 @@ export const HeroImage: React.FC = () => {
       <picture>
         <source
           type="image/webp"
-          srcSet="/images/hero/hero-wind-green-2k.webp"
+          srcSet="/images/hero/hero-wind-green.webp"
         />
         <img
-          src="/images/hero/hero-wind-green.jpg"
+          src="/images/hero/hero-wind-green.png"
           alt=""
           className="hero-bg-img"
           loading="eager"
