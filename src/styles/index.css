@@ -3055,40 +3055,16 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
   }
 }
 
-/* ============ FOOTER LOCAL SEO DISTRICT DIRECTORY ============ */
-.footer-districts {
-  margin-top: clamp(24px, 3vw, 36px);
-  padding-top: clamp(18px, 2.4vw, 28px);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+/* Header nav dropdown divider & highlight */
+.nav-dropdown-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 6px 0;
 }
 
-.footer-districts-label {
-  display: block;
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--cream, #f2ddb8);
-  margin-bottom: 12px;
-}
-
-.footer-districts-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 14px;
-}
-
-.footer-district-link {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.65);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.footer-district-link:hover,
-.footer-district-link:focus-visible {
-  color: #ffffff;
-  text-decoration: underline;
+.nav-dropdown-highlight {
+  font-weight: 600 !important;
+  color: var(--cream, #f2ddb8) !important;
 }
 
 /* ============ DISTRICT LOCAL SEO LANDING PAGES ============ */
@@ -3139,12 +3115,30 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
   font-weight: 600;
 }
 
-/* Hero Section */
+/* Hero Section (Architectural 2-Column with Radial Mesh) */
 .district-hero {
   background: var(--deep, #063024);
+  background-image:
+    radial-gradient(ellipse 60% 45% at 85% 15%, rgba(35, 101, 55, 0.4), transparent 70%),
+    linear-gradient(rgba(242, 221, 184, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 221, 184, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 36px 36px, 36px 36px;
   color: #ffffff;
   padding: clamp(36px, 5vw, 64px) 0 clamp(44px, 6vw, 76px);
   position: relative;
+  overflow: hidden;
+}
+
+.district-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(310px, 0.85fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+
+.district-hero-main {
+  display: flex;
+  flex-direction: column;
 }
 
 .district-hero-badge {
@@ -3161,6 +3155,7 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
   text-transform: uppercase;
   color: var(--cream, #f2ddb8);
   margin-bottom: clamp(14px, 2vw, 22px);
+  align-self: flex-start;
 }
 
 .district-badge-dot {
@@ -3172,13 +3167,14 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
 
 .district-hero-title {
   font-family: var(--font-display, "Fraunces", serif);
-  font-size: clamp(2.2rem, 4.4vw, 3.8rem);
+  font-size: clamp(1.75rem, 4vw, 3.4rem);
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.025em;
   color: #ffffff;
-  max-width: 22ch;
+  max-width: 24ch;
   margin: 0 0 clamp(16px, 2vw, 24px);
+  overflow-wrap: break-word;
 }
 
 .district-hero-subtext {
@@ -3196,18 +3192,147 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
   flex-wrap: wrap;
 }
 
+.district-hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: clamp(20px, 2.8vw, 32px);
+  padding-top: clamp(16px, 2vw, 22px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(244, 245, 242, 0.88);
+}
+
+.trust-check {
+  color: #55c777;
+  font-weight: 700;
+}
+
+/* District Hero Spec Card (Right Column) */
+.district-hero-card {
+  background: rgba(4, 35, 26, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(242, 221, 184, 0.28);
+  border-radius: 0;
+  padding: clamp(20px, 2.5vw, 30px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+}
+
+.hero-card-header {
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-card-eyebrow {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream, #f2ddb8);
+  margin-bottom: 4px;
+}
+
+.hero-card-title {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+}
+
+.hero-card-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hero-spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.82rem;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-spec-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.spec-label {
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.spec-value {
+  color: #ffffff;
+  font-weight: 600;
+  text-align: right;
+}
+
+.hero-card-footer {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hero-card-note {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cream, #f2ddb8);
+  font-weight: 600;
+}
+
+.hero-card-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hero-card-phone:hover {
+  color: var(--cream, #f2ddb8);
+}
+
+/* Compact Buttons strictly conforming to universal button rules */
 .district-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 24px;
-  font-size: 0.84rem;
+  gap: 8px;
+  height: 35px;
+  padding: 0 16px;
+  font-size: 0.74rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  border-radius: 0;
+  text-transform: uppercase;
+  border-radius: 0 !important;
   text-decoration: none;
   cursor: pointer;
+  white-space: nowrap;
   transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
 }
 
@@ -3658,12 +3783,21 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
     grid-template-columns: 1fr;
   }
 
+  .district-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
   .district-aside-card {
     position: static;
   }
 
   .district-profile-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .directory-climate-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -3679,6 +3813,391 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
 
   .district-btn {
     width: 100%;
+    height: 33px;
+    padding: 0 14px;
+    font-size: 0.72rem;
   }
+
+  .coverage-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .directory-hero-actions,
+  .directory-cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .directory-hero-actions .district-btn,
+  .directory-cta-actions .district-btn {
+    width: 100%;
+  }
+}
+
+/* ============ KERALA COVERAGE GRID COMPONENT ============ */
+.coverage-grid-section {
+  padding: clamp(36px, 4.5vw, 64px) 0;
+}
+
+.coverage-grid-section--compact {
+  padding: 24px 0 12px;
+}
+
+.coverage-grid-header {
+  margin-bottom: clamp(24px, 3.2vw, 36px);
+}
+
+.coverage-grid-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  background: rgba(6, 48, 36, 0.06);
+  border: 1px solid rgba(6, 48, 36, 0.14);
+  border-radius: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--deep, #063024);
+  margin-bottom: 12px;
+}
+
+.coverage-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 0;
+  background: var(--deep, #063024);
+}
+
+.coverage-grid-title {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 500;
+  color: var(--ink, #063024);
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+}
+
+.coverage-grid-subtitle {
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  line-height: 1.6;
+  color: var(--ink-soft, #5a6e65);
+  max-width: 68ch;
+  margin: 0 0 20px;
+}
+
+.coverage-region-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.coverage-tab-btn {
+  height: 33px;
+  padding: 0 14px;
+  border-radius: 0 !important;
+  background: #ffffff;
+  border: 1px solid rgba(6, 48, 36, 0.18);
+  color: var(--ink, #063024);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.coverage-tab-btn:hover {
+  background: rgba(6, 48, 36, 0.05);
+  border-color: var(--deep, #063024);
+}
+
+.coverage-tab-btn.is-active {
+  background: var(--deep, #063024);
+  color: #ffffff;
+  border-color: var(--deep, #063024);
+}
+
+.coverage-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.coverage-district-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid rgba(6, 48, 36, 0.12);
+  border-radius: 0 !important;
+  padding: 22px 20px;
+  text-decoration: none;
+  color: var(--ink, #063024);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.coverage-district-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(6, 48, 36, 0.08);
+  border-color: var(--deep, #063024);
+}
+
+.coverage-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.coverage-card-region {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft, #5a6e65);
+}
+
+.coverage-card-malayalam {
+  font-size: 0.78rem;
+  color: var(--forest, #236537);
+  font-weight: 600;
+}
+
+.coverage-card-name {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: var(--ink, #063024);
+  margin: 0 0 8px;
+}
+
+.coverage-card-circles {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ink-soft, #5a6e65);
+  margin: 0 0 14px;
+  min-height: 2.9em;
+}
+
+.coverage-label {
+  color: var(--ink, #063024);
+  font-weight: 600;
+}
+
+.coverage-card-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #f7f8f6;
+  border-radius: 0;
+  margin-bottom: 16px;
+}
+
+.coverage-metric-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-caption {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft, #5a6e65);
+}
+
+.metric-val {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink, #063024);
+}
+
+.coverage-card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid rgba(6, 48, 36, 0.08);
+}
+
+.coverage-cta-text {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--forest, #236537);
+  transition: color 0.2s ease;
+}
+
+.coverage-district-card:hover .coverage-cta-text {
+  color: var(--ink, #063024);
+}
+
+.coverage-cta-arrow {
+  color: var(--forest, #236537);
+  transition: transform 0.2s ease;
+}
+
+.coverage-district-card:hover .coverage-cta-arrow {
+  transform: translateX(3px);
+}
+
+/* ============ DIRECTORY PAGE SPECIFICS ============ */
+.district-directory-page {
+  background-color: var(--page-bg, #f4f5f2);
+  min-height: 100vh;
+}
+
+.directory-hero {
+  background: var(--deep, #063024);
+  background-image:
+    radial-gradient(ellipse 70% 50% at 90% 0%, rgba(35, 101, 55, 0.45), transparent 70%),
+    linear-gradient(rgba(242, 221, 184, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 221, 184, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 36px 36px, 36px 36px;
+  color: #ffffff;
+  padding: clamp(36px, 5vw, 64px) 0 clamp(44px, 6vw, 76px);
+}
+
+.directory-hero-title {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: clamp(1.75rem, 4vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  max-width: 24ch;
+  margin: 0 0 clamp(16px, 2vw, 24px);
+  overflow-wrap: break-word;
+}
+
+.directory-hero-subtext {
+  font-size: clamp(1rem, 1.2vw, 1.12rem);
+  line-height: 1.62;
+  color: rgba(244, 245, 242, 0.88);
+  max-width: 64ch;
+  margin: 0 0 clamp(24px, 3vw, 36px);
+}
+
+.directory-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.directory-grid-wrapper {
+  padding-top: clamp(20px, 3vw, 36px);
+}
+
+/* Climate Engineering Strategy */
+.directory-climate-section {
+  padding: clamp(48px, 6vw, 84px) 0;
+  border-top: 1px solid rgba(6, 48, 36, 0.08);
+}
+
+.directory-climate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.5vw, 32px);
+  margin-top: clamp(24px, 3vw, 36px);
+}
+
+.directory-climate-card {
+  background: #ffffff;
+  border: 1px solid rgba(6, 48, 36, 0.12);
+  border-radius: 0 !important;
+  padding: clamp(24px, 2.8vw, 32px);
+  display: flex;
+  flex-direction: column;
+}
+
+.climate-card-num {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--forest, #236537);
+  margin-bottom: 12px;
+}
+
+.directory-climate-card h3 {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--ink, #063024);
+  margin: 0 0 8px;
+}
+
+.climate-card-districts {
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--forest, #236537);
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(6, 48, 36, 0.08);
+}
+
+.climate-card-text {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink-soft, #5a6e65);
+  margin: 0;
+}
+
+/* Statewide Consultation Banner */
+.directory-cta-section {
+  padding-bottom: clamp(56px, 7vw, 96px);
+}
+
+.directory-cta-card {
+  background: var(--deep, #063024);
+  border: 1px solid rgba(242, 221, 184, 0.28);
+  border-radius: 0 !important;
+  padding: clamp(32px, 4.5vw, 54px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  color: #ffffff;
+}
+
+.directory-cta-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream, #f2ddb8);
+  margin-bottom: 8px;
+}
+
+.directory-cta-content h2 {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 10px;
+}
+
+.directory-cta-content p {
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  line-height: 1.55;
+  color: rgba(244, 245, 242, 0.88);
+  max-width: 54ch;
+  margin: 0;
+}
+
+.directory-cta-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 

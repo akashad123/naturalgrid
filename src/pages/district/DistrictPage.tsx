@@ -59,7 +59,7 @@ export const DistrictPage: React.FC = () => {
 
   const breadcrumbs = [
     { name: "Home", path: "/" },
-    { name: "Solar Installation", path: "/service-installation" },
+    { name: "Kerala Service Areas", path: "/solar-installation" },
     { name: district.name, path: canonicalPath },
   ];
 
@@ -93,7 +93,7 @@ export const DistrictPage: React.FC = () => {
             </li>
             <li aria-hidden="true">/</li>
             <li>
-              <Link to="/service-installation">Solar Installation</Link>
+              <Link to="/solar-installation">Kerala Service Areas</Link>
             </li>
             <li aria-hidden="true">/</li>
             <li aria-current="page">
@@ -103,44 +103,111 @@ export const DistrictPage: React.FC = () => {
         </div>
       </nav>
 
-      {/* ============ HERO SECTION ============ */}
+      {/* ============ HERO SECTION (EDITORIAL 2-COLUMN) ============ */}
       <header className="district-hero">
         <div className="district-container">
-          <div className="district-hero-badge">
-            <span className="district-badge-dot" />
-            <span>
-              {district.region} • {district.malayalamName}
-            </span>
-          </div>
+          <div className="district-hero-grid">
+            <div className="district-hero-main">
+              <div className="district-hero-badge">
+                <span className="district-badge-dot" />
+                <span>
+                  {district.region} • {district.malayalamName}
+                </span>
+              </div>
 
-          <h1 className="district-hero-title">{district.heroHeadline}</h1>
+              <h1 className="district-hero-title">{district.heroHeadline}</h1>
 
-          <p className="district-hero-subtext">{district.heroSubtext}</p>
+              <p className="district-hero-subtext">{district.heroSubtext}</p>
 
-          <div className="district-hero-actions">
-            <Link
-              to={`/contact?district=${encodeURIComponent(district.name)}`}
-              className="district-btn district-btn--primary"
-            >
-              <span>Get Free Quote for {district.name}</span>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </Link>
-            <a href="#projects" className="district-btn district-btn--ghost">
-              <span>View Completed Projects</span>
-            </a>
+              <div className="district-hero-actions">
+                <Link
+                  to={`/contact?district=${encodeURIComponent(district.name)}`}
+                  className="district-btn district-btn--primary"
+                >
+                  <span>Get Free Quote for {district.name}</span>
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </Link>
+                <a href="#projects" className="district-btn district-btn--ghost">
+                  <span>View Completed Projects</span>
+                </a>
+              </div>
+
+              <div className="district-hero-trust" aria-label="Key Service Guarantees">
+                <span className="hero-trust-item">
+                  <span className="trust-check">✓</span> 100% KSEB Net Metering
+                </span>
+                <span className="hero-trust-item">
+                  <span className="trust-check">✓</span> 24–48h On-Site Dispatch
+                </span>
+                <span className="hero-trust-item">
+                  <span className="trust-check">✓</span> PM Surya Ghar Subsidy
+                </span>
+              </div>
+            </div>
+
+            {/* Local District Solar Profile Quick Card */}
+            <aside className="district-hero-card" aria-label="District Technical Summary">
+              <div className="hero-card-header">
+                <span className="hero-card-eyebrow">DISTRICT PROFILE</span>
+                <h2 className="hero-card-title">{district.name} Solar Specs</h2>
+              </div>
+
+              <div className="hero-card-specs">
+                <div className="hero-spec-row">
+                  <span className="spec-label">Daily Irradiance:</span>
+                  <span className="spec-value">{district.solarProfile.avgSunHours}</span>
+                </div>
+                <div className="hero-spec-row">
+                  <span className="spec-label">Annual Yield / kW:</span>
+                  <span className="spec-value">{district.solarProfile.annualGenerationPerKw}</span>
+                </div>
+                <div className="hero-spec-row">
+                  <span className="spec-label">KSEB Circles:</span>
+                  <span className="spec-value">{district.ksebCircles.map(c => c.replace(" Electrical Circle", "")).join(", ")}</span>
+                </div>
+                <div className="hero-spec-row">
+                  <span className="spec-label">Climate Spec:</span>
+                  <span className="spec-value">{district.solarProfile.monsoonEngineering.split("with")[0].trim()}</span>
+                </div>
+              </div>
+
+              <div className="hero-card-footer">
+                <span className="hero-card-note">Direct District Dispatch</span>
+                <a
+                  href={`tel:${siteConfig.phoneRaw}`}
+                  className="hero-card-phone"
+                  aria-label={`Call Natural Grid at ${siteConfig.phoneDisplay}`}
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                  <span>{siteConfig.phoneDisplay}</span>
+                </a>
+              </div>
+            </aside>
           </div>
         </div>
       </header>

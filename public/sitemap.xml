@@ -62,7 +62,13 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Kerala District Local SEO Landing Pages -->
+  <!-- Kerala Statewide Service Directory & District Landing Pages -->
+  <url>
+    <loc>https://naturalgrid.in/solar-installation</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <url>
     <loc>https://naturalgrid.in/solar-installation/thiruvananthapuram</loc>
     <lastmod>2026-11-13</lastmod>

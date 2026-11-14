@@ -5,6 +5,7 @@ import {
   ServiceFaq,
 } from "@/components/service/ServiceLayout";
 import { SeoHead } from "@/components/common/SeoHead";
+import { KeralaCoverageGrid } from "@/components/common/KeralaCoverageGrid";
 import { getServiceKeywords } from "@/config/site";
 
 const STEPS: ServiceStep[] = [
@@ -135,6 +136,20 @@ export const ServiceInstallationPage: React.FC = () => {
           cleaning, inspection, performance monitoring and breakdown assistance
           — coordinated by district-level teams across Kerala.
         </p>
+
+        <h3>Statewide Installation Coverage Across All 14 Districts</h3>
+        <p>
+          Natural Grid operates dedicated solar engineering and maintenance
+          teams across every district in Kerala. Select your district below for
+          localized solar irradiance profiles, KSEB electrical circle
+          coordination, and verified completed projects:
+        </p>
+        <KeralaCoverageGrid
+          showTabs={false}
+          compact={true}
+          title="Explore Solar by District"
+          subtitle="Direct local service, fast-track net-metering liaison, and 24-48h technician response."
+        />
       </ServiceLayout>
     </>
   );

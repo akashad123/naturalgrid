@@ -18,7 +18,8 @@
 - Solar Water Heating: ETC and FPC pressurized and non-pressurized solar thermal water heaters.
 
 ## Geographic Coverage
-Natural Grid LLP operates dedicated installation and technical service teams across all 14 Kerala districts:
+Natural Grid LLP operates dedicated installation and technical service teams across all 14 Kerala districts.
+- Statewide Coverage Directory: https://naturalgrid.in/solar-installation
 - Thiruvananthapuram: https://naturalgrid.in/solar-installation/thiruvananthapuram
 - Kollam: https://naturalgrid.in/solar-installation/kollam
 - Pathanamthitta: https://naturalgrid.in/solar-installation/pathanamthitta

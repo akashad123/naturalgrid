@@ -19,7 +19,8 @@ const PRERENDER_ROUTES = [
   "/calculator",
   "/contact",
   "/404",
-  // 14 Kerala District Local SEO Landing Pages
+  // Kerala District Local SEO Directory Hub & 14 District Landing Pages
+  "/solar-installation",
   "/solar-installation/thiruvananthapuram",
   "/solar-installation/kollam",
   "/solar-installation/pathanamthitta",

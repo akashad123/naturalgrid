@@ -12,6 +12,7 @@ import { ServiceAmcPage } from "@/pages/service/ServiceAmcPage";
 import { ServiceSubsidyPage } from "@/pages/service/ServiceSubsidyPage";
 import { ServiceWaterHeaterPage } from "@/pages/service/ServiceWaterHeaterPage";
 import { DistrictPage } from "@/pages/district/DistrictPage";
+import { DistrictDirectoryPage } from "@/pages/district/DistrictDirectoryPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 
 export const AppRoutes: React.FC = () => {
@@ -24,14 +25,14 @@ export const AppRoutes: React.FC = () => {
         <Route path="gallery" element={<GalleryPage />} />
         <Route path="contact" element={<ContactPage />} />
 
-        {/* District-wise Local SEO routes (all 14 Kerala districts) */}
+        {/* District-wise Local SEO routes (all 14 Kerala districts + statewide directory) */}
         <Route
           path="solar-installation/:districtSlug"
           element={<DistrictPage />}
         />
         <Route
           path="solar-installation"
-          element={<Navigate to="/service-installation" replace />}
+          element={<DistrictDirectoryPage />}
         />
 
         {/* Service routes */}
