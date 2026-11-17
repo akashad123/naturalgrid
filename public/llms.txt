@@ -18,22 +18,7 @@
 - Solar Water Heating: ETC and FPC pressurized and non-pressurized solar thermal water heaters.
 
 ## Geographic Coverage
-Natural Grid LLP operates dedicated installation and technical service teams across all 14 Kerala districts.
-- Statewide Coverage Directory: https://naturalgrid.in/solar-installation
-- Thiruvananthapuram: https://naturalgrid.in/solar-installation/thiruvananthapuram
-- Kollam: https://naturalgrid.in/solar-installation/kollam
-- Pathanamthitta: https://naturalgrid.in/solar-installation/pathanamthitta
-- Alappuzha: https://naturalgrid.in/solar-installation/alappuzha
-- Kottayam: https://naturalgrid.in/solar-installation/kottayam
-- Idukki: https://naturalgrid.in/solar-installation/idukki
-- Ernakulam: https://naturalgrid.in/solar-installation/ernakulam
-- Thrissur: https://naturalgrid.in/solar-installation/thrissur
-- Palakkad: https://naturalgrid.in/solar-installation/palakkad
-- Malappuram: https://naturalgrid.in/solar-installation/malappuram
-- Kozhikode: https://naturalgrid.in/solar-installation/kozhikode
-- Wayanad: https://naturalgrid.in/solar-installation/wayanad
-- Kannur: https://naturalgrid.in/solar-installation/kannur
-- Kasaragod: https://naturalgrid.in/solar-installation/kasaragod
+Natural Grid LLP operates dedicated installation and technical service teams across all 14 Kerala districts, coordinated from its headquarters in Sulthan Bathery, Wayanad.
 
 ## Primary URLs
 - Homepage: https://naturalgrid.in/

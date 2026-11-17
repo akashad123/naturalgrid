@@ -43,9 +43,7 @@ export const SiteHeader: React.FC = () => {
     }
   };
 
-  const isServiceActive =
-    location.pathname.startsWith("/service-") ||
-    location.pathname.startsWith("/solar-installation");
+  const isServiceActive = location.pathname.startsWith("/service-");
 
   return (
     <header className={`site-header ${isStuck ? "is-stuck" : ""}`}>
@@ -143,22 +141,6 @@ export const SiteHeader: React.FC = () => {
                 {service.title}
               </NavLink>
             ))}
-            <div className="nav-dropdown-divider" />
-            <NavLink
-              to="/solar-installation"
-              className={({ isActive }) =>
-                isActive || location.pathname.startsWith("/solar-installation")
-                  ? "active nav-dropdown-highlight"
-                  : "nav-dropdown-highlight"
-              }
-              onClick={(e) => {
-                setServicesDropdownOpen(false);
-                setDropdownDismissed(true);
-                e.currentTarget.blur();
-              }}
-            >
-              <span>Service Areas (14 Districts)</span>
-            </NavLink>
           </div>
         </div>
 

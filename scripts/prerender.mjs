@@ -19,22 +19,6 @@ const PRERENDER_ROUTES = [
   "/calculator",
   "/contact",
   "/404",
-  // Kerala District Local SEO Directory Hub & 14 District Landing Pages
-  "/solar-installation",
-  "/solar-installation/thiruvananthapuram",
-  "/solar-installation/kollam",
-  "/solar-installation/pathanamthitta",
-  "/solar-installation/alappuzha",
-  "/solar-installation/kottayam",
-  "/solar-installation/idukki",
-  "/solar-installation/ernakulam",
-  "/solar-installation/thrissur",
-  "/solar-installation/palakkad",
-  "/solar-installation/malappuram",
-  "/solar-installation/kozhikode",
-  "/solar-installation/wayanad",
-  "/solar-installation/kannur",
-  "/solar-installation/kasaragod",
 ];
 
 function escapeHtml(value) {

@@ -61,9 +61,6 @@ export const SiteFooter: React.FC = () => {
                   {service.footerTitle}
                 </Link>
               ))}
-              <Link to="/solar-installation">
-                Service Areas (14 Districts)
-              </Link>
             </div>
             <div className="link-col">
               <h3>Contact</h3>
