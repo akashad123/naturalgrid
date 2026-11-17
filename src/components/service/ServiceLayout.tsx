@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { PageHero } from "@/components/common/PageHero";
+import { HeroImage } from "@/components/home/HeroImage";
 import { Accordion } from "@/components/common/Accordion";
 import {
   ServiceBackdropIllustrations,
@@ -40,7 +41,12 @@ export const ServiceLayout: React.FC<ServiceLayoutProps> = ({
 
   return (
     <>
-      <PageHero title={title} description={heroText} />
+      <PageHero
+        className="hero--white-solar"
+        title={title}
+        description={heroText}
+        background={<HeroImage />}
+      />
 
       <div className="services-stage">
         <ServiceBackdropIllustrations serviceId={serviceId} />

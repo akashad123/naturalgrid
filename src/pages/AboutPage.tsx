@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { SeoHead } from "@/components/common/SeoHead";
 import { PageHero } from "@/components/common/PageHero";
+import { HeroImage } from "@/components/home/HeroImage";
 import { EnergySlider } from "@/components/about/EnergySlider";
 import { TrustMarquee } from "@/components/home/TrustMarquee";
 import { useCounter } from "@/hooks/useCounter";
@@ -21,8 +22,10 @@ export const AboutPage: React.FC = () => {
 
       {/* ============ PAGE HERO ============ */}
       <PageHero
+        className="hero--white-solar"
         title={"A Solar Company Built Around\u00A0Service"}
         description="We're a Wayanad-based solar company that sees the installation as the start of the relationship, not the end of it — fitting each system carefully and staying on to keep it running for years."
+        background={<HeroImage />}
       />
 
       {/* ============ OUR JOURNEY (MINIMAL EDITORIAL GRID) ============ */}

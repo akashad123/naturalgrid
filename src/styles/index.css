@@ -143,31 +143,36 @@ html.lenis.lenis-smooth {
   }
 }
 
-/* Brand Partners & Features: compact, balanced vertical spacing without dead white gaps */
+/* Brand Partners & Features: generous breathing space and balanced vertical rhythm */
 .features {
-  padding-top: clamp(24px, 3vw, 38px);
-  padding-bottom: clamp(20px, 2.5vw, 32px);
-  gap: clamp(18px, 2.2vw, 28px) clamp(24px, 3vw, 48px);
+  padding-top: clamp(36px, 4.5vw, 60px);
+  padding-bottom: clamp(36px, 4.5vw, 60px);
+  gap: clamp(24px, 3vw, 44px) clamp(28px, 3.5vw, 56px);
 }
 
 .trusted {
-  padding-top: clamp(14px, 1.8vw, 24px);
-  padding-bottom: clamp(20px, 2.5vw, 32px);
+  padding-top: clamp(64px, 8vw, 104px);
+  padding-bottom: clamp(64px, 8vw, 104px);
 }
 
 .precision + .trusted,
 .features + .trusted {
-  padding-top: clamp(12px, 1.6vw, 20px);
+  padding-top: clamp(64px, 8vw, 104px);
 }
 
 .trusted-marquee {
   contain: layout style;
-  margin-top: clamp(10px, 1.3vw, 18px);
+  margin-top: clamp(32px, 4vw, 52px);
 }
 
 .trusted-track {
   will-change: transform;
   backface-visibility: hidden;
+}
+
+.trusted-set {
+  gap: clamp(56px, 7vw, 110px);
+  padding-right: clamp(56px, 7vw, 110px);
 }
 
 /* Lock Why Natural Grid row tracks on desktop (>= 1025px 2-column layout) so expanding accordions never shifts About Us vertically */
@@ -868,7 +873,7 @@ html.lenis.lenis-smooth {
 .page-hero.hero--white-solar .split-title {
   color: #063024 !important;
   text-shadow: none !important;
-  max-width: 14ch;
+  max-width: min(22ch, 54vw);
   font-size: clamp(2.3rem, 3.8vw, 4rem);
   font-weight: 400;
   line-height: 1.1;
@@ -882,7 +887,7 @@ html.lenis.lenis-smooth {
   text-shadow: none !important;
   font-size: clamp(0.95rem, 1.15vw, 1.15rem);
   line-height: 1.6;
-  max-width: 44ch;
+  max-width: min(48ch, 54vw);
   margin-top: 0;
   margin-bottom: clamp(24px, 2.8vw, 32px);
   opacity: 1 !important;
@@ -2102,7 +2107,7 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
 .gallery-section {
   position: relative;
   overflow: clip;
-  padding: clamp(36px, 4.5vw, 60px) 0 clamp(28px, 3.5vw, 48px);
+  padding: clamp(64px, 8vw, 110px) 0 clamp(64px, 8vw, 110px);
   background: var(--page-bg);
 }
 
@@ -2310,7 +2315,7 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
     #f4f5f2 42%,
     rgba(35, 101, 55, 0.065) 100%
   );
-  padding: clamp(28px, 3.5vw, 48px) 0 clamp(28px, 3.5vw, 48px);
+  padding: clamp(64px, 8vw, 110px) 0 clamp(64px, 8vw, 110px);
 }
 
 .calc-backdrop {
@@ -2359,6 +2364,9 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
   grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
   align-items: start;
   gap: clamp(28px, 4vw, 64px);
+  margin-top: clamp(64px, 8vw, 96px);
+  padding-top: clamp(48px, 6vw, 76px);
+  border-top: 1px solid rgba(6, 48, 36, 0.08);
   padding-bottom: 0;
 }
 
@@ -2521,8 +2529,8 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
 .journey {
   border-top: 1px solid rgba(6, 48, 36, 0.08);
   grid-template-columns: minmax(240px, 0.78fr) minmax(0, 1.22fr);
-  gap: clamp(24px, 4vw, 72px);
-  padding: clamp(36px, 4.5vw, 56px) clamp(16px, 2.4vw, 34px) clamp(24px, 3vw, 36px);
+  gap: clamp(28px, 4.5vw, 76px);
+  padding: clamp(64px, 8vw, 104px) clamp(16px, 2.4vw, 34px) clamp(48px, 6vw, 80px);
 }
 
 .journey-aside {
@@ -2553,7 +2561,7 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
 
 .stats-row {
   gap: 0;
-  padding-bottom: clamp(28px, 3.5vw, 44px);
+  padding-bottom: clamp(48px, 6vw, 80px);
 }
 
 .stats-row .stat-card {
@@ -2573,7 +2581,7 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
   align-items: start;
   gap: clamp(28px, 4.5vw, 76px);
   border-top: 1px solid rgba(6, 48, 36, 0.1);
-  padding: clamp(36px, 4.5vw, 56px) clamp(16px, 2.4vw, 34px) clamp(24px, 3vw, 38px);
+  padding: clamp(64px, 8vw, 104px) clamp(16px, 2.4vw, 34px) clamp(48px, 6vw, 80px);
 }
 
 .process-head {
@@ -2655,8 +2663,8 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
   border-top: 1px solid rgba(6, 48, 36, 0.1);
   grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
   gap: clamp(28px, 4.5vw, 76px);
-  padding-top: clamp(36px, 4.5vw, 56px);
-  padding-bottom: clamp(20px, 2.4vw, 32px);
+  padding-top: clamp(64px, 8vw, 104px);
+  padding-bottom: clamp(56px, 7vw, 92px);
   padding-inline: clamp(16px, 2.4vw, 34px);
 }
 
@@ -2799,7 +2807,8 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
 .services-stage .services-detail {
   position: relative;
   z-index: 1;
-  padding-top: clamp(40px, 5vw, 72px);
+  padding-top: clamp(64px, 8vw, 104px);
+  padding-bottom: clamp(64px, 8vw, 104px);
 }
 
 .service-sec-head {
@@ -2885,7 +2894,8 @@ body:has(.hero--white-solar) .site-header:not(.is-stuck) .menu-toggle {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding-top: clamp(24px, 3vw, 36px);
+  margin-top: clamp(48px, 6vw, 76px);
+  padding-top: clamp(32px, 4vw, 48px);
   border-top: 1px solid rgba(6, 48, 36, 0.1);
 }
 

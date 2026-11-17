@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { SeoHead } from "@/components/common/SeoHead";
 import { PageHero } from "@/components/common/PageHero";
+import { HeroImage } from "@/components/home/HeroImage";
 import { GalleryBackdropIllustrations } from "@/components/gallery/GalleryBackdropIllustrations";
 import { GALLERY_ITEMS, GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { useGalleryGsap } from "@/hooks/useGalleryGsap";
@@ -20,8 +21,10 @@ export const GalleryPage: React.FC = () => {
       />
 
       <PageHero
+        className="hero--white-solar"
         title="Gallery"
         description="A look at our solar work across Kerala — rooftop and ground-mounted installations, commercial and institutional projects, solar products and our teams on site."
+        background={<HeroImage />}
       />
 
       <section className="gallery-section" ref={photosSectionRef}>

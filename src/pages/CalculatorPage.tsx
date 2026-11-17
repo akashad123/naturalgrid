@@ -1,6 +1,7 @@
 import React from "react";
 import { SeoHead } from "@/components/common/SeoHead";
 import { PageHero } from "@/components/common/PageHero";
+import { HeroImage } from "@/components/home/HeroImage";
 import { Accordion } from "@/components/common/Accordion";
 import { SolarCalculator } from "@/components/calculator/SolarCalculator";
 import { CalculatorBackdropIllustrations } from "@/components/calculator/CalculatorBackdropIllustrations";
@@ -51,8 +52,10 @@ export const CalculatorPage: React.FC = () => {
       />
 
       <PageHero
+        className="hero--white-solar"
         title="Solar Savings Calculator"
         description="Enter the average units from your electricity bill and your property type to instantly estimate the solar system size you need and your yearly savings. Contact us for exact figures and a detailed quotation."
+        background={<HeroImage />}
       />
 
       <section className="calculator-stage" aria-label="Solar savings estimator">
