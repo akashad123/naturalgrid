@@ -17,8 +17,9 @@ export const PageHero: React.FC<PageHeroProps> = ({
   background,
   children,
 }) => {
-  // Split title words to apply the word-by-word rise animation
-  const words = title.split(" ");
+  // Support multi-line titles via \n while preserving word-by-word animation
+  const lines = title.split("\n");
+  let wordCounter = 0;
 
   return (
     <section className={`page-hero ${className}`}>
@@ -50,19 +51,30 @@ export const PageHero: React.FC<PageHeroProps> = ({
       )}
 
       <h1 className="page-title split-title">
-        {words.map((word, idx) => (
-          <React.Fragment key={idx}>
-            <span
-              className="title-word"
-              style={{
-                animationDelay: `${Math.min(idx * 90, 720)}ms`,
-              }}
-            >
-              {word}
-            </span>
-            {idx < words.length - 1 ? " " : ""}
-          </React.Fragment>
-        ))}
+        {lines.map((line, lineIdx) => {
+          const words = line.split(" ");
+          return (
+            <React.Fragment key={lineIdx}>
+              {words.map((word, wordIdx) => {
+                const currentIdx = wordCounter++;
+                return (
+                  <React.Fragment key={wordIdx}>
+                    <span
+                      className="title-word"
+                      style={{
+                        animationDelay: `${Math.min(currentIdx * 90, 720)}ms`,
+                      }}
+                    >
+                      {word}
+                    </span>
+                    {wordIdx < words.length - 1 ? " " : ""}
+                  </React.Fragment>
+                );
+              })}
+              {lineIdx < lines.length - 1 ? <br className="hero-title-br" /> : null}
+            </React.Fragment>
+          );
+        })}
       </h1>
 
       {description && <p className="page-hero-text">{description}</p>}

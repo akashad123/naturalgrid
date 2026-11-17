@@ -49,7 +49,7 @@ export const HomePage: React.FC = () => {
       <PageHero
         className="hero--white-solar"
         badgeText=""
-        title={"Kerala’s Trusted Solar Company, Built on Service\u00A0First."}
+        title={"Kerala’s Trusted Solar\nCompany, Built on\nService First."}
         description="Expert solar installation for homes and businesses across Kerala. Save on your KSEB bills and switch to clean, renewable energy — with service that stays with you long after commissioning."
         background={<HeroImage />}
       >
