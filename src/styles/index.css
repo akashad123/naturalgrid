@@ -143,26 +143,26 @@ html.lenis.lenis-smooth {
   }
 }
 
-/* Brand Partners & Features: generous breathing space and balanced vertical rhythm */
+/* Brand Partners & Features: balanced breathing space without excessive blank gaps */
 .features {
-  padding-top: clamp(36px, 4.5vw, 60px);
-  padding-bottom: clamp(36px, 4.5vw, 60px);
-  gap: clamp(24px, 3vw, 44px) clamp(28px, 3.5vw, 56px);
+  padding-top: clamp(28px, 3.5vw, 44px);
+  padding-bottom: clamp(20px, 2.5vw, 32px);
+  gap: clamp(20px, 2.5vw, 36px) clamp(24px, 3vw, 48px);
 }
 
 .trusted {
-  padding-top: clamp(64px, 8vw, 104px);
-  padding-bottom: clamp(64px, 8vw, 104px);
+  padding-top: clamp(24px, 3vw, 38px);
+  padding-bottom: clamp(32px, 4vw, 48px);
 }
 
 .precision + .trusted,
 .features + .trusted {
-  padding-top: clamp(64px, 8vw, 104px);
+  padding-top: clamp(24px, 3vw, 38px);
 }
 
 .trusted-marquee {
   contain: layout style;
-  margin-top: clamp(32px, 4vw, 52px);
+  margin-top: clamp(16px, 2vw, 24px);
 }
 
 .trusted-track {
@@ -171,8 +171,8 @@ html.lenis.lenis-smooth {
 }
 
 .trusted-set {
-  gap: clamp(56px, 7vw, 110px);
-  padding-right: clamp(56px, 7vw, 110px);
+  gap: clamp(40px, 5vw, 72px);
+  padding-right: clamp(40px, 5vw, 72px);
 }
 
 /* Lock Why Natural Grid row tracks on desktop (>= 1025px 2-column layout) so expanding accordions never shifts About Us vertically */
